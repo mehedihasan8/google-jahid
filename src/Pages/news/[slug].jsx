@@ -1,57 +1,33 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from "react-router-dom";
-import './SingleNews.css'
+import React, { useEffect, useState } from 'react';
 
-const SingleNews = () => {
-    const { slug } = useParams();
+export default function News({ data, categories }) {
     const [item, setItem] = useState(null);
     const [cata, setCata] = useState(null);
 
     useEffect(() => {
-        if (slug) {
-            fetch(`http://localhost:3000/news/${slug}`)
-                .then(response => response.json())
-                .then(data => {
-                    // Update the state with the data for the specific news item.
-                    setItem(data);
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
-        // Make a GET request to your backend API to fetch the news item based on the `id`.
-
-
-
+        setItem(data);
     }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/category`)
-            .then(response => response.json())
-            .then(data => {
-                setCata(data)
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+        setCata(categories)
     }, []);
+
+    const formateDte = (date) => {
+        const months = [
+            "January", "February", "March", "April",
+            "May", "June", "July", "August",
+            "September", "October", "November", "December"
+        ]
+        const dateSplit = date.split('/')
+        const day = parseInt(dateSplit[0])
+        const month = months[parseInt(dateSplit[1]) - 1]
+        const year = parseInt(dateSplit[2])
+        return `${month} ${day}, ${year}`
+    }
 
     if (!item) {
         return <span className="loading loading-ring md:w-40 md:h-40 w-20 h-20 md:ml-[45%] ml-[45%] md:my-40 my-20"></span>;
     }
-
-    const formateDte = (date)=>{
-        const months = [
-          "January", "February", "March", "April",
-          "May", "June", "July", "August",
-          "September", "October", "November", "December"
-        ]
-        const dateSplit = date.split('/')
-        const day = parseInt(dateSplit[0])
-        const month = months[parseInt(dateSplit[1])-1]
-        const year = parseInt(dateSplit[2])
-        return `${month} ${day}, ${year}`
-      }
 
     return (
         <div className='mx-auto font-paragraph '>
@@ -73,8 +49,7 @@ const SingleNews = () => {
             <div className='md:pt-[40px] mb-[40px] pt-6 md:mx-0 mx-4'>
                 <div className='md:p-10 px-4 pt-4 pb-7 mb-26 border-[#E5E7EB] border rounded-2xl'>
                     {/* Hero section */}
-                    <div className="hero md:mb-10 mb-6 rounded-lg md:h-[394px] h-[210px] mx-auto" style={{ backgroundImage: `url(http://localhost:3000/uploads/${item.image})` }}>
-                    </div>
+                    <img className="hero md:mb-10 mb-6 rounded-lg mx-auto" src={`http://localhost:3000/uploads/${item.image}`} />
                     <div className='md:grid md:grid-cols-2 '>
                         {/* right-div */}
                         <div className=' md:w-[752px]'>
@@ -104,7 +79,7 @@ const SingleNews = () => {
                                 <div className='small-card-text'>
                                     Lorem ipsum dolor sit amet consectetur. Scelerisque tellus aliquet cursus faucibus sit neque duis senectus.
                                     <button className='explore-btn explore-btn-text mt-6 '>
-                                         Explore Now
+                                        Explore Now
                                     </button>
                                 </div>
                             </div>
@@ -115,7 +90,7 @@ const SingleNews = () => {
                                 <div className='text-xl font-paragraph font-normal'>Popular Categories</div>
                                 <div className='flex flex-wrap gap-4 mt-4 text-lg font-normal'>
                                     {cata?.map((subItem, index) => (
-                                        <p style={{textOverflow: 'ellipsis', overflow:'hidden'}} className='h-fit w-fit border rounded-3xl text-center py-2 px-4 font-paragraph font-normal text-sm text-[#4D5761]' key={index}>{subItem.Title}</p>
+                                        <p style={{ textOverflow: 'ellipsis', overflow: 'hidden' }} className='h-fit w-fit border rounded-3xl text-center py-2 px-4 font-paragraph font-normal text-sm text-[#4D5761]' key={index}>{subItem.Title}</p>
                                     ))}
                                 </div>
                             </div>
@@ -137,8 +112,8 @@ const SingleNews = () => {
                     </div>
                     <div className='large-card md:mt-10 mb-15'>
                         <div className='large-right font-title '>
-                            <p className='font font-bold text-[56px]'>Let’s Contact 
-                            <br />With Us.</p>
+                            <p className='font font-bold text-[56px]'>Let’s Contact
+                                <br />With Us.</p>
                         </div>
                         <div className='vertical'>
                         </div>
@@ -159,5 +134,23 @@ const SingleNews = () => {
     );
 };
 
+export async function getServerSideProps(context) {
+    const { slug } = context.params;
 
-export default SingleNews;
+    const [news, categories] = await Promise.all([
+        fetch(`http://localhost:3000/news/${slug}`),
+        fetch(`http://localhost:3000/category`)
+    ])
+
+    const [newsData, categoriesData] = await Promise.all([
+        news.json(),
+        categories.json()
+    ])
+
+    return {
+        props: {
+            data: newsData,
+            categories: categoriesData
+        }
+    }
+}

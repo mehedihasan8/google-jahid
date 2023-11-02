@@ -1,17 +1,13 @@
-
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
-
-import draftToHtml from "draftjs-to-html";
-import { Editor } from 'react-draft-wysiwyg';
+import dynamic from 'next/dynamic'
 import { ContentState, EditorState, convertFromHTML, convertToRaw } from "draft-js";
-import htmlToDraft from 'html-to-draftjs';
-
-import purify from 'dompurify';
-
-import './Review.css'
 import { AuthContext } from "../Context/AuthProvider";
+const Editor = dynamic(
+  () => import('react-draft-wysiwyg').then(mod => mod.Editor),
+  { ssr: false })
+  const htmlToDraft = dynamic(() => import('html-to-draftjs'), { ssr: false })
 
 const Review = ({ func, userRating, id, gmail, userName, product }) => {
   const modalRef = useRef(null);

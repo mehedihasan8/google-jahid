@@ -6,7 +6,7 @@
 	.st0{fill:#6B29FF;}
 	.st1{fill:none;}
 	.st2{fill:url(#SVGID_1_);}
-	.st3{clipPath:url(#SVGID_00000139289186865859704000000003742631851006620558_);}
+	.st3{clip-path:url(#SVGID_00000139289186865859704000000003742631851006620558_);}
 	.st4{fill:#2970FF;}
 	.st5{fill:#90FF26;}
 	.st6{opacity:0.8;}
@@ -51,7 +51,7 @@
 			<clipPath id="SVGID_00000091706543014560269470000000510436031000287923_">
 				<use xlink:href="#SVGID_00000008860330712005137720000002605351387423041431_"  style="overflow:visible;"/>
 			</clipPath>
-			<g style="clipPath:url(#SVGID_00000091706543014560269470000000510436031000287923_);">
+			<g style="clip-path:url(#SVGID_00000091706543014560269470000000510436031000287923_);">
 				<g>
 					<rect x="93.61" y="74.53" class="st4" width="39.24" height="46.64"/>
 				</g>

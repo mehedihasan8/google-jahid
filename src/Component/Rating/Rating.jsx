@@ -1,10 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import  Link  from "next/link";;
-import "./Rating.css";
-
+import { useEffect, useState } from "react";
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
-import { AuthContext } from "../Context/AuthProvider";
-import { faChessKing } from "@fortawesome/free-solid-svg-icons";
+
 const Rating = ({ card }) => {
   // consoleisClicked
   const tmpStoreKeyTool = "ToolsFinder(GoodToolsAi)RegularStoring:_toolId";
@@ -220,11 +216,11 @@ const Rating = ({ card }) => {
                   </svg>
                 </div>
                 <div>
-                  <h1 className="text-base  font-medium">
+                  <h1 className="text-base font-medium">
                   <span className="mr-2 tt">Tool Type:</span>
                     {card.SubCategory.map((sub) => {
                       return (
-                        <button className="border text-xs text-[#4D5761] ml-3 px-3 py-[6px] rounded-full font-normal">
+                        <button key={sub} className="border text-xs text-[#4D5761] ml-3 px-3 py-[6px] rounded-full font-normal">
                           {sub}
                         </button>
                       );

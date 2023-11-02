@@ -1,14 +1,11 @@
-import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from "react";
-import Rate from '../Rate/Rate';
-import Rattingg from '../Rating/Rating';
+import Rate from '../../Component/Rate/Rate';
+import Rattingg from '../../Component/Rating/Rating';
 import Link from "next/link";
-import { AuthContext } from "../../../Component/Context/AuthProvider";
-import RelatedCards from "../../../Component/Card/RelatedCard";
+import { AuthContext } from "../../Component/Context/AuthProvider";
+import RelatedCards from "../../Component/Card/RelatedCard";
 
-export default function ToolDetail() {
-    const router = useRouter()
-    const slug = router.query.slug;
+export default function Tool({ data }) {
 
     const { loadData, setLoadData } = useContext(AuthContext);
     const [cards, setCards] = useState(null);
@@ -19,20 +16,10 @@ export default function ToolDetail() {
     useEffect(() => {
         setLoadData(false)
 
-        if (slug) {
-            isClicked = localStorage.getItem(storageKey) === "true"
-            fetch(`http://localhost:3000/tools/${slug}`)
-                .then(response => response.json())
-                .then(data => {
-                    setCards(data);
-                    setIsloading(false)
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
+        setCards(data);
+        setIsloading(false)
 
-    }, [loadData]);
+    },[]);
 
 
     return (
@@ -61,3 +48,13 @@ export default function ToolDetail() {
         </div>
     );
 };
+
+export async function getServerSideProps(context) {
+    const { slug } = context.params;
+    const res = await fetch(`http://localhost:3000/tools/${slug}`);
+    const data = await res.json();
+
+    return {
+        props: { data }
+    }
+}

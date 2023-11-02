@@ -1,6 +1,5 @@
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
-import './SingleReview.css'
 
 const SingleReview = ({ name = "None", rating = 0, date = 'Jan 1, 1970', comment = "None" }) => {
 

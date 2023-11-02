@@ -1,25 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import  Link  from "next/link";;
+import Link from "next/link";;
 
-const News = () => {
+export default function News({ data }) {
 
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // This code will run when the component mounts
-
-    // Make a GET request to your backend API
-    fetch("http://localhost:3000/news")
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the state with the data from the backend
-        setNews(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    setNews(data);
+    setIsLoading(false);
   }, []);
 
   const formateDte = (date) => {
@@ -70,7 +59,7 @@ const News = () => {
       <div className=" border md:p-10 md:m-4 p-4 rounded-lg">
         <div>
           <div className="md:rounded-xl">
-            <p class="text-center text-3xl md:text-5xl  font-bold font-title md:text-left">
+            <p className="text-center text-3xl md:text-5xl  font-bold font-title md:text-left">
               Latest Our AI News & Articles
             </p>
 
@@ -126,4 +115,11 @@ const News = () => {
   );
 };
 
-export default News;
+export async function getServerSideProps() {
+  const res = await fetch(`http://localhost:3000/news`);
+  const data = await res.json();
+
+  return {
+    props: { data }
+  }
+}

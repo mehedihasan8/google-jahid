@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const RelatedCards = ({ subs, id }) => {
     const [relatedTools, setRelatedTools] = useState([])
