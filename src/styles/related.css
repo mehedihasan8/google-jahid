@@ -1,0 +1,15 @@
+.card-shadow{
+    background: var(--neutral-white, #FFF);
+/* 02 */
+box-shadow: 0px 8px 24px 0px rgba(41, 59, 85, 0.08);
+}
+
+.subscription {
+    width: fit-content;
+    height: 34px;
+    padding: 8px 16px;
+    gap: 10px;
+    border-radius: 100px;
+    background: #F3F4F6;
+
+}

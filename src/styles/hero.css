@@ -1,0 +1,165 @@
+.hero-title {
+  background: linear-gradient(91deg, #000 0.01%, #BA33DC 24.84%, #6977F8 68.41%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: Space Grotesk;
+  font-style: normal;
+  line-height: normal;
+  font-size: 56px;
+}
+
+.popular-item {
+  transition: transform 0.3s ease-out;
+}
+
+.hero-subtitle {
+  color: var(--neutral-600, #4D5761);
+  text-align: center;
+  /* Body Text/Inter 16px/Regular */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  /* 24px */
+}
+
+.input-container {
+  position: relative;
+  height: 52px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 12px;
+  background: var(--neutral-100, #F3F4F6);
+}
+
+.search-icon {
+  position: absolute;
+  margin-top: 60px;
+  top: 0;
+  /* Adjust this value as needed to position the icon */
+  left: 80%;
+  /* Center the icon horizontally */
+  transform: translateX(-50%);
+  /* Center horizontally */
+}
+
+.popular-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 16px; */
+}
+
+.popular-title {
+  color: var(--neutral-900, #201F31);
+
+  /* Body Text/Inter 16px/Medium */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  /* 24px */
+}
+
+.item {
+  display: flex;
+  padding: var(--spacing-md, 8px) 16px;
+  justify-content: center;
+  align-items: center;
+  height: 37px;
+  width: auto;
+  gap: 10px;
+  border-radius: 100px;
+  border: 1px solid var(--neutral-300, #D2D6DB);
+}
+
+.p-text {
+  color: var(--neutral-600, #4D5761);
+
+  /* Body Text/Inter 14px/Regular */
+  font-family: Inter;
+  font-size: 12px;
+  height: auto;
+  width: auto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  /* 21px */
+}
+
+.popular-categories{
+  font-weight: 500 !important;
+}
+
+.max{
+  max-width: 917px !important;
+}
+
+@media (max-width: 767px) {
+  .popular-item {
+    display: grid;
+    /* Use grid layout on mobile */
+    grid-template-columns: repeat(3, 1fr);
+    /* Two columns per row */
+    /* gap: 8px; */
+    /* Adjust the gap between items */
+  }
+
+  .item {
+    width: 100%;
+    /* Items take up the full width of each grid cell */
+  }
+
+  .hero-subtitle {
+    align-self: stretch;
+    color: var(--neutral-600, #4D5761);
+    text-align: center;
+
+    /* Body Text/Inter 16px/Regular */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 24px */
+  }
+
+  .hero-title {
+    background: linear-gradient(91deg, #000 0.01%, #BA33DC 24.84%, #6977F8 68.41%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+
+    /* Heading Mobile/Heading 1 */
+    font-family: Space Grotesk;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 48px */
+    letter-spacing: -0.8px;
+  }
+
+  .hero-title br {
+    display: none;
+  }
+
+  .hero-subtitle br {
+    display: none;
+  }
+
+}
+.cata{
+  color: var(--neutral-600, #4D5761);
+
+/* Body Text/Inter 14px/Regular */
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 21px */
+}

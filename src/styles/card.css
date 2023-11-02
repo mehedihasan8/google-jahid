@@ -1,0 +1,116 @@
+.button {
+    width: auto;
+    height: 40px;
+    padding: 16px, 34px, 16px, 34px;
+    border-radius: 12px;
+    border: 1px solid #E5E7EB;
+
+
+}
+
+.Title {
+    font-family: Space Grotesk;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+
+
+}
+.para{
+    color: var(--neutral-600, #4D5761);
+
+/* Body Text/Inter 16px/Regular */
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 24px */
+}
+
+.subscription {
+    width: fit-content;
+    height: 34px;
+    padding: 8px 14px;
+    gap: 10px;
+    border-radius: 100px;
+    background: #F3F4F6;
+
+}
+
+.card-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    row-gap: 6px;
+    align-self: stretch;
+    flex-wrap: wrap;
+    width: 57px;
+    height: 27px;
+}
+
+.card-category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    row-gap: 6px;
+    align-self: stretch;
+    flex-wrap: wrap;
+    border-radius: 100px;
+    border: 0.5px solid var(--neutral-200, #E5E7EB);
+}
+
+.card-category-text {
+    /* color: var(--neutral-600, #4D5761);
+    leading-trim: both;
+    text-edge: cap; */
+
+    /* Body Text/Inter 10px/Regular */
+    /* font-family: Inter; */
+    /* font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    15px */
+}
+.card-shadow{
+    background: var(--neutral-white, #FFF);
+/* 02 */
+box-shadow: 0px 8px 24px 0px rgba(41, 59, 85, 0.08);
+}
+.font{
+    font-weight: 700;
+}
+
+.hd{
+    color: var(--neutral-950, #081120);
+
+/* Display Heading/Display 4 */
+font-family: Space Grotesk;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 36px */
+}
+
+.par{
+    color: var(--neutral-600, #4D5761);
+
+/* Body Text/Inter 16px/Regular */
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 24px */
+}
+
+@media (max-width: 768px){
+    .resize{
+        height: 26px;
+        width: 26px;
+        background-color: red;
+    }
+}

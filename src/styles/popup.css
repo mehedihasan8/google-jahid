@@ -1,0 +1,15 @@
+.btn-p{
+    font-size: small;
+    width: 75%;
+    
+}
+@media (max-width: 767px) {
+    .btn-p{
+        font-size: small;
+        width: 75%; 
+    }
+    .text{
+        font-size: smaller;
+        margin-right: 2px;
+    }
+}
