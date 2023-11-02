@@ -1,8 +1,13 @@
 import React from "react";
 import  Link  from "next/link";;
+import Head from 'next/head'
 
 const Contact = () => {
   return (
+    <div>
+      <Head>
+        <title>GoodTools.Ai - Contact Us</title>
+      </Head>
     <div className="font-paragraph">
       <div className="breadcrumbs privacy-menu mb-5  text-sm font-normal ">
         <ul>
@@ -126,6 +131,7 @@ const Contact = () => {
         </div>
       </div>
 
+    </div>
     </div>
   );
 };

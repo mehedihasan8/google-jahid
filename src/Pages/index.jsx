@@ -4,8 +4,9 @@ import Filter from '../Component/Filter/Filter';
 import { useEffect, useState } from 'react';
 import Link from "next/link";
 import CookiePopup from '../Component/Popup/Popup';
+import Head from 'next/head'
 
-const Home = ( { toolsData, allsubcategoriesData, filterData } ) => {
+const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
     const [total, setTotal] = useState(0)
     const [selectedSub, setSelectedSub] = useState('')
     const [searchData, setSearchData] = useState('');
@@ -121,6 +122,9 @@ const Home = ( { toolsData, allsubcategoriesData, filterData } ) => {
 
     return (
         <div className=''>
+            <Head>
+                <title>GoodTools.Ai - AI Tools Finder</title>
+            </Head>
             {
                 selectedSub && category ?
                     <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0">
