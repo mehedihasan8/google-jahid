@@ -1,75 +1,146 @@
+"use client";
 import Login from "../Shared/Signup/Login";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Logo from "../../assets/logo.svg";
-import Image from 'next/image';
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
-  const [isNavbarHidden, setIsNavbarHidden] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [userClicked, setUserClicked] = useState(false);
+  const router = useRouter();
 
-  const handleNavLinkClick = () => {
-    setIsNavbarHidden(!isNavbarHidden);
+  const dropdownRef = useRef(null);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
-  const toggle = () => {
-    setIsNavbarHidden(false);
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
+
+  const handleUserClick = () => {
+    setUserClicked(!userClicked);
+  };
+
+  useEffect(() => {
+    const handleClickOutsideDropdown = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setUserClicked(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutsideDropdown);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutsideDropdown);
+    };
+  }, []);
 
   return (
-    <div className="-ml-2 md:ml-2">
-      <div className="p-0 md:p-[5px] navbar bg-base-100 ">
-        <div className=" navbar-start">
-          <Link href='/'>
-            <Image src={Logo} alt="logo" className="w-[168px] h-[40px] flex items-center md:-ml-4 -ml-2" />
-          </Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="flex px-1 text-base">
-            <li className=' font-paragraph md:px-6 md:py-3 navi'>
-              <Link href="/">
-              <span className={`font-paragraph text-base block hover:bg-transparent`}>AI Tools Finder</span>
-              </Link>
-            </li>
+    <div className="max-w-screen-xl py-[15px] top-0 backdrop-blur-sm z-10 w-full fixed flex justify-between items-center ml-[0.3rem] md:ml-0">
+      <Link href="/">
+        <Image
+          src={Logo}
+          alt="logo"
+          className="w-[150px] h-[35px] md:w-[175px] md:h-[45px]"
+        />
+      </Link>
+      <ul className="md:flex justify-between w-[12rem] md:mt-2 hidden">
+        <Link href="/">
+          <li
+            className={`hover:text-[#2970ff] hover:translate transition-all duration-500  ${
+              router.pathname === "/" ? "active relative" : ""
+            }`}
+          >
+            AI Tools Finder
+            {router.pathname === "/" ? (
+              <div className="absolute h-[3px] left-1/2 transform -translate-x-1/2 rounded-full bg-[#2970ff] w-6"></div>
+            ) : null}
+          </li>
+        </Link>
+        <Link href="/news">
+          <li
+            className={`hover:text-[#2970ff] hover:translate transition-all duration-500  ${
+              router.pathname === "/news" ? "active relative" : ""
+            }`}
+          >
+            News
+            {router.pathname === "/news" ? (
+              <div className="absolute h-[3px] left-1/2 transform -translate-x-1/2 rounded-full bg-[#2970ff] w-6"></div>
+            ) : null}
+          </li>
+        </Link>
+      </ul>
 
-            <li className=' md:px-6 md:py-3 navi'>
-              <Link href="/news">
-              <span className={`font-paragraph text-base block hover:bg-transparent`}>News</span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="navbar-end">
-          <div className='hidden lg:block'>
-            <Login />
-          </div>
-
-        </div>
-        <div className="dropdown dropdown-end">
-          <label onClick={toggle} tabIndex={0} className="hide-menu btn-ghost btn">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-          </label>
-          <ul tabIndex={0} className={`menu  menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 gap-1 navi ${isNavbarHidden ? 'hidden' : ''} `}>
-            <li className='mx-6 font-paragraph text-base'>
-              <Link href="/" onClick={handleNavLinkClick}>
-                <div style={{ background: 'transparent' }} className="p-0 font-paragraph text-base">
-                  AI Tools Finder
-                </div>
-              </Link>
-            </li>
-
-            <li className='mx-6 navi'>
-              <Link href="/news" onClick={handleNavLinkClick}>
-                <div style={{ background: 'transparent' }} className="p-0 font-paragraph text-base">
-                  News
-                </div>
-              </Link>
-            </li>
-            <li className='ml-4 mr-10'>
-              <Login/>
-            </li>
-          </ul>
-        </div>
+      <div className="hidden md:block">
+        <Login />
       </div>
-    </div >
+
+      {/* toggole Button  */}
+      <button
+        ref={dropdownRef}
+        onClick={handleMenuToggle}
+        className="lg:hidden text-black p-2 focus:outline-none transition-opacity duration-300 ease-in-out"
+        aria-controls="mobile-menu"
+        aria-expanded={isMenuOpen}
+        style={{ opacity: isMenuOpen ? 0.5 : 1 }}
+      >
+        {isMenuOpen ? (
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        ) : (
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        )}
+      </button>
+
+      <div
+        className={`${
+          isMenuOpen ? "block" : "hidden"
+        } absolute right-3 top-10 z-[1] p-2 shadow bg-white border border-gray-200 rounded transition-all duration-300`}
+        id="mobile-menu"
+      >
+        <ul className="flex flex-col gap-3 text-center">
+          <Link href="/" onClick={closeMenu}>
+            <li className="px-4 border-b border-gray-300 hover:bg-blue-100">
+              AI Tools Finder
+            </li>
+          </Link>
+          <Link href="/news" onClick={closeMenu}>
+            <li className="px-4 border-b border-gray-300 hover:bg-blue-100">
+              News
+            </li>
+          </Link>
+        </ul>
+      </div>
+    </div>
   );
 };
 
