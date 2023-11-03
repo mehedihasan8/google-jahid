@@ -1,28 +1,44 @@
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
-import dynamic from 'next/dynamic'
-import { ContentState, EditorState, convertFromHTML, convertToRaw } from "draft-js";
+import dynamic from "next/dynamic";
+import {
+  ContentState,
+  EditorState,
+  convertFromHTML,
+  convertToRaw,
+} from "draft-js";
 import { AuthContext } from "../Context/AuthProvider";
 const Editor = dynamic(
-  () => import('react-draft-wysiwyg').then(mod => mod.Editor),
-  { ssr: false })
-  const htmlToDraft = dynamic(() => import('html-to-draftjs'), { ssr: false })
+  () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
+  { ssr: false }
+);
+const htmlToDraft = dynamic(() => import("html-to-draftjs"), { ssr: false });
 
 const Review = ({ func, userRating, id, gmail, userName, product }) => {
   const modalRef = useRef(null);
 
   const publishDate = () => {
     const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
     ];
     const today = new Date();
     const month = months[today.getMonth()];
     const day = today.getDate();
     const year = today.getFullYear();
-    return `${month} ${day}, ${year}`
-  }
+    return `${month} ${day}, ${year}`;
+  };
   const StarDrawing = (
     <svg
       width="36"
@@ -52,23 +68,31 @@ const Review = ({ func, userRating, id, gmail, userName, product }) => {
     const productId = id;
     const userEmail = gmail;
     const toolName = product;
-    const data = { name, rating, date, comment, productId, userEmail, toolName }
-    fetch("http://api.goodtools.ai/review", {
+    const data = {
+      name,
+      rating,
+      date,
+      comment,
+      productId,
+      userEmail,
+      toolName,
+    };
+    fetch("https://api.goodtools.ai/review", {
       method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then(data => {
+      .then((data) => {
         if (data.acknowledged) {
-          func()
-          editorState(EditorState.createEmpty())
-          setFalse()
+          func();
+          editorState(EditorState.createEmpty());
+          setFalse();
           closeModal();
         }
-      })
+      });
     // Close the modal and reset state when submitted
   };
 
@@ -77,59 +101,56 @@ const Review = ({ func, userRating, id, gmail, userName, product }) => {
       modalRef.current.close();
     }
     setMessage(""); // Reset the message state
-    setFalse()
+    setFalse();
   };
   useEffect(() => {
-    document.getElementById("my_modal_5").showModal()
-
-  }, [])
-
+    document.getElementById("my_modal_5").showModal();
+  }, []);
 
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [init, setInit] = useState('')
-  const [final, setFinal] = useState('')
+  const [init, setInit] = useState("");
+  const [final, setFinal] = useState("");
 
   const handlePasted = (text, html, editorState) => {
     // This function handles paste from clipboard
-  }
+  };
 
   useEffect(() => {
-    const contentBlock = htmlToDraft(init)
+    const contentBlock = htmlToDraft(init);
 
     if (contentBlock) {
-      const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+      const contentState = ContentState.createFromBlockArray(
+        contentBlock.contentBlocks
+      );
       const editorState = EditorState.createWithContent(contentState);
-      setEditorState(editorState)
+      setEditorState(editorState);
     }
-  }, [init])
+  }, [init]);
 
   const handleChange = (data) => {
     setEditorState(data);
   };
 
-
   useMemo(
     () => setFinal(draftToHtml(convertToRaw(editorState.getCurrentContent()))),
     [editorState]
-  )
-
+  );
 
   const tool = {
-    options: ['inline'],
+    options: ["inline"],
     inline: {
       inDropdown: false,
       className: undefined,
       component: undefined,
       dropdownClassName: undefined,
-      options: ['bold', 'italic'],
+      options: ["bold", "italic"],
       bold: {
-        icon: '../public/bold.svg', className: 'bold'
+        icon: "../public/bold.svg",
+        className: "bold",
       },
-      italic: { icon: '../public/italic.svg', className: 'italic' }
-
-    }
-  }
-
+      italic: { icon: "../public/italic.svg", className: "italic" },
+    },
+  };
 
   return (
     <div className="font-paragraph">
@@ -141,7 +162,9 @@ const Review = ({ func, userRating, id, gmail, userName, product }) => {
       </button> */}
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle ">
         <div className="modal-custom relative">
-          <h3 className="font-bold text-2xl mb-4 font-title">What is Your Rating?</h3>
+          <h3 className="font-bold text-2xl mb-4 font-title">
+            What is Your Rating?
+          </h3>
           <div>
             <Rating
               style={{ maxWidth: "234px", maxHeight: "39px", gap: "8px" }}
@@ -167,7 +190,10 @@ const Review = ({ func, userRating, id, gmail, userName, product }) => {
                   onEditorStateChange={handleChange}
                   wrapperClassName="full-wrap-review"
                   editorClassName="editor-wrap-review"
-                  toolbarClassName="toolbar-wrap-review"> </Editor>
+                  toolbarClassName="toolbar-wrap-review"
+                >
+                  {" "}
+                </Editor>
               </div>
               <button
                 className="btn-circle btn-ghost absolute top-4 right-4"
@@ -199,7 +225,6 @@ const Review = ({ func, userRating, id, gmail, userName, product }) => {
           </div>
         </div>
       </dialog>
-
     </div>
   );
 };

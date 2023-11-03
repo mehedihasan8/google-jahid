@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import Progress from "../../Pages/Progress/Progress";
+import Progress from "../../pages/Progress/Progress";
 import SingleReview from "../SingleReview/SingleReview";
 import { AuthContext } from "../Context/AuthProvider";
 import Review from "../Review/Review";
@@ -25,7 +25,11 @@ const Rate = ({id,name}) => {
 
     useEffect(()=>{
         if(user){
+<<<<<<< HEAD
             fetch(`http://api.goodtools.ai/review/${id}/${user?.email}`)
+=======
+            fetch(`https://api.goodtools.ai/review/${id}/${user?.email}`)
+>>>>>>> b7dfcbd9f4e5866f9bd6610a712361c13499f5cb
             .then(res=>res.json())
             .then(data=> setAvailable(data))
         }
@@ -106,7 +110,11 @@ const Rate = ({id,name}) => {
 
 
     useEffect(() => {
+<<<<<<< HEAD
         fetch(`http://api.goodtools.ai/reviews/${id}`)
+=======
+        fetch(`https://api.goodtools.ai/reviews/${id}`)
+>>>>>>> b7dfcbd9f4e5866f9bd6610a712361c13499f5cb
             .then(data => data.json())
             .then(info => setReviews(info.reverse()))
     }, [])
@@ -199,7 +207,11 @@ const Rate = ({id,name}) => {
 
     const customAvailable = ()=>{
         setAvailable(false)
+<<<<<<< HEAD
         fetch(`http://api.goodtools.ai/reviews/${id}`)
+=======
+        fetch(`https://api.goodtools.ai/reviews/${id}`)
+>>>>>>> b7dfcbd9f4e5866f9bd6610a712361c13499f5cb
             .then(data => data.json())
             .then(info => setReviews(info.reverse()))
     }

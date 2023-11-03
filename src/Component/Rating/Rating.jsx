@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
+import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 
 const Rating = ({ card }) => {
   // consoleisClicked
@@ -33,7 +33,7 @@ const Rating = ({ card }) => {
           <div className="flex justify-between gap-2 items-center justify-center">
             {/* Product Info */}
             <div>
-                  <p className="D font-normal text-base text-[#6C737F]">
+              <p className="D font-normal text-base text-[#6C737F]">
                 Product Information
               </p>
               <h1 className="md:text-5xl text-[32px] font-bold mt-2 font-title">
@@ -44,12 +44,13 @@ const Rating = ({ card }) => {
             <div className="  flex gap-2 md:gap-4 item-center justify-center">
               <div className="svg-sizing p-4">
                 {isClicked ? (
-                  <button className="rounded-full text-base" onClick={handleClick}>
+                  <button
+                    className="rounded-full text-base"
+                    onClick={handleClick}
+                  >
                     <BsBookmarkFill
-                      
                       className="rounded-full"
                       // style={{ height: "16px", width: "16px" }}
-                      
                     ></BsBookmarkFill>
                   </button>
                 ) : (
@@ -89,307 +90,277 @@ const Rating = ({ card }) => {
             </div>
           </div>
 
-
-<div className=" border-green-500 flex">
-  {/* Product image */}
-          <div className="md:grid grid-cols-2  md:mt-10 mt-6 md:gap-[80px]">
-            <div className="">
-              <img
-                src={`http://api.goodtools.ai/uploads/${card.image}`}
-                alt={card.toolName}
-                className="bg-black text-white md:rounded-2xl rounded-lg h-[210px] md:h-[344px]"
-              />
-            </div>
-            <div className="">
-              {/* Price per period */}
-              <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-6 md:mt-0">
-                ${card.price}
-                <span className="text-base ms-2 font-normal text-[#4D5761] ">
-                  /{card.pricePeriod}
-                </span>
-              </h2>
-              <div className="md:w-[100%]  mt-[26.5px]">
-                <hr />
+          <div className=" border-green-500 flex">
+            {/* Product image */}
+            <div className="md:grid grid-cols-2  md:mt-10 mt-6 md:gap-[80px]">
+              <div className="">
+                <img
+                  src={`https://api.goodtools.ai/uploads/${card.image}`}
+                  alt={card.toolName}
+                  className="bg-black text-white md:rounded-2xl rounded-lg h-[210px] md:h-[344px]"
+                />
               </div>
-
-            <div>
-            <div className="mt-4 md:mt-[26px]">
-               {/* Users */}
-              <div className="flex  justify-start items-center">
-                <div className="pr-3">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.5799 12C15.5799 13.98 13.9799 15.58 11.9999 15.58C10.0199 15.58 8.41992 13.98 8.41992 12C8.41992 10.02 10.0199 8.42001 11.9999 8.42001C13.9799 8.42001 15.5799 10.02 15.5799 12Z"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M12.0001 20.27C15.5301 20.27 18.8201 18.19 21.1101 14.59C22.0101 13.18 22.0101 10.81 21.1101 9.4C18.8201 5.8 15.5301 3.72 12.0001 3.72C8.47009 3.72 5.18009 5.8 2.89009 9.4C1.99009 10.81 1.99009 13.18 2.89009 14.59C5.18009 18.19 8.47009 20.27 12.0001 20.27Z"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+              <div className="">
+                {/* Price per period */}
+                <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-6 md:mt-0">
+                  ${card.price}
+                  <span className="text-base ms-2 font-normal text-[#4D5761] ">
+                    /{card.pricePeriod}
+                  </span>
+                </h2>
+                <div className="md:w-[100%]  mt-[26.5px]">
+                  <hr />
                 </div>
+
                 <div>
-                  <h1 className="md:text-xl  md:font-medium font-semibold text-base">
-                    284231 Users
-                  </h1>
-                </div>
-              </div>
+                  <div className="mt-4 md:mt-[26px]">
+                    {/* Users */}
+                    <div className="flex  justify-start items-center">
+                      <div className="pr-3">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M15.5799 12C15.5799 13.98 13.9799 15.58 11.9999 15.58C10.0199 15.58 8.41992 13.98 8.41992 12C8.41992 10.02 10.0199 8.42001 11.9999 8.42001C13.9799 8.42001 15.5799 10.02 15.5799 12Z"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M12.0001 20.27C15.5301 20.27 18.8201 18.19 21.1101 14.59C22.0101 13.18 22.0101 10.81 21.1101 9.4C18.8201 5.8 15.5301 3.72 12.0001 3.72C8.47009 3.72 5.18009 5.8 2.89009 9.4C1.99009 10.81 1.99009 13.18 2.89009 14.59C5.18009 18.19 8.47009 20.27 12.0001 20.27Z"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <h1 className="md:text-xl  md:font-medium font-semibold text-base">
+                          284231 Users
+                        </h1>
+                      </div>
+                    </div>
 
-              {/* Tool type */}
-              <div className="flex justify-start mt-4 items-center">
-                <div className="pr-[10px]">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10.7501 22.5H13.2701C14.2301 22.5 14.8501 21.82 14.6701 20.99L14.2601 19.1801H9.76008L9.35008 20.99C9.17008 21.77 9.85008 22.5 10.7501 22.5Z"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M14.2601 19.1701L15.9901 17.63C16.9601 16.77 17.0001 16.17 16.2301 15.2L13.1801 11.33C12.5401 10.52 11.4901 10.52 10.8501 11.33L7.80006 15.2C7.03006 16.17 7.03005 16.8 8.04005 17.63L9.77005 19.1701"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M12.01 11.12V13.65"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M11.1501 5.19002L10.3701 4.41C9.90008 3.94 9.90008 3.18004 10.3701 2.71004L11.1501 1.93001C11.6201 1.46001 12.3801 1.46001 12.8501 1.93001L13.6301 2.71004C14.1001 3.18004 14.1001 3.94 13.6301 4.41L12.8501 5.19002C12.3801 5.66002 11.6201 5.66002 11.1501 5.19002Z"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M19.45 9.81H20.55C21.21 9.81 21.75 10.35 21.75 11.01V12.11C21.75 12.77 21.21 13.3101 20.55 13.3101H19.45C18.79 13.3101 18.25 12.77 18.25 12.11V11.01C18.25 10.35 18.79 9.81 19.45 9.81Z"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M4.55 9.81H3.45C2.79 9.81 2.25 10.35 2.25 11.01V12.11C2.25 12.77 2.79 13.3101 3.45 13.3101H4.55C5.21 13.3101 5.75 12.77 5.75 12.11V11.01C5.75 10.35 5.21 9.81 4.55 9.81Z"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M18.54 10.1L13.24 4.79999"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M5.45996 10.1L10.76 4.79999"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h1 className="text-base font-medium">
-                  <span className="mr-2 tt">Tool Type:</span>
-                    {card.SubCategory.map((sub) => {
-                      return (
-                        <button key={sub} className="border text-xs text-[#4D5761] ml-3 px-3 py-[6px] rounded-full font-normal">
-                          {sub}
-                        </button>
-                      );
-                    })}
-                  </h1>
-                </div>
-              </div>
+                    {/* Tool type */}
+                    <div className="flex justify-start mt-4 items-center">
+                      <div className="pr-[10px]">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M10.7501 22.5H13.2701C14.2301 22.5 14.8501 21.82 14.6701 20.99L14.2601 19.1801H9.76008L9.35008 20.99C9.17008 21.77 9.85008 22.5 10.7501 22.5Z"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M14.2601 19.1701L15.9901 17.63C16.9601 16.77 17.0001 16.17 16.2301 15.2L13.1801 11.33C12.5401 10.52 11.4901 10.52 10.8501 11.33L7.80006 15.2C7.03006 16.17 7.03005 16.8 8.04005 17.63L9.77005 19.1701"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M12.01 11.12V13.65"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M11.1501 5.19002L10.3701 4.41C9.90008 3.94 9.90008 3.18004 10.3701 2.71004L11.1501 1.93001C11.6201 1.46001 12.3801 1.46001 12.8501 1.93001L13.6301 2.71004C14.1001 3.18004 14.1001 3.94 13.6301 4.41L12.8501 5.19002C12.3801 5.66002 11.6201 5.66002 11.1501 5.19002Z"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M19.45 9.81H20.55C21.21 9.81 21.75 10.35 21.75 11.01V12.11C21.75 12.77 21.21 13.3101 20.55 13.3101H19.45C18.79 13.3101 18.25 12.77 18.25 12.11V11.01C18.25 10.35 18.79 9.81 19.45 9.81Z"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M4.55 9.81H3.45C2.79 9.81 2.25 10.35 2.25 11.01V12.11C2.25 12.77 2.79 13.3101 3.45 13.3101H4.55C5.21 13.3101 5.75 12.77 5.75 12.11V11.01C5.75 10.35 5.21 9.81 4.55 9.81Z"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M18.54 10.1L13.24 4.79999"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M5.45996 10.1L10.76 4.79999"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <h1 className="text-base font-medium">
+                          <span className="mr-2 tt">Tool Type:</span>
+                          {card.SubCategory.map((sub) => {
+                            return (
+                              <button
+                                key={sub}
+                                className="border text-xs text-[#4D5761] ml-3 px-3 py-[6px] rounded-full font-normal"
+                              >
+                                {sub}
+                              </button>
+                            );
+                          })}
+                        </h1>
+                      </div>
+                    </div>
 
-              {/* Published date */}
-              <div className="flex justify-start items-center md:mt-4 mt-6">
-                <div className="pr-3">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8 2V5"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      stroke-miterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M16 2V5"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      stroke-miterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M3.5 9.08997H20.5"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      stroke-miterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
-                      stroke="#081120"
-                      strokeWidth="1.5"
-                      stroke-miterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M15.6947 13.7H15.7037"
-                      stroke="#081120"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M15.6947 16.7H15.7037"
-                      stroke="#081120"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M11.9955 13.7H12.0045"
-                      stroke="#081120"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M11.9955 16.7H12.0045"
-                      stroke="#081120"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M8.29431 13.7H8.30329"
-                      stroke="#081120"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M8.29431 16.7H8.30329"
-                      stroke="#081120"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h1 className="text-base font-medium">
-                    Published on {card?.date}
-                  </h1>
-                </div>
-              </div>
-             </div>
-
-
-            </div>
-              <div className="my-[30px] md:my-[26.5px] md:w-[100%]">
-                <hr />
-              </div>
-              {card.facebook == "" &&
-              card.linkedin == "" &&
-              card.twitter == "" &&
-              card.discord == "" ? (
-                <div></div>
-              ) : (
-                <div className="social-links mt-4 md:mt-[26px]">
-                  {/* link */}
-                  <div className="text-[#4D5761] text-base font-normal">
-                    <h2>Explore {card.toolName} on Social media</h2>
+                    {/* Published date */}
+                    <div className="flex justify-start items-center md:mt-4 mt-6">
+                      <div className="pr-3">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8 2V5"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            stroke-miterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M16 2V5"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            stroke-miterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M3.5 9.08997H20.5"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            stroke-miterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
+                            stroke="#081120"
+                            strokeWidth="1.5"
+                            stroke-miterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M15.6947 13.7H15.7037"
+                            stroke="#081120"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M15.6947 16.7H15.7037"
+                            stroke="#081120"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M11.9955 13.7H12.0045"
+                            stroke="#081120"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M11.9955 16.7H12.0045"
+                            stroke="#081120"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8.29431 13.7H8.30329"
+                            stroke="#081120"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8.29431 16.7H8.30329"
+                            stroke="#081120"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <h1 className="text-base font-medium">
+                          Published on {card?.date}
+                        </h1>
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-[11px]">
-                    <div className="flex gap-4 items-center">
-                      {card.discord && (
-                        <a href={card.discord}>
-                          <svg
-                            width="26"
-                            height="26"
-                            viewBox="0 0 71 80"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M60.1045 13.8978C55.5792 11.8214 50.7265 10.2916 45.6527 9.41542C45.5603 9.39851 45.468 9.44077 45.4204 9.52529C44.7963 10.6353 44.105 12.0834 43.6209 13.2216C38.1637 12.4046 32.7345 12.4046 27.3892 13.2216C26.905 12.0581 26.1886 10.6353 25.5617 9.52529C25.5141 9.44359 25.4218 9.40133 25.3294 9.41542C20.2584 10.2888 15.4057 11.8186 10.8776 13.8978C10.8384 13.9147 10.8048 13.9429 10.7825 13.9795C1.57795 27.7309 -0.943561 41.1443 0.293408 54.3914C0.299005 54.4562 0.335386 54.5182 0.385761 54.5576C6.45866 59.0174 12.3413 61.7249 18.1147 63.5195C18.2071 63.5477 18.305 63.5139 18.3638 63.4378C19.7295 61.5728 20.9469 59.6063 21.9907 57.5383C22.0523 57.4172 21.9935 57.2735 21.8676 57.2256C19.9366 56.4931 18.0979 55.6 16.3292 54.5858C16.1893 54.5041 16.1781 54.304 16.3068 54.2082C16.679 53.9293 17.0513 53.6391 17.4067 53.3461C17.471 53.2926 17.5606 53.2813 17.6362 53.3151C29.2558 58.6202 41.8354 58.6202 53.3179 53.3151C53.3935 53.2785 53.4831 53.2898 53.5502 53.3433C53.9057 53.6363 54.2779 53.9293 54.6529 54.2082C54.7816 54.304 54.7732 54.5041 54.6333 54.5858C52.8646 55.6197 51.0259 56.4931 49.0921 57.2228C48.9662 57.2707 48.9102 57.4172 48.9718 57.5383C50.038 59.6034 51.2554 61.5699 52.5959 63.435C52.6519 63.5139 52.7526 63.5477 52.845 63.5195C58.6464 61.7249 64.529 59.0174 70.6019 54.5576C70.6551 54.5182 70.6887 54.459 70.6943 54.3942C72.1747 39.0791 68.2147 25.7757 60.1968 13.9823C60.1772 13.9429 60.1437 13.9147 60.1045 13.8978ZM23.7259 46.3253C20.2276 46.3253 17.3451 43.1136 17.3451 39.1693C17.3451 35.225 20.1717 32.0133 23.7259 32.0133C27.308 32.0133 30.1626 35.2532 30.1066 39.1693C30.1066 43.1136 27.28 46.3253 23.7259 46.3253ZM47.3178 46.3253C43.8196 46.3253 40.9371 43.1136 40.9371 39.1693C40.9371 35.225 43.7636 32.0133 47.3178 32.0133C50.9 32.0133 53.7545 35.2532 53.6986 39.1693C53.6986 43.1136 50.9 46.3253 47.3178 46.3253Z"
-                              fill="#5865F2"
-                            />
-                          </svg>
-                        </a>
-                      )}
-                      {card.twitter && (
-                        <div>
-                          <a href={card.twitter}>
+                </div>
+                <div className="my-[30px] md:my-[26.5px] md:w-[100%]">
+                  <hr />
+                </div>
+                {card.facebook == "" &&
+                card.linkedin == "" &&
+                card.twitter == "" &&
+                card.discord == "" ? (
+                  <div></div>
+                ) : (
+                  <div className="social-links mt-4 md:mt-[26px]">
+                    {/* link */}
+                    <div className="text-[#4D5761] text-base font-normal">
+                      <h2>Explore {card.toolName} on Social media</h2>
+                    </div>
+                    <div className="mt-[11px]">
+                      <div className="flex gap-4 items-center">
+                        {card.discord && (
+                          <a href={card.discord}>
                             <svg
-                              xmlns="http://www.w3.org/2000/svg"
                               width="26"
                               height="26"
-                              viewBox="0 0 26 26"
+                              viewBox="0 0 71 80"
                               fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
                             >
-                              <g clipPath="url(#clip0_776_12898)">
-                                <path
-                                  d="M13.0004 25.9997C20.18 25.9997 26.0003 20.1795 26.0003 12.9998C26.0003 5.82019 20.18 -6.10352e-05 13.0004 -6.10352e-05C5.82073 -6.10352e-05 0.000488281 5.82019 0.000488281 12.9998C0.000488281 20.1795 5.82073 25.9997 13.0004 25.9997Z"
-                                  fill="#55ACEE"
-                                />
-                                <path
-                                  d="M20.9631 9.34283C20.406 9.58986 19.8068 9.75694 19.1783 9.83156C19.82 9.44711 20.3124 8.83881 20.5449 8.11278C19.9444 8.46896 19.2791 8.72734 18.5716 8.86662C18.0048 8.26295 17.1972 7.88568 16.3029 7.88568C14.5872 7.88568 13.1956 9.27725 13.1956 10.993C13.1956 11.2366 13.2232 11.4736 13.2765 11.7012C10.694 11.5717 8.40424 10.3347 6.87155 8.45413C6.60412 8.91296 6.45072 9.44711 6.45072 10.0165C6.45072 11.0943 6.9997 12.0458 7.83302 12.6029C7.32389 12.5869 6.84443 12.4472 6.42569 12.2138C6.42546 12.227 6.42546 12.2402 6.42546 12.2532C6.42546 13.7588 7.497 15.0146 8.91823 15.2998C8.65776 15.3712 8.38269 15.409 8.09974 15.409C7.89906 15.409 7.70463 15.3897 7.51508 15.3536C7.91042 16.5878 9.05774 17.4862 10.4178 17.5115C9.35413 18.3451 8.01446 18.8417 6.55824 18.8417C6.30797 18.8417 6.06001 18.8271 5.81738 18.7981C7.1918 19.6801 8.82554 20.1943 10.5802 20.1943C16.2958 20.1943 19.4214 15.4595 19.4214 11.3529C19.4214 11.2183 19.4184 11.0841 19.4124 10.9511C20.02 10.5131 20.5467 9.96597 20.9631 9.34283Z"
-                                  fill="white"
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id="clip0_776_12898">
-                                  <rect width="26" height="26" fill="white" />
-                                </clipPath>
-                              </defs>
+                              <path
+                                d="M60.1045 13.8978C55.5792 11.8214 50.7265 10.2916 45.6527 9.41542C45.5603 9.39851 45.468 9.44077 45.4204 9.52529C44.7963 10.6353 44.105 12.0834 43.6209 13.2216C38.1637 12.4046 32.7345 12.4046 27.3892 13.2216C26.905 12.0581 26.1886 10.6353 25.5617 9.52529C25.5141 9.44359 25.4218 9.40133 25.3294 9.41542C20.2584 10.2888 15.4057 11.8186 10.8776 13.8978C10.8384 13.9147 10.8048 13.9429 10.7825 13.9795C1.57795 27.7309 -0.943561 41.1443 0.293408 54.3914C0.299005 54.4562 0.335386 54.5182 0.385761 54.5576C6.45866 59.0174 12.3413 61.7249 18.1147 63.5195C18.2071 63.5477 18.305 63.5139 18.3638 63.4378C19.7295 61.5728 20.9469 59.6063 21.9907 57.5383C22.0523 57.4172 21.9935 57.2735 21.8676 57.2256C19.9366 56.4931 18.0979 55.6 16.3292 54.5858C16.1893 54.5041 16.1781 54.304 16.3068 54.2082C16.679 53.9293 17.0513 53.6391 17.4067 53.3461C17.471 53.2926 17.5606 53.2813 17.6362 53.3151C29.2558 58.6202 41.8354 58.6202 53.3179 53.3151C53.3935 53.2785 53.4831 53.2898 53.5502 53.3433C53.9057 53.6363 54.2779 53.9293 54.6529 54.2082C54.7816 54.304 54.7732 54.5041 54.6333 54.5858C52.8646 55.6197 51.0259 56.4931 49.0921 57.2228C48.9662 57.2707 48.9102 57.4172 48.9718 57.5383C50.038 59.6034 51.2554 61.5699 52.5959 63.435C52.6519 63.5139 52.7526 63.5477 52.845 63.5195C58.6464 61.7249 64.529 59.0174 70.6019 54.5576C70.6551 54.5182 70.6887 54.459 70.6943 54.3942C72.1747 39.0791 68.2147 25.7757 60.1968 13.9823C60.1772 13.9429 60.1437 13.9147 60.1045 13.8978ZM23.7259 46.3253C20.2276 46.3253 17.3451 43.1136 17.3451 39.1693C17.3451 35.225 20.1717 32.0133 23.7259 32.0133C27.308 32.0133 30.1626 35.2532 30.1066 39.1693C30.1066 43.1136 27.28 46.3253 23.7259 46.3253ZM47.3178 46.3253C43.8196 46.3253 40.9371 43.1136 40.9371 39.1693C40.9371 35.225 43.7636 32.0133 47.3178 32.0133C50.9 32.0133 53.7545 35.2532 53.6986 39.1693C53.6986 43.1136 50.9 46.3253 47.3178 46.3253Z"
+                                fill="#5865F2"
+                              />
                             </svg>
                           </a>
-                        </div>
-                      )}
-                      {card.linkedin && (
-                        <div>
+                        )}
+                        {card.twitter && (
                           <div>
-                            <a href={card.linkedin}>
+                            <a href={card.twitter}>
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="26"
@@ -397,74 +368,100 @@ const Rating = ({ card }) => {
                                 viewBox="0 0 26 26"
                                 fill="none"
                               >
-                                <g clipPath="url(#clip0_776_12903)">
+                                <g clipPath="url(#clip0_776_12898)">
                                   <path
-                                    d="M13 26C20.1797 26 26 20.1797 26 13C26 5.8203 20.1797 0 13 0C5.8203 0 0 5.8203 0 13C0 20.1797 5.8203 26 13 26Z"
-                                    fill="#007AB9"
+                                    d="M13.0004 25.9997C20.18 25.9997 26.0003 20.1795 26.0003 12.9998C26.0003 5.82019 20.18 -6.10352e-05 13.0004 -6.10352e-05C5.82073 -6.10352e-05 0.000488281 5.82019 0.000488281 12.9998C0.000488281 20.1795 5.82073 25.9997 13.0004 25.9997Z"
+                                    fill="#55ACEE"
                                   />
                                   <path
-                                    d="M20.7674 14.046V19.4056H17.66V14.4052C17.66 13.1496 17.2114 12.2922 16.0863 12.2922C15.2277 12.2922 14.7177 12.8695 14.4924 13.4284C14.4106 13.6282 14.3895 13.9056 14.3895 14.1857V19.4054H11.2819C11.2819 19.4054 11.3237 10.9363 11.2819 10.0597H14.3898V11.384C14.3835 11.3945 14.3747 11.4047 14.3691 11.4146H14.3898V11.384C14.8027 10.7486 15.5392 9.84021 17.1903 9.84021C19.2347 9.84021 20.7674 11.1759 20.7674 14.046ZM8.03113 5.55469C6.96815 5.55469 6.27271 6.25245 6.27271 7.1692C6.27271 8.06649 6.94799 8.78441 7.99034 8.78441H8.0105C9.09434 8.78441 9.76823 8.06649 9.76823 7.1692C9.74761 6.25245 9.09434 5.55469 8.03113 5.55469ZM6.4574 19.4056H9.56384V10.0597H6.4574V19.4056Z"
+                                    d="M20.9631 9.34283C20.406 9.58986 19.8068 9.75694 19.1783 9.83156C19.82 9.44711 20.3124 8.83881 20.5449 8.11278C19.9444 8.46896 19.2791 8.72734 18.5716 8.86662C18.0048 8.26295 17.1972 7.88568 16.3029 7.88568C14.5872 7.88568 13.1956 9.27725 13.1956 10.993C13.1956 11.2366 13.2232 11.4736 13.2765 11.7012C10.694 11.5717 8.40424 10.3347 6.87155 8.45413C6.60412 8.91296 6.45072 9.44711 6.45072 10.0165C6.45072 11.0943 6.9997 12.0458 7.83302 12.6029C7.32389 12.5869 6.84443 12.4472 6.42569 12.2138C6.42546 12.227 6.42546 12.2402 6.42546 12.2532C6.42546 13.7588 7.497 15.0146 8.91823 15.2998C8.65776 15.3712 8.38269 15.409 8.09974 15.409C7.89906 15.409 7.70463 15.3897 7.51508 15.3536C7.91042 16.5878 9.05774 17.4862 10.4178 17.5115C9.35413 18.3451 8.01446 18.8417 6.55824 18.8417C6.30797 18.8417 6.06001 18.8271 5.81738 18.7981C7.1918 19.6801 8.82554 20.1943 10.5802 20.1943C16.2958 20.1943 19.4214 15.4595 19.4214 11.3529C19.4214 11.2183 19.4184 11.0841 19.4124 10.9511C20.02 10.5131 20.5467 9.96597 20.9631 9.34283Z"
                                     fill="white"
                                   />
                                 </g>
                                 <defs>
-                                  <clipPath id="clip0_776_12903">
+                                  <clipPath id="clip0_776_12898">
                                     <rect width="26" height="26" fill="white" />
                                   </clipPath>
                                 </defs>
                               </svg>
                             </a>
                           </div>
-                        </div>
-                      )}
-                      {card.facebook && (
-                        <div>
-                          <a href={card.facebook}>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="26"
-                              height="26"
-                              viewBox="0 0 26 26"
-                              fill="none"
-                            >
-                              <g clipPath="url(#clip0_1454_750)">
-                                <path
-                                  d="M13 26C20.1797 26 26 20.1797 26 13C26 5.8203 20.1797 0 13 0C5.8203 0 0 5.8203 0 13C0 20.1797 5.8203 26 13 26Z"
-                                  fill="#3C5A9A"
-                                />
-                                <path
-                                  d="M17.227 3.99023H14.3472C12.6382 3.99023 10.7373 4.70901 10.7373 7.18625C10.7457 8.04941 10.7373 8.87607 10.7373 9.80642H8.76025V12.9525H10.7985V22.0096H14.5439V12.8927H17.0159L17.2396 9.79759H14.4793C14.4793 9.79759 14.4855 8.42074 14.4793 8.0209C14.4793 7.04195 15.498 7.09801 15.5592 7.09801C16.044 7.09801 16.9865 7.09942 17.2284 7.09801V3.99023H17.227Z"
-                                  fill="white"
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id="clip0_1454_750">
-                                  <rect width="26" height="26" fill="white" />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          </a>
-                        </div>
-                      )}
+                        )}
+                        {card.linkedin && (
+                          <div>
+                            <div>
+                              <a href={card.linkedin}>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="26"
+                                  height="26"
+                                  viewBox="0 0 26 26"
+                                  fill="none"
+                                >
+                                  <g clipPath="url(#clip0_776_12903)">
+                                    <path
+                                      d="M13 26C20.1797 26 26 20.1797 26 13C26 5.8203 20.1797 0 13 0C5.8203 0 0 5.8203 0 13C0 20.1797 5.8203 26 13 26Z"
+                                      fill="#007AB9"
+                                    />
+                                    <path
+                                      d="M20.7674 14.046V19.4056H17.66V14.4052C17.66 13.1496 17.2114 12.2922 16.0863 12.2922C15.2277 12.2922 14.7177 12.8695 14.4924 13.4284C14.4106 13.6282 14.3895 13.9056 14.3895 14.1857V19.4054H11.2819C11.2819 19.4054 11.3237 10.9363 11.2819 10.0597H14.3898V11.384C14.3835 11.3945 14.3747 11.4047 14.3691 11.4146H14.3898V11.384C14.8027 10.7486 15.5392 9.84021 17.1903 9.84021C19.2347 9.84021 20.7674 11.1759 20.7674 14.046ZM8.03113 5.55469C6.96815 5.55469 6.27271 6.25245 6.27271 7.1692C6.27271 8.06649 6.94799 8.78441 7.99034 8.78441H8.0105C9.09434 8.78441 9.76823 8.06649 9.76823 7.1692C9.74761 6.25245 9.09434 5.55469 8.03113 5.55469ZM6.4574 19.4056H9.56384V10.0597H6.4574V19.4056Z"
+                                      fill="white"
+                                    />
+                                  </g>
+                                  <defs>
+                                    <clipPath id="clip0_776_12903">
+                                      <rect
+                                        width="26"
+                                        height="26"
+                                        fill="white"
+                                      />
+                                    </clipPath>
+                                  </defs>
+                                </svg>
+                              </a>
+                            </div>
+                          </div>
+                        )}
+                        {card.facebook && (
+                          <div>
+                            <a href={card.facebook}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="26"
+                                height="26"
+                                viewBox="0 0 26 26"
+                                fill="none"
+                              >
+                                <g clipPath="url(#clip0_1454_750)">
+                                  <path
+                                    d="M13 26C20.1797 26 26 20.1797 26 13C26 5.8203 20.1797 0 13 0C5.8203 0 0 5.8203 0 13C0 20.1797 5.8203 26 13 26Z"
+                                    fill="#3C5A9A"
+                                  />
+                                  <path
+                                    d="M17.227 3.99023H14.3472C12.6382 3.99023 10.7373 4.70901 10.7373 7.18625C10.7457 8.04941 10.7373 8.87607 10.7373 9.80642H8.76025V12.9525H10.7985V22.0096H14.5439V12.8927H17.0159L17.2396 9.79759H14.4793C14.4793 9.79759 14.4855 8.42074 14.4793 8.0209C14.4793 7.04195 15.498 7.09801 15.5592 7.09801C16.044 7.09801 16.9865 7.09942 17.2284 7.09801V3.99023H17.227Z"
+                                    fill="white"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_1454_750">
+                                    <rect width="26" height="26" fill="white" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </a>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
-          
-
-
-
-         
-</div>
-
-
-        
         </div>
         <div className="my-[30px] md:my-[60px] md:w-[100%]">
-                <hr />
-              </div>
+          <hr />
+        </div>
       </div>
 
       {/* product descriptation and workings */}
@@ -475,15 +472,15 @@ const Rating = ({ card }) => {
             style={{
               display: "flex",
               width: "100%",
-              justifyContent:"space-between",
-              backgroundColor : "#F3F4F6",
+              justifyContent: "space-between",
+              backgroundColor: "#F3F4F6",
               borderRadius: "16px",
             }}
           >
-            <button className="text-[#081120] font-medium"
+            <button
+              className="text-[#081120] font-medium"
               onClick={() => setIsToggled(false)}
               style={{
-                
                 borderRadius: "8px",
                 height: "49px",
                 margin: "8px",
@@ -494,7 +491,8 @@ const Rating = ({ card }) => {
             >
               Description
             </button>
-            <button className="text-[#081120] font-medium"
+            <button
+              className="text-[#081120] font-medium"
               onClick={() => setIsToggled(true)}
               style={{
                 borderRadius: "8px",

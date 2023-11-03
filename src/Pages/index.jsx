@@ -223,11 +223,19 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
 };
 
 export async function getServerSideProps() {
+<<<<<<< HEAD
   const [tools, allsubcategories, filtersubcategories] = await Promise.all([
     fetch("http://api.goodtools.ai/tool"),
     fetch("http://api.goodtools.ai/allsubcategories"),
     fetch("http://api.goodtools.ai/sublist"),
   ]);
+=======
+    const [tools, allsubcategories, filtersubcategories] = await Promise.all([
+        fetch('https://api.goodtools.ai/tool'),
+        fetch('https://api.goodtools.ai/allsubcategories'),
+        fetch('https://api.goodtools.ai/sublist')
+    ]);
+>>>>>>> b7dfcbd9f4e5866f9bd6610a712361c13499f5cb
 
   const [toolsData, allsubcategoriesData, filterData] = await Promise.all([
     tools.json(),
