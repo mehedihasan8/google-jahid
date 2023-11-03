@@ -25,7 +25,7 @@ const Rate = ({id,name}) => {
 
     useEffect(()=>{
         if(user){
-            fetch(`http://localhost:3000/review/${id}/${user?.email}`)
+            fetch(`http://api.goodtools.ai/review/${id}/${user?.email}`)
             .then(res=>res.json())
             .then(data=> setAvailable(data))
         }
@@ -106,7 +106,7 @@ const Rate = ({id,name}) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/reviews/${id}`)
+        fetch(`http://api.goodtools.ai/reviews/${id}`)
             .then(data => data.json())
             .then(info => setReviews(info.reverse()))
     }, [])
@@ -199,7 +199,7 @@ const Rate = ({id,name}) => {
 
     const customAvailable = ()=>{
         setAvailable(false)
-        fetch(`http://localhost:3000/reviews/${id}`)
+        fetch(`http://api.goodtools.ai/reviews/${id}`)
             .then(data => data.json())
             .then(info => setReviews(info.reverse()))
     }

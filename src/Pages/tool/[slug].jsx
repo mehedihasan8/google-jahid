@@ -59,7 +59,7 @@ export default function Tool({ data }) {
 
 export async function getServerSideProps(context) {
     const { slug } = context.params;
-    const res = await fetch(`http://localhost:3000/tools/${slug}`);
+    const res = await fetch(`http://api.goodtools.ai/tools/${slug}`);
     const data = await res.json();
 
     return {

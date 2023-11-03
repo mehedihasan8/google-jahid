@@ -182,10 +182,10 @@ export async function getServerSideProps(context) {
     const { slug } = context.params;
 
     const [category, tools, allsubcategories, filtersubcategories] = await Promise.all([
-        fetch(`http://localhost:3000/category/${slug}`),
-        fetch(`http://localhost:3000/tools/category/${slug}`),
-        fetch('http://localhost:3000/allsubcategories'),
-        fetch('http://localhost:3000/sublist')
+        fetch(`http://api.goodtools.ai/category/${slug}`),
+        fetch(`http://api.goodtools.ai/tools/category/${slug}`),
+        fetch('http://api.goodtools.ai/allsubcategories'),
+        fetch('http://api.goodtools.ai/sublist')
     ]);
 
     const [categoryData, toolsData, allsubcategoriesData, filterData] = await Promise.all([
