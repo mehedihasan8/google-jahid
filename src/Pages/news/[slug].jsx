@@ -42,9 +42,9 @@ export default function News({ data, categories }) {
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                 <meta name="language" content="English" />
                 <meta property="og:title" content={`GoodTools.Ai - ${item.newsTitle}`} />
-                <meta property="og:description" content={item.newsBody}/>
-                <meta property="og:image" content={`https://goodtools.ai/${item.image}`}/>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta property="og:description" content={item.newsBody} />
+                <meta property="og:image" content={`https://goodtools.ai/${item.image}`} />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0">
                 <ul>
@@ -89,10 +89,10 @@ export default function News({ data, categories }) {
                                         Explore all of our Ai tools now
                                     </div>
                                     <div className='small-card-text'>
-                                        Lorem ipsum dolor sit amet consectetur. Scelerisque tellus aliquet cursus faucibus sit neque duis senectus.
-                                        <button className='explore-btn explore-btn-text mt-6 '>
+                                        Find the best AI tools for your needs. Go to the filter and choose your Category.
+                                        <Link href="/" className='explore-btn explore-btn-text mt-6'>
                                             Explore Now
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 {/* Popular */}
@@ -131,10 +131,10 @@ export default function News({ data, categories }) {
                             </div>
                             <div className='large-left'>
                                 <div className='text-paragraph text-base font-normal text-white '>
-                                    Lorem ipsum dolor sit amet consectetur. Scelerisque tellus aliquet cursus faucibus sit neque duis senectus.
-                                    <button className='explore-btn explore-btn-text font-medium text-paragraph text-base  mt-6  '>
+                                    Find the best AI tools for your needs. Go to the filter and choose your Category.
+                                    <Link href="/" className='explore-btn explore-btn-text font-medium text-paragraph text-base  mt-6  '>
                                         Explore Now
-                                    </button>
+                                    </Link>
 
                                 </div>
                             </div>

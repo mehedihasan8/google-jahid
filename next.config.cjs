@@ -3,14 +3,16 @@ module.exports = {
   pageExtensions: ["js", "jsx", "ts", "tsx"],
   dynamicParams: true,
   generateStaticParams: async () => {
-    const [tools, newses] = await Promise.all([
+    const [tools, newses, subCategories] = await Promise.all([
       fetch("http://localhost:3000/tool"),
       fetch("http://localhost:3000/news"),
+      fetch("http://localhost:3000/allsubcategories"),
     ]);
 
-    const [toolsData, newsesData] = await Promise.all([
+    const [toolsData, newsesData, subCategoriesData] = await Promise.all([
       tools.json(),
       newses.json(),
+      subCategories.json(),
     ]);
 
     const toolsParams = toolsData.map((tool) => ({
@@ -21,12 +23,17 @@ module.exports = {
       params: { slug: news.slug },
     }));
 
-    return [...toolsParams, ...newsesParams];
+    const subCategoriesParams = subCategoriesData.map((subCategory) => ({
+      params: { slug: subCategory.slug },
+    }));
+
+    return [...toolsParams, ...newsesParams, ...subCategoriesParams];
   },
   experimental: {
     routes: {
-      "/tool/[slug]/page": "./src/pages/tool/[slug].tsx",
-      "/news/[slug]/page": "./src/pages/news/[slug].tsx",
+      "/tool/[slug]": "./src/pages/tool/[slug].tsx",
+      "/news/[slug]": "./src/pages/news/[slug].tsx",
+      "/category/[slug]": "./src/pages/category/[slug].tsx",
     },
   },
 };
