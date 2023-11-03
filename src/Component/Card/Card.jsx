@@ -58,7 +58,7 @@ const Card = ({ toolsData, sortOption }) => {
           <Link key={tool.slug} href={`/tool/${tool.slug}`} >
             <figure className="relative w-full md:mb-6 mb-4">
               <img
-                src={`http://localhost:3000/uploads/${tool?.image}`}
+                src={`http://api.goodtools.ai/uploads/${tool?.image}`}
                 alt={tool?.toolName}
                 className="rounded-xl"
                 style={{ width: '100%', height: "240px" }}

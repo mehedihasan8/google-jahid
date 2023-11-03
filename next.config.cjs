@@ -4,9 +4,9 @@ module.exports = {
   dynamicParams: true,
   generateStaticParams: async () => {
     const [tools, newses, subCategories] = await Promise.all([
-      fetch("http://localhost:3000/tool"),
-      fetch("http://localhost:3000/news"),
-      fetch("http://localhost:3000/allsubcategories"),
+      fetch("http://api.goodtools.ai/tool"),
+      fetch("http://api.goodtools.ai/news"),
+      fetch("http://api.goodtools.ai/allsubcategories"),
     ]);
 
     const [toolsData, newsesData, subCategoriesData] = await Promise.all([
