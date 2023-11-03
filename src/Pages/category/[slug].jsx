@@ -1,14 +1,17 @@
-import Card from '../Component/Card/Card';
-import Hero from '../Component/Hero/MainHero';
-import Filter from '../Component/Filter/MainFilter';
+import Card from '../../Component/Card/Card';
+import CategoryFilter from '../../Component/Filter/CategoryFilter';
+import CategoryHero from '../../Component/Hero/CategoryHero';
 import { useEffect, useState } from 'react';
-import CookiePopup from '../Component/Popup/Popup';
+import Link from "next/link";
+import CookiePopup from '../../Component/Popup/Popup';
 import Head from 'next/head'
+import { useSwipeable } from 'react-swipeable';
 
-const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
+const Home = ({ categoryData, toolsData, allsubcategoriesData, filterData }) => {
     const [total, setTotal] = useState(0)
-    const [searchData, setSearchData] = useState('');
     const [sortOption, setSortOption] = useState('All')
+
+
     const decoration = x => {
         let str = x + ""
         const c = str.length % 3
@@ -97,38 +100,43 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
 
     }
 
-    const getSearchData = (data) => {
-        if (data !== searchData) {
-            setSearchData(data)
-        }
-    }
-
     return (
         <div className=''>
             <Head>
-                <title>GoodTools.Ai - AI Tools Finder</title>
-                <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
-                <meta name="description" content="Find the best AI tools for your needs. Go to the filterand choose your Category." />
-                <meta name="keywords" content="Ai Tools, Best Ai Tools, Ai Tools Finder" />
+                <title>GoodTools.Ai - {categoryData.Title}</title>
+                <meta name="title" content={`GoodTools.Ai - ${categoryData.Title}`} />
+                <meta name="description" content={categoryData.message} />
+                <meta name="keywords" content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${categoryData.Title}`} />
                 <meta name="robots" content="max-image-preview:large" />
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                 <meta name="language" content="English" />
-                <meta property="og:title" content="GoodTools.Ai - AI Tools Finder" />
-                <meta property="og:description" content="Find the best AI tools for your needs. Go to the filterand choose your Category." />
-                <meta property="og:image" content="https://goodtools.ai/logo.png" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta property="og:title" content={`GoodTools.Ai - ${categoryData.Title}`} />
+                <meta property="og:description" content={categoryData.message} />
+                <meta property="og:image" content={`https://goodtools.ai/${item.image}`} />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
+
+            <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0">
+                <ul>
+                    <li className='text-[#081120] font-paragraph text-sm'>
+                        <Link href='/'>Home</Link>
+                    </li>
+                    <li className='text-[#6C737F] font-paragraph text-sm'>
+                        {categoryData.Title}
+                    </li>
+                </ul>
+            </div>
 
             <div className='mx-4 md:mt-[66px] mt-[40px]'>
 
                 <div className=' md:mb-[100px] mb-[41.5px]'>
-                    <Hero allsubcategoriesData={allsubcategoriesData} />
+                    <CategoryHero categoryData={categoryData} allsubcategoriesData={allsubcategoriesData} count={total} />
                 </div>
 
                 <div className=' md:flex items-center justify-between md:mb-11 mb-[30px]'>
                     <div className='md:flex items-center '>
                         <div className='w-full md:w-fit mx-auto mb-4 md:mb-0'>
-                            <Filter filterData={filterData} />
+                            <CategoryFilter filterData={filterData} />
                         </div>
                         <div className='text-[#6C737F] my-auto h-fit w-fit text-base font-medium md:ml-[32px] font-paragraph '>
                             Showing <span className='text-[#081120] font-paragraph'> {decoration(total)} Best</span> Ai Tools
@@ -177,20 +185,24 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
     );
 };
 
-export async function getServerSideProps() {
-    const [tools, allsubcategories, filtersubcategories] = await Promise.all([
-        fetch('http://localhost:3000/tool'),
+export async function getServerSideProps(context) {
+    const { slug } = context.params;
+
+    const [category, tools, allsubcategories, filtersubcategories] = await Promise.all([
+        fetch(`http://localhost:3000/category/${slug}`),
+        fetch(`http://localhost:3000/tools/category/${slug}`),
         fetch('http://localhost:3000/allsubcategories'),
         fetch('http://localhost:3000/sublist')
     ]);
 
-    const [toolsData, allsubcategoriesData, filterData] = await Promise.all([
+    const [categoryData, toolsData, allsubcategoriesData, filterData] = await Promise.all([
+        category.json(),
         tools.json(),
         allsubcategories.json(),
         filtersubcategories.json()
     ]);
 
-    return { props: { toolsData, allsubcategoriesData, filterData } }
+    return { props: { categoryData, toolsData, allsubcategoriesData, filterData } }
 }
 
 export default Home;

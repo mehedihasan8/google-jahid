@@ -6,6 +6,16 @@ const About = () => {
     <div>
       <Head>
         <title>GoodTools.Ai - About Us</title>
+        <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
+        <meta name="description" content="Find the best AI tools for your needs. Go to the filterand choose your Category." />
+        <meta name="keywords" content="Ai Tools, Best Ai Tools, Ai Tools Finder" />
+        <meta name="robots" content="max-image-preview:large" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta property="og:title" content="GoodTools.Ai - AI Tools Finder" />
+        <meta property="og:description" content="Find the best AI tools for your needs. Go to the filterand choose your Category." />
+        <meta property="og:image" content="https://goodtools.ai/logo.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="font-paragraph">
         <div className="breadcrumbs  mb-5 text-sm font-normal">

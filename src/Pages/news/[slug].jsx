@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head'
+import Link from 'next/link';
 
 export default function News({ data, categories }) {
     const [item, setItem] = useState(null);
@@ -34,22 +35,28 @@ export default function News({ data, categories }) {
         <div>
             <Head>
                 <title>GoodTools.Ai - {item.newsTitle}</title>
+                <meta name="title" content={`GoodTools.Ai - ${item.newsTitle}`} />
+                <meta name="description" content={data.description} />
+                <meta name="keywords" content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${item.newsTitle}`} />
+                <meta name="robots" content="max-image-preview:large" />
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name="language" content="English" />
+                <meta property="og:title" content={`GoodTools.Ai - ${item.newsTitle}`} />
+                <meta property="og:description" content={item.newsBody}/>
+                <meta property="og:image" content={`https://goodtools.ai/${item.image}`}/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </Head>
+            <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0">
+                <ul>
+                    <li className='text-[#081120] font-paragraph text-sm'>
+                        <Link href='/'>Home</Link>
+                    </li>
+                    <li className='text-[#6C737F] font-paragraph text-sm'>
+                        {item.newsTitle}
+                    </li>
+                </ul>
+            </div>
             <div className='mx-auto font-paragraph '>
-                <div className='flex items-center ml-[3.5%] md:ml-[1.3%]'>
-                    <a href='/' className='text-[#081120] font-paragraph text-sm'>Home</a>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                        <g clipPath="url(#clip0_810_9466)">
-                            <path d="M8.3332 5.5L7.1582 6.675L10.9749 10.5L7.1582 14.325L8.3332 15.5L13.3332 10.5L8.3332 5.5Z" fill="#6C737F" />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_810_9466">
-                                <rect width="20" height="20" fill="white" transform="translate(0 0.5)" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    <p className='text-[#6C737F] font-paragraph text-sm'>News Page</p>
-                </div>
                 {/* Single News Section */}
                 <div className='md:pt-[40px] mb-[40px] pt-6 md:mx-0 mx-4'>
                     <div className='md:p-10 px-4 pt-4 pb-7 mb-26 border-[#E5E7EB] border rounded-2xl'>
@@ -59,7 +66,7 @@ export default function News({ data, categories }) {
                             {/* right-div */}
                             <div className=' md:w-[752px]'>
                                 <div className='date'>
-                                    <p className='date-title font-medium text-xl' >Tools</p>
+                                    <p className='date-title font-medium text-xl' >{item.newsType}</p>
                                     <div className=" invisible vertical-line"></div>
                                     <p className='date-dates hidden'>{formateDte(item.date)}</p>
                                 </div>

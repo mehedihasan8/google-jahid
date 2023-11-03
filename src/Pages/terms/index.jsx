@@ -1,8 +1,22 @@
 import React from 'react';
+import Head from 'next/head'
 
 const Terms = () => {
     return (
-        <div className=''>
+        <div>
+             <Head>
+                <title>GoodTools.Ai - Terms & Conditions</title>
+                <meta name="title" content="GoodTools.Ai - Terms & Conditions" />
+                <meta name="description" content="Find the best AI tools for your needs. Go to the filterand choose your Category." />
+                <meta name="keywords" content="Ai Tools, Best Ai Tools, Ai Tools Finder" />
+                <meta name="robots" content="max-image-preview:large" />
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name="language" content="English" />
+                <meta property="og:title" content="GoodTools.Ai - Terms & Conditions" />
+                <meta property="og:description" content="Find the best AI tools for your needs. Go to the filterand choose your Category." />
+                <meta property="og:image" content="https://goodtools.ai/logo.png" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            </Head>
             <div>
                 <div className='flex items-center ml-[3.5%] md:ml-[0%]'>
                     <a href='/' className='text-[#081120] font-paragraph text-sm'>Home</a>

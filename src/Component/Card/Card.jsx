@@ -1,21 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
-import  Link  from "next/link";;
+import Link from "next/link";;
 
-const Card = ({ toolsData, getToolsCount, selectedSub, sortOption, searchData }) => {
+const Card = ({ toolsData, getToolsCount, sortOption }) => {
   const [tools, setTools] = useState([]);
   const [lastElem, setLastElem] = useState(0);
-  const [searchStat, setSearchState] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isBookmarkClicked, setIsBookmarkClicked] = useState(false);
   const initialButtonStates = {};
-
-  if (searchData.length > 0 && searchStat === false) {
-    setSearchState(true);
-  }
-  if (searchData.length === 0 && searchStat === true) {
-    setSearchState(false);
-  }
 
   useEffect(() => {
     setIsLoading(false)
@@ -63,7 +55,7 @@ const Card = ({ toolsData, getToolsCount, selectedSub, sortOption, searchData })
 
 
       return (
-        <div key={indx} style={{width: '100%', height: '100%', padding: 20, background: 'white', boxShadow: '0px 8px 24px rgba(41.44, 58.86, 85, 0.08)', borderRadius: 16, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 24, display: 'inline-flex'}}>
+        <div key={indx} style={{ width: '100%', height: '100%', padding: 20, background: 'white', boxShadow: '0px 8px 24px rgba(41.44, 58.86, 85, 0.08)', borderRadius: 16, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 24, display: 'inline-flex' }}>
           <Link key={tool.slug} href={`/tool/${tool.slug}`} >
             <figure className="relative w-full md:mb-6 mb-4">
               <img
@@ -170,36 +162,30 @@ const Card = ({ toolsData, getToolsCount, selectedSub, sortOption, searchData })
 
   const [updateState, setUpdateState] = useState(0);
   const forceUpdate = () => setUpdateState(updateState + 1);
-  
+
   return (
     <div id='cards' className=" grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 md:gap-6 gap-y-4">
       {
         isLoading ?
           <span className="loading loading-ring md:w-40 md:h-40 w-20 h-20 md:ml-[140%] ml-[40%] md:my-40 my-20"></span>
           : tools.map((tool, indx) => {
-            if (searchStat) {
-              if (tool?.toolName) {
-                if (tool?.toolName.toLowerCase().includes(searchData.toLowerCase())) {
-                  return component(tool, indx);
-                } else return component(null, indx);
-              }
-            } else {
-              if (selectedSub.length !== 0 && sortOption !== 'All') {
-                if (tool?.priceType && tool?.SubCategory.includes(selectedSub) && tool?.priceType.includes(sortOption)) {
-                  return component(tool, indx);
-                } else return component(null, indx);
-              } else if (selectedSub.length !== 0 && sortOption === 'All') {
-                if (tool?.SubCategory && tool?.SubCategory.includes(selectedSub)) {
-                  return component(tool, indx);
-                } else return component(null, indx);
-              } else if (selectedSub.length === 0 && sortOption !== 'All') {
-                if (tool?.priceType && tool?.priceType.includes(sortOption)) {
-                  return component(tool, indx);
-                } else return component(null, indx);
-              } else {
+
+            if (sortOption !== 'All') {
+              if (tool?.priceType && tool?.priceType.includes(sortOption)) {
                 return component(tool, indx);
-              }
+              } else return component(null, indx);
+            } else if (sortOption === 'All') {
+              if (tool?.SubCategory) {
+                return component(tool, indx);
+              } else return component(null, indx);
+            } else if (sortOption !== 'All') {
+              if (tool?.priceType && tool?.priceType.includes(sortOption)) {
+                return component(tool, indx);
+              } else return component(null, indx);
+            } else {
+              return component(tool, indx);
             }
+
           })}
     </div>
   );

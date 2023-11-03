@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import Rate from '../../Component/Rate/Rate';
 import Rattingg from '../../Component/Rating/Rating';
 import Link from "next/link";
-import { AuthContext } from "../../Component/Context/AuthProvider";
 import RelatedCards from "../../Component/Card/RelatedCard";
 import Head from 'next/head'
 
@@ -12,8 +11,7 @@ export default function Tool({ data }) {
 
     useEffect(() => {
         setCards(data);
-        setIsloading(false)
-        console.log(data);
+        setIsloading(false);
     }, []);
 
 
@@ -21,6 +19,16 @@ export default function Tool({ data }) {
         <div>
             <Head>
                 <title>GoodTools.Ai - {data.toolName}</title>
+                <meta name="title" content={`GoodTools.Ai - ${data.toolName}`} />
+                <meta name="description" content={data.description} />
+                <meta name="keywords" content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${data.toolName}`} />
+                <meta name="robots" content="max-image-preview:large" />
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name="language" content="English" />
+                <meta property="og:title" content={`GoodTools.Ai - ${data.toolName}`} />
+                <meta property="og:description" content={data.description}/>
+                <meta property="og:image" content={`https://goodtools.ai/${data.image}`}/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </Head>
             <div className=" rounded-md">
                 {

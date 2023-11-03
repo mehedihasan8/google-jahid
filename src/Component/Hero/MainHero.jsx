@@ -1,13 +1,12 @@
 import { useSwipeable } from 'react-swipeable';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 
-const Hero = ({ allsubcategoriesData, name, category, count, getSearchData, popularSub }) => {
-  const [seartData, setSearchData] = useState('');
+const Hero = ({ allsubcategoriesData }) => {
+  const navigate = useRouter();
+
   const [data, setData] = useState([]);
-  const [message, setMessage] = useState('');
-  const [choice, setChoice] = useState('');
-
   const firstSixItem = data;
   const [visibleStartIndex, setVisibleStartIndex] = useState(0);
   const [maxStartIndex, setMaxStartIndex] = useState(0);
@@ -18,69 +17,28 @@ const Hero = ({ allsubcategoriesData, name, category, count, getSearchData, popu
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
   });
-  
-  useEffect(() => setChoice(name), [name])
 
   useEffect(() => {
     setData(allsubcategoriesData);
     setMaxStartIndex(Math.max(allsubcategoriesData.length - 7, 0));
   }, []);
 
-  useEffect(() => {
-    const matchingItem = data.find((item) => item.SubCategory === name);
-    if (matchingItem) {
-      setMessage(matchingItem.message);
-    } else {
-      setMessage('No matching data found');
-    }
-  }, [name])
-
   const handleKeyPress = (e) => {
     if (e.key !== "Enter") {
-      setSearchData(e.target.value)
-      // setShowSearch(false)
-    } else {
-      if (seartData.length !== 0) {
-        getSearchData(seartData)
-      }
+      
     }
   }
 
   const handleSearch = () => {
-    if (seartData.length !== 0) {
-      getSearchData(seartData)
-    }
+    
   }
-
 
   const handleBlur = () => {
-    if (seartData.length == 0) {
-      getSearchData('')
-    }
+    
   }
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/sub/${name}`)
-  //     .then(res => res.json())
-  //     .then(data => console.log(data))
-  // }, [name])
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/sub/${name}`)
-  //     .then(res => res.json())
-  //     .then(data => console.log(data))
-  // }, [name])
-
-
-  const handleClick = (event, value) => {
-
-    if (event.target.name != choice) {
-      popularSub(value)
-    } else {
-      setChoice('')
-      popularSub('')
-    }
-
+  const handleClick = (event, item) => {
+    navigate.push(`/category/${item.slug}`)
   }
 
   return (
@@ -90,21 +48,11 @@ const Hero = ({ allsubcategoriesData, name, category, count, getSearchData, popu
           <div className="hero-content text-center p-0">
             <div className="max-w-3xl p-0">
 
-              {
-                name.length == 0 ?
-                  <>
-                    <h1 className="md:text-[56px] text-4xl md:font-bold hero-title mb-6">We are listing the best AI
+              <h1 className="md:text-[56px] text-4xl md:font-bold hero-title mb-6">We are listing the best AI
                       <br /> tools Everyday.</h1>
                     <p className={`hero-subtitle font-paragraph md:mb-11 mb-6`}>Find the best AI tools for your needs. Go to the filter <br /> and choose your  Category.  </p>
-                  </> :
-                  <>
-                    <h1 className="md:text-5xl md:w-[592px] text-4xl font-bold text-[#081120] text-center w-fit mx-auto md:mb-6 mb-4">Browse {count}+ Best AI {name} Tools</h1>
-                    <div className='w-5/12 h-0 border-b border-[#E5E7EB] mx-auto md:mb-6 mb-4'></div>
-                    <p className={`hero-subtitle md:mb-11 mb-6`}>{message}</p>
-                  </>
-              }
 
-              <div className=" relative input-container mx-auto md:w-[478px] h-[52px] w-full">
+              <div className="relative input-container mx-auto md:w-[478px] h-[52px] w-full">
                 <div onBlur={handleBlur} className='h-full w-full flex justify-between'>
                   <input onKeyUp={handleKeyPress} type="text" placeholder="Search" className="border-0 w-full focus:ring-0 bg-[#F3F4F6] focus:outline-0 text-base font-paragraph my-[14px] ml-6" />
                   <div className='' >
@@ -131,13 +79,6 @@ const Hero = ({ allsubcategoriesData, name, category, count, getSearchData, popu
                 <p className='popular-title mb-4 font-paragraph h-6 text-base'>Popular Categories</p>
 
                 <div className='flex items-center md:gap-6 gap-2 cata'>
-                  {/* <button className='flex md:w-11 md:h-11 justify-center p-[var(--spacing-md,8px)] items-center gap-2.5  rounded-[100px] border border-[var(--neutral-300,#D2D6DB)]' onClick={() => setVisibleStartIndex(prev => Math.max(prev - 1, 0))}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 24" fill="none">
-                      <path d="M10.07 5.92999L4 12L10.07 18.07" stroke="#D2D6DB" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M21 12H4.17001" stroke="#D2D6DB" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </button> */}
-
                   <div className=''> {/* Main Wrapper */}
                     <div>
                       <div
@@ -152,12 +93,9 @@ const Hero = ({ allsubcategoriesData, name, category, count, getSearchData, popu
                           {firstSixItem.map((item, index) => (
                             <button
                               key={index}
-                              name={`${item.SubCategory}`}
-                              onClick={(event) => {
-                                setChoice(`${item.SubCategory}`);
-                                handleClick(event, item.SubCategory);
-                              }}
-                              className={`item cursor-pointer hover:scale-105 ease-in-out duration-30 'hidden'p-text px-4 py-auto ${choice === `${item.SubCategory}` ? 'bg-gray-100' : 'bg-transparent'}`}
+                              name={item.SubCategory}
+                              onClick={(e) => handleClick(e, item)}
+                              className="item cursor-pointer hover:scale-105 ease-in-out duration-30 'hidden'p-text px-4 py-auto bg-transparent"
                               style={{
                                 height: 'fit-content',
                                 whiteSpace: 'nowrap',
@@ -175,14 +113,6 @@ const Hero = ({ allsubcategoriesData, name, category, count, getSearchData, popu
                       </div>
                     </div>
                   </div>
-
-
-                  {/* <button className='flex md:w-11 md:h-11 justify-center p-[var(--spacing-md,8px)] items-center gap-2.5  rounded-[100px] border border-[var(--neutral-300,#D2D6DB)]' onClick={() => setVisibleStartIndex(prev => Math.min(prev + 1, maxStartIndex))}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                      <path d="M14.9301 5.92999L21.0001 12L14.9301 18.07" stroke="#6C737F" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M4 12H20.83" stroke="#6C737F" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </button> */}
                 </div>
 
               </div>

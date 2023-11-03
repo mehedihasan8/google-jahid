@@ -29,6 +29,15 @@ export default function News({ data }) {
     <div>
       <Head>
         <title>GoodTools.Ai - News</title>
+        <meta name="description" content="Latest Our AI News & Articles" />
+        <meta name="keywords" content={`Ai Tools, Best Ai Tools, Ai Tools Finder, Ai News, Tech News`} />
+        <meta name="robots" content="max-image-preview:large" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta property="og:title" content='GoodTools.Ai - News'/>
+        <meta property="og:description" content='Latest Our AI News & Articles' />
+        <meta property="og:image" content="https://goodtools.ai/logo.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="font-paragraph md:mb-[100px] mb-[40px] mx-4 md:mx-0">
         <div className="flex items-center pb-4 mt[34px] my-4">
@@ -89,7 +98,7 @@ export default function News({ data }) {
                       />
                     </div>
                     <div className=" md:mt-6 mt-4 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">
-                      <p className="date-title font-medium font-paragraph text-xl mr-[18px]">Tools</p>
+                      <p className="date-title font-medium font-paragraph text-xl mr-[18px]">{item.newsType}</p>
                       <div className=" invisible vertical-line mr-[18px]"></div>
                       <p className="date-dates hidden">{formateDte(item.date)}</p>
                     </div>

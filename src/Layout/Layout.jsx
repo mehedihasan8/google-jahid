@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 export default function Layout({ children }) {
   const pathname = usePathname()
-  const isHomePage = pathname === '/' || pathname === '/home';
+  const isHomePage = pathname === '/' || pathname === '/home' || pathname === '/category/:slug' || pathname.includes('/category');
 
   return (
     <div>
