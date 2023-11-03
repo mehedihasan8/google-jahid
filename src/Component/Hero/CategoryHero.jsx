@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 
-const CategoryHero = ({ categoryData, allsubcategoriesData, count}) => {
+const CategoryHero = ({ categoryData, allsubcategoriesData}) => {
     const navigate = useRouter();
     const [data, setData] = useState([]);
     const firstSixItem = data;
@@ -47,7 +47,7 @@ const CategoryHero = ({ categoryData, allsubcategoriesData, count}) => {
                     <div className="hero-content text-center p-0">
                         <div className="max-w-3xl p-0">
 
-                            <h1 className="md:text-5xl md:w-[592px] text-4xl font-bold text-[#081120] text-center w-fit mx-auto md:mb-6 mb-4">Browse {count}+ Best AI {categoryData.Title} Tools</h1>
+                            <h1 className="md:text-5xl md:w-[592px] text-4xl font-bold text-[#081120] text-center w-fit mx-auto md:mb-6 mb-4">Browse {categoryData.count}+ Best AI {categoryData.Title} Tools</h1>
                             <div className='w-5/12 h-0 border-b border-[#E5E7EB] mx-auto md:mb-6 mb-4'></div>
                             <p className={`hero-subtitle md:mb-11 mb-6`}>{categoryData.message}</p>
 

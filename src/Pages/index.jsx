@@ -32,10 +32,6 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
         return res
     }
 
-    const getToolsCount = (value) => {
-        setTotal(value);
-    }
-
     useEffect(() => {
         if (sortOption === 'All') {
             document.getElementById('All').checked = true;
@@ -131,7 +127,7 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
                             <Filter filterData={filterData} />
                         </div>
                         <div className='text-[#6C737F] my-auto h-fit w-fit text-base font-medium md:ml-[32px] font-paragraph '>
-                            Showing <span className='text-[#081120] font-paragraph'> {decoration(total)} Best</span> Ai Tools
+                            Showing <span className='text-[#081120] font-paragraph'> {decoration(toolsData.length)} Best</span> Ai Tools
                         </div>
                     </div>
                     <div className=' flex items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6'>
@@ -168,7 +164,7 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
                 </div>
 
                 <div className=''>
-                    <Card toolsData={toolsData} getToolsCount={getToolsCount} sortOption={sortOption} />
+                    <Card toolsData={toolsData} sortOption={sortOption} />
                 </div>
 
                 <CookiePopup />

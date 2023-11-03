@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import Link from "next/link";;
 
-const Card = ({ toolsData, getToolsCount, sortOption }) => {
+const Card = ({ toolsData, sortOption }) => {
   const [tools, setTools] = useState([]);
   const [lastElem, setLastElem] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +13,6 @@ const Card = ({ toolsData, getToolsCount, sortOption }) => {
     setIsLoading(false)
     setTools(toolsData);
     setLastElem(toolsData.length - 1);
-    getToolsCount(toolsData.length);
     toolsData.forEach((tool) => {
       const storageKey = `myHeartClicked-${tool._id}`;
       const isClicked = loadStateFromLocalStorage(storageKey);

@@ -5,12 +5,9 @@ import { useEffect, useState } from 'react';
 import Link from "next/link";
 import CookiePopup from '../../Component/Popup/Popup';
 import Head from 'next/head'
-import { useSwipeable } from 'react-swipeable';
 
 const Home = ({ categoryData, toolsData, allsubcategoriesData, filterData }) => {
-    const [total, setTotal] = useState(0)
     const [sortOption, setSortOption] = useState('All')
-
 
     const decoration = x => {
         let str = x + ""
@@ -33,10 +30,6 @@ const Home = ({ categoryData, toolsData, allsubcategoriesData, filterData }) => 
 
         }
         return res
-    }
-
-    const getToolsCount = (value) => {
-        setTotal(value);
     }
 
     useEffect(() => {
@@ -104,7 +97,7 @@ const Home = ({ categoryData, toolsData, allsubcategoriesData, filterData }) => 
         <div className=''>
             <Head>
                 <title>GoodTools.Ai - {categoryData.Title}</title>
-                <meta name="title" content={`GoodTools.Ai - ${categoryData.Title}`} />
+                <meta name="title" content={`Browse ${categoryData.count}+ Best AI ${categoryData.Title} Tools`} />
                 <meta name="description" content={categoryData.message} />
                 <meta name="keywords" content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${categoryData.Title}`} />
                 <meta name="robots" content="max-image-preview:large" />
@@ -112,7 +105,7 @@ const Home = ({ categoryData, toolsData, allsubcategoriesData, filterData }) => 
                 <meta name="language" content="English" />
                 <meta property="og:title" content={`GoodTools.Ai - ${categoryData.Title}`} />
                 <meta property="og:description" content={categoryData.message} />
-                <meta property="og:image" content={`https://goodtools.ai/${item.image}`} />
+                <meta property="og:image" content={`https://goodtools.ai/logo.png`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
 
@@ -130,7 +123,7 @@ const Home = ({ categoryData, toolsData, allsubcategoriesData, filterData }) => 
             <div className='mx-4 md:mt-[66px] mt-[40px]'>
 
                 <div className=' md:mb-[100px] mb-[41.5px]'>
-                    <CategoryHero categoryData={categoryData} allsubcategoriesData={allsubcategoriesData} count={total} />
+                    <CategoryHero categoryData={categoryData} allsubcategoriesData={allsubcategoriesData} />
                 </div>
 
                 <div className=' md:flex items-center justify-between md:mb-11 mb-[30px]'>
@@ -139,7 +132,7 @@ const Home = ({ categoryData, toolsData, allsubcategoriesData, filterData }) => 
                             <CategoryFilter filterData={filterData} />
                         </div>
                         <div className='text-[#6C737F] my-auto h-fit w-fit text-base font-medium md:ml-[32px] font-paragraph '>
-                            Showing <span className='text-[#081120] font-paragraph'> {decoration(total)} Best</span> Ai Tools
+                            Showing <span className='text-[#081120] font-paragraph'> {decoration(categoryData.count)} Best</span> Ai Tools
                         </div>
                     </div>
                     <div className=' flex items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6'>
@@ -176,7 +169,7 @@ const Home = ({ categoryData, toolsData, allsubcategoriesData, filterData }) => 
                 </div>
 
                 <div className=''>
-                    <Card toolsData={toolsData} getToolsCount={getToolsCount} sortOption={sortOption} />
+                    <Card toolsData={toolsData} sortOption={sortOption} />
                 </div>
 
                 <CookiePopup />
