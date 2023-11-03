@@ -56,7 +56,7 @@ const RelatedCards = ({ subs, id }) => {
                         <figure className="relative w-full md:mb-6 mb-4">
                             <img
                                 src={`http://localhost:3000/uploads/${tool?.image}`}
-                                alt="Image not found"
+                                alt={tool?.toolName}
                                 className="rounded-xl"
                                 style={{ width: '100%', height: "240px" }}
                             />

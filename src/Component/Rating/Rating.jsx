@@ -96,7 +96,7 @@ const Rating = ({ card }) => {
             <div className="">
               <img
                 src={`http://localhost:3000/uploads/${card.image}`}
-                alt="img"
+                alt={card.toolName}
                 className="bg-black text-white md:rounded-2xl rounded-lg h-[210px] md:h-[344px]"
               />
             </div>

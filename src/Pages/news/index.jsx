@@ -94,7 +94,7 @@ export default function News({ data }) {
                       <img
                         className="w-full rounded-xl h-[286px]"
                         src={`http://localhost:3000/uploads/${item.image}`}
-                        alt=""
+                        alt={item.newsTitle}
                       />
                     </div>
                     <div className=" md:mt-6 mt-4 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">
