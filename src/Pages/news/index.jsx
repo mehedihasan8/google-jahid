@@ -93,7 +93,7 @@ export default function News({ data }) {
                     <div className="w-full">
                       <img
                         className="w-full rounded-xl h-[286px]"
-                        src={`http://api.goodtools.ai/uploads/${item.image}`}
+                        src={`https://api.goodtools.ai/uploads/${item.image}`}
                         alt={item.newsTitle}
                       />
                     </div>
@@ -130,7 +130,7 @@ export default function News({ data }) {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://api.goodtools.ai/news`);
+  const res = await fetch(`https://api.goodtools.ai/news`);
   const data = await res.json();
 
   return {

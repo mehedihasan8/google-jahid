@@ -61,7 +61,7 @@ export default function News({ data, categories }) {
                 <div className='md:pt-[40px] mb-[40px] pt-6 md:mx-0 mx-4'>
                     <div className='md:p-10 px-4 pt-4 pb-7 mb-26 border-[#E5E7EB] border rounded-2xl'>
                         {/* Hero section */}
-                        <img className="hero md:mb-10 mb-6 rounded-lg mx-auto" alt={item.newsTitle} src={`http://api.goodtools.ai/uploads/${item.image}`} />
+                        <img className="hero md:mb-10 mb-6 rounded-lg mx-auto" alt={item.newsTitle} src={`https://api.goodtools.ai/uploads/${item.image}`} />
                         <div className='md:grid md:grid-cols-2 '>
                             {/* right-div */}
                             <div className=' md:w-[752px]'>
@@ -151,8 +151,8 @@ export async function getServerSideProps(context) {
     const { slug } = context.params;
 
     const [news, categories] = await Promise.all([
-        fetch(`http://api.goodtools.ai/news/${slug}`),
-        fetch(`http://api.goodtools.ai/category`)
+        fetch(`https://api.goodtools.ai/news/${slug}`),
+        fetch(`https://api.goodtools.ai/category`)
     ])
 
     const [newsData, categoriesData] = await Promise.all([

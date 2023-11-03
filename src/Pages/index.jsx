@@ -175,9 +175,9 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
 
 export async function getServerSideProps() {
     const [tools, allsubcategories, filtersubcategories] = await Promise.all([
-        fetch('http://api.goodtools.ai/tool'),
-        fetch('http://api.goodtools.ai/allsubcategories'),
-        fetch('http://api.goodtools.ai/sublist')
+        fetch('https://api.goodtools.ai/tool'),
+        fetch('https://api.goodtools.ai/allsubcategories'),
+        fetch('https://api.goodtools.ai/sublist')
     ]);
 
     const [toolsData, allsubcategoriesData, filterData] = await Promise.all([
