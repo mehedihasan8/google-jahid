@@ -1,5 +1,10 @@
 .hero-title {
-  background: linear-gradient(91deg, #000 0.01%, #BA33DC 24.84%, #6977F8 68.41%);
+  background: linear-gradient(
+    91deg,
+    #000 0.01%,
+    #ba33dc 24.84%,
+    #6977f8 68.41%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -7,7 +12,6 @@
   font-family: Space Grotesk;
   font-style: normal;
   line-height: normal;
-  font-size: 56px;
 }
 
 .popular-item {
@@ -15,7 +19,7 @@
 }
 
 .hero-subtitle {
-  color: var(--neutral-600, #4D5761);
+  color: var(--neutral-600, #4d5761);
   text-align: center;
   /* Body Text/Inter 16px/Regular */
   font-family: Inter;
@@ -32,7 +36,7 @@
   margin: 0 auto;
   text-align: center;
   border-radius: 12px;
-  background: var(--neutral-100, #F3F4F6);
+  background: var(--neutral-100, #f3f4f6);
 }
 
 .search-icon {
@@ -54,13 +58,13 @@
 }
 
 .popular-title {
-  color: var(--neutral-900, #201F31);
+  color: var(--neutral-900, #201f31);
 
   /* Body Text/Inter 16px/Medium */
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 150%;
   /* 24px */
 }
@@ -74,11 +78,11 @@
   width: auto;
   gap: 10px;
   border-radius: 100px;
-  border: 1px solid var(--neutral-300, #D2D6DB);
+  border: 1px solid var(--neutral-300, #d2d6db);
 }
 
 .p-text {
-  color: var(--neutral-600, #4D5761);
+  color: var(--neutral-600, #4d5761);
 
   /* Body Text/Inter 14px/Regular */
   font-family: Inter;
@@ -91,11 +95,11 @@
   /* 21px */
 }
 
-.popular-categories{
+.popular-categories {
   font-weight: 500 !important;
 }
 
-.max{
+.max {
   max-width: 917px !important;
 }
 
@@ -116,7 +120,7 @@
 
   .hero-subtitle {
     align-self: stretch;
-    color: var(--neutral-600, #4D5761);
+    color: var(--neutral-600, #4d5761);
     text-align: center;
 
     /* Body Text/Inter 16px/Regular */
@@ -129,7 +133,12 @@
   }
 
   .hero-title {
-    background: linear-gradient(91deg, #000 0.01%, #BA33DC 24.84%, #6977F8 68.41%);
+    background: linear-gradient(
+      91deg,
+      #000 0.01%,
+      #ba33dc 24.84%,
+      #6977f8 68.41%
+    );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -137,7 +146,6 @@
 
     /* Heading Mobile/Heading 1 */
     font-family: Space Grotesk;
-    font-size: 40px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%; /* 48px */
@@ -151,15 +159,14 @@
   .hero-subtitle br {
     display: none;
   }
-
 }
-.cata{
-  color: var(--neutral-600, #4D5761);
+.cata {
+  color: var(--neutral-600, #4d5761);
 
-/* Body Text/Inter 14px/Regular */
-font-family: Inter;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 150%; /* 21px */
+  /* Body Text/Inter 14px/Regular */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
 }

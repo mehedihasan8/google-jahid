@@ -10,11 +10,7 @@ const RelatedCards = ({ subs, id }) => {
 
     useEffect(() => {
         subs ?
-<<<<<<< HEAD
-            fetch(`http://api.goodtools.ai/relatedtools/${subs}`)
-=======
             fetch(`https://api.goodtools.ai/relatedtools/${subs}`)
->>>>>>> b7dfcbd9f4e5866f9bd6610a712361c13499f5cb
                 .then(res => res.json())
                 .then(data => {
                     setRelatedTools(data)
