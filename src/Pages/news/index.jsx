@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
 
@@ -53,7 +53,7 @@ export default function News({ data }) {
         <meta property="og:image" content="https://goodtools.ai/logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="font-paragraph md:mb-[100px] mb-[40px] mx-4 md:mx-0">
+      <div className="font-paragraph md:mb-[100px] mb-[40px] mx-2 md:mx-0 mt-20 md:mt-24">
         <div className="flex items-center pb-4 mt[34px] my-4">
           <a href="/" className="text-[#081120] font-paragraph text-sm">
             Home
@@ -85,60 +85,59 @@ export default function News({ data }) {
           </svg>
           <p className="text-[#6C737F] font-paragraph text-sm">News</p>
         </div>
-        <div className=" border md:p-10 md:m-4 p-4 rounded-lg">
+        <div className=" border md:p-10 p-4 rounded-3xl">
           <div>
             <div className="md:rounded-xl">
-              <p className="text-center text-3xl md:text-5xl  font-bold font-title md:text-left">
+              <p className="text-center news-title font-bold text-3xl md:text-5xl font-title md:text-left ">
                 Latest Our AI News & Articles
               </p>
             </div>
           </div>
 
-          <div className=" text-center grid  md:grid-cols-2 gap-6 md:mt-10 mt-6 mx-auto  font-title">
+          <div className="text-center grid  md:grid-cols-2 gap-6 md:mt-10 mt-6 mx-auto font-title">
             {isLoading ? (
               <span className="loading  loading-ring md:w-40 md:h-40 w-20  md:ml-[90%] ml-[50%] mb-10 mt-5"></span>
             ) : (
               news.map((item, index) => (
                 <Link key={index} href={`/news/${item.slug}`}>
                   <div
+                    className="relative p-5 rounded-xl h-full "
                     style={{
                       width: "100%",
                       height: "100%",
-                      padding: 24,
-                      background: "white",
-                      boxShadow: "0px 8px 24px rgba(41.44, 58.86, 85, 0.08)",
-                      borderRadius: 8,
-                      flexDirection: "column",
-                      justifyContent: "flex-start",
-                      alignItems: "flex-start",
-                      gap: 24,
-                      display: "inline-flex",
+                      background: "var(--neutral-white, #FFF)",
+                      boxShadow: "0px 8px 24px rgba(58.44, 80.86, 50, 0.15)",
                     }}
                   >
-                    <div className="w-full">
+                    <div className="">
                       <img
-                        className="w-full rounded-xl h-[286px]"
-                        src={`https://api.goodtools.ai/uploads/${item.image}`}
-                        alt={item.newsTitle}
+                        className="w-full rounded-xl h-[285px] border-2 "
+                        // src={`https://api.goodtools.ai/uploads/${item.image}`}
+                        src={`https://i.ibb.co/8c144dc/Image.jpg`}
+                        alt={item?.newsTitle}
                       />
                     </div>
-                    <div className=" md:mt-6 mt-4 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">
-                      <p className="date-title font-medium font-paragraph text-xl mr-[18px]">
-                        {item.newsType}
+                    <div className=" md:mt-6 pb-2 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">
+                      <p className="date-title font-medium font-paragraph text-xl">
+                        {item?.newsType}
                       </p>
-                      <div className=" invisible vertical-line mr-[18px]"></div>
-                      <p className="date-dates hidden">
-                        {formateDte(item.date)}
-                      </p>
-                    </div>
-                    <div className="sub-section md:mt-6 mt-4">
-                      <p className="sub-text font-title font-bold md:text-2xl">
-                        {" "}
-                        {item.newsTitle}{" "}
+                      {/* <div className="invisible vertical-line mr-[18px]">|</div> */}
+                      <p className="vertical-line mx-[10px] font-bold"></p>
+                      <p className="">
+                        {/* {formateDte(item?.date)} */}
+                        {formateDte(item?.date)}
                       </p>
                     </div>
-                    <div
-                      className="text my-4 md:mb-6"
+
+                    <p className="news-sub-title font-title text-left font-bold md:text-2xl">
+                      The Chapple AI News Update Video{" "}
+                      <span className="news-sub-title2">
+                        ({item?.newsTitle})
+                      </span>{" "}
+                    </p>
+
+                    <p
+                      className="text my-4 md:mb-6 text-left pb-16"
                       dangerouslySetInnerHTML={{
                         __html: (item?.newsBody?.replace(/["\n]/g, "") || "")
                           .replace(/<img(.)*>/g, "<p></p>")
@@ -146,9 +145,9 @@ export default function News({ data }) {
                           .slice(0, 20)
                           .join(" "),
                       }}
-                    ></div>
-                    <div className="btn-section md:w-44 md:my-[40px] mt-[16px]">
-                      <button className="md:w-44 text-[#4D5761] font-medium font-paragraph text-base">
+                    ></p>
+                    <div className="absolute bottom-6 btn-section md:w-44">
+                      <button className="md:w-44 text-[#4D5761] font-medium font-paragraph">
                         Read More
                       </button>
                     </div>

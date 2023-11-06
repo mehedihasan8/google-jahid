@@ -1,3 +1,11 @@
-.index{
-    z-index: 10 !important;
+.index {
+  z-index: 10 !important;
+}
+.sub-title {
+  color: var(--neutral-900, #201f31);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
 }

@@ -125,17 +125,17 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
             <div className="w-full md:w-fit mx-auto mb-4 md:mb-0">
               <Filter filterData={filterData} />
             </div>
-            <div className="text-[#6C737F] my-auto h-fit w-fit text-base font-medium md:ml-[32px] font-paragraph ">
+            <div className="text-[#6C737F] my-auto  w-fit text-base font-medium  md:ml-[32px] font-paragraph mx-2 md:mx-0 ">
               Showing{" "}
-              <span className="text-[#081120] font-paragraph">
+              <span className="text-[#081120] font-paragraph font-semibold">
                 {" "}
-                {decoration(toolsData.length)} Best
+                {decoration(toolsData.length)}
               </span>{" "}
-              Ai Tools
+              Best Ai Tools
             </div>
           </div>
-          <div className=" flex items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6">
-            <span className="text-[#081120] md:font-medium md:mr-6 font-paragraph  md:text-xl text-base font-normal">
+          <div className=" flex items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6 px-2 md:px-0">
+            <span className="text-[#081120] font-semibold md:mr-6 font-paragraph  md:text-xl text-base">
               Sort by :{" "}
             </span>
             <div className="w-fit flex justify-between gap-4 mt-1">
@@ -161,7 +161,7 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
                     : setSortOption("Free")
                 }
                 name="Free"
-                className="flex items-center gap-2 font-paragraph"
+                className="flex items-center gap-2 font-paragraph font-bold"
               >
                 <input
                   onClick={handleChecked}
@@ -170,7 +170,7 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
                   id="Free"
                   name="Free"
                 />
-                <div className="col">Free</div>
+                <div className="col font-semibold">Free</div>
               </button>
               <button
                 onClick={() =>

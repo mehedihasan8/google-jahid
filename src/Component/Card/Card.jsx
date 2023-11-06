@@ -57,9 +57,9 @@ const Card = ({ toolsData, sortOption }) => {
           style={{
             width: "100%",
             height: "100%",
-            padding: 20,
-            background: "white",
-            boxShadow: "0px 8px 24px rgba(41.44, 58.86, 85, 0.08)",
+            padding: 15,
+            background: "var(--neutral-white, #FFF)",
+            boxShadow: "0px 8px 24px rgba(58.44, 80.86, 50, 0.15)",
             borderRadius: 16,
             flexDirection: "column",
             justifyContent: "center",
@@ -69,27 +69,28 @@ const Card = ({ toolsData, sortOption }) => {
           }}
         >
           <Link key={tool.slug} href={`/tool/${tool.slug}`}>
-            <figure className="relative w-full md:mb-6 mb-4">
-              <img
-                src={`https://api.goodtools.ai/uploads/${tool?.image}`}
-                alt={tool?.toolName}
-                className="rounded-xl"
-                style={{ width: "100%", height: "240px" }}
-              />
+            <div className="relative w-full md:mb-6 mb-4 rounded-2xl">
+              <div className="">
+                <img
+                  src={`https://api.goodtools.ai/uploads/${tool?.image}`}
+                  alt={tool?.toolName}
+                  className="h-[230px] rounded-[16px] border-2"
+                />
+              </div>
 
               <div
                 onClick={(event) => handleClick(event, storageKey)}
-                className={`w-[46px] h-[46px] p-[10px] rounded-full flex items-center justify-center absolute top-0 right-0 mr-5 mt-4 bg-white`}
+                className={`w-[44px] h-[44px] rounded-full flex items-center justify-center absolute top-0 right-0 mr-5 mt-4 bg-white`}
               >
-                <div className="w-[46px] h-[46px] relative">
+                <div className="relative">
                   {isClicked ? (
-                    <BsBookmarkFill className=" w-[26px] h-[26px] absolute md:top-[21%] top-[23%] right-0" />
+                    <BsBookmarkFill className=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px]" />
                   ) : (
-                    <BsBookmark className=" w-[26px] h-[26px] absolute md:top-[21%] top-[23%] right-0" />
+                    <BsBookmark className=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px]" />
                   )}
                 </div>
               </div>
-            </figure>
+            </div>
 
             <div className="h-fit">
               <div className="flex justify-between items-center md:mb-6 mb-4">
@@ -203,7 +204,7 @@ const Card = ({ toolsData, sortOption }) => {
   return (
     <div
       id="cards"
-      className=" grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 md:gap-6 gap-y-4"
+      className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 md:gap-6 gap-y-4 px-2 md:px-0"
     >
       {isLoading ? (
         <span className="loading loading-ring md:w-40 md:h-40 w-20 h-20 md:ml-[140%] ml-[40%] md:my-40 my-20"></span>
