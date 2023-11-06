@@ -1,6 +1,6 @@
 import React from "react";
-import Link from "next/link";;
-import Head from 'next/head'
+import Link from "next/link";
+import Head from "next/head";
 
 const Contact = () => {
   return (
@@ -8,23 +8,34 @@ const Contact = () => {
       <Head>
         <title>GoodTools.Ai - Contact Us</title>
         <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
-        <meta name="description" content="Find the best AI tools for your needs. Go to the filterand choose your Category." />
-        <meta name="keywords" content="Ai Tools, Best Ai Tools, Ai Tools Finder" />
+        <meta
+          name="description"
+          content="Find the best AI tools for your needs. Go to the filterand choose your Category."
+        />
+        <meta
+          name="keywords"
+          content="Ai Tools, Best Ai Tools, Ai Tools Finder"
+        />
         <meta name="robots" content="max-image-preview:large" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta property="og:title" content="GoodTools.Ai - AI Tools Finder" />
-        <meta property="og:description" content="Find the best AI tools for your needs. Go to the filterand choose your Category." />
+        <meta
+          property="og:description"
+          content="Find the best AI tools for your needs. Go to the filterand choose your Category."
+        />
         <meta property="og:image" content="https://goodtools.ai/logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="font-paragraph">
+      <div className="font-paragraph mt-24">
         <div className="breadcrumbs privacy-menu mb-5  text-sm font-normal ">
           <ul>
-            <li className='text-[#081120] font-paragraph text-sm'>
+            <li className="text-[#081120] font-paragraph text-sm">
               <Link href="/">Home</Link>
             </li>
-            <li className='text-[#6C737F] font-paragraph text-sm'>Contact Us</li>
+            <li className="text-[#6C737F] font-paragraph text-sm">
+              Contact Us
+            </li>
           </ul>
         </div>
         <div
@@ -35,17 +46,17 @@ const Contact = () => {
             <h2 className="font-title text-3xl md:text-5xl font-bold mb-6 md:mb-12 mt-8">
               Contact Us
             </h2>
-            <h2 className="text-base font-normal mb-6">
+            <p className="text-base font-normal mb-6">
               alma.lawson@example.com
-            </h2>
+            </p>
             <p className="text-base font-normal mb-7">
               2118 Thornridge Cir. Syracuse, <br /> Connecticut 35624
             </p>
-            <h2 className="text-base font-normal mb-7 border-y-4 border-gray-100/60 py-6">
+            <p className="mb-7 border-y-4 border-gray-100/60 py-6 text-[#4D5761]">
               Lorem ipsum dolor sit amet consectetur. Congue nibh purus ac in
               mattis enim mattis. In eros nibh quis fusce. At sed et purus at
               metus aliquam rhoncus.
-            </h2>
+            </p>
             <div>
               <svg
                 width="90"
@@ -129,18 +140,15 @@ const Contact = () => {
             </div>
             <div>
               <label className="label">
-                <span className=" text-xl font-medium mb-1 mt-3">
-                  Message
-                </span>
+                <span className=" text-xl font-medium mb-1 mt-3">Message</span>
               </label>
               <textarea className="textarea input-bordered w-full focus:outline-none"></textarea>
             </div>
-            <button className="btn btn-primary text-white btn-active my-6">
+            <button className="ai-btn text-white btn-active my-6">
               Submit
             </button>
           </div>
         </div>
-
       </div>
     </div>
   );
