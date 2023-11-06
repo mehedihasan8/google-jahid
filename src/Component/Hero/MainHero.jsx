@@ -1,6 +1,11 @@
 import { useSwipeable } from "react-swipeable";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+
+// Import Swiper styles
+import "swiper/css";
 
 const Hero = ({ allsubcategoriesData }) => {
   const navigate = useRouter();
@@ -9,6 +14,20 @@ const Hero = ({ allsubcategoriesData }) => {
   const firstSixItem = data;
   const [visibleStartIndex, setVisibleStartIndex] = useState(0);
   const [maxStartIndex, setMaxStartIndex] = useState(0);
+
+  const swiperRef = useRef(null);
+
+  const goPrev = () => {
+    if (swiperRef.current !== null) {
+      swiperRef.current.slidePrev();
+    }
+  };
+
+  const goNext = () => {
+    if (swiperRef.current !== null) {
+      swiperRef.current.slideNext();
+    }
+  };
 
   const handlers = useSwipeable({
     onSwipedLeft: () =>
@@ -94,10 +113,63 @@ const Hero = ({ allsubcategoriesData }) => {
             Popular Categories
           </p>
 
-          <div className="flex items-center md:gap-10 gap-2 cata">
+          <div className="flex items-center md:gap-6 gap-2 cata">
             {/* Main Wrapper */}
+            <div className="items-container md:w-[790px] overflow-hidden">
+              <div className="flex items-center gap-5">
+                {/* pre button  */}
+                <button
+                  onClick={goPrev}
+                  className="rounded-full h-9 w-9 border-[1.4px]"
+                >
+                  <BsArrowLeftShort className="h-8 w-8" />
+                </button>
 
-            <div
+                {/* swiper  */}
+                <div className="w-[240px] md:w-[650px] mx-auto">
+                  <Swiper
+                    slidesPerView={1}
+                    // grid={{ rows: 2 }}
+                    spaceBetween={10}
+                    navigation={{
+                      prevEl: ".swiper-button-prev",
+                      nextEl: ".swiper-button-next",
+                    }}
+                    autoWidth={true}
+                    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                    className="mySwiper"
+                    breakpoints={{
+                      640: {
+                        slidesPerView: 1,
+                      },
+                    }}
+                  >
+                    {firstSixItem.map((item, index) => (
+                      <SwiperSlide>
+                        <button
+                          key={index}
+                          // name={item.SubCategory}
+                          onClick={(e) => handleClick(e, item)}
+                          className="font-normal item h-fit w-full whitespace-nowrap border-2 cursor-pointer hover:scale-105 ease-in-out duration-30 'hidden'p-text px-4 py-auto bg-transparent"
+                        >
+                          {item.SubCategory}
+                        </button>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+
+                {/* next button  */}
+                <button
+                  onClick={goNext}
+                  className="rounded-full h-9 w-9 border-[1.4px]"
+                >
+                  <BsArrowRightShort className="h-8 w-8" />
+                </button>
+              </div>
+            </div>
+
+            {/* <div
               className="popular-item flex md:gap-10 gap-2 my-1 justify-center"
               {...handlers}
               style={{
@@ -128,7 +200,7 @@ const Hero = ({ allsubcategoriesData }) => {
                   {item.SubCategory}
                 </button>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
 

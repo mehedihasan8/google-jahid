@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 const Rating = ({ card }) => {
   // consoleisClicked
@@ -30,10 +30,10 @@ const Rating = ({ card }) => {
       <div className="">
         <div className="w-full mx-auto ">
           {/* Product heading */}
-          <div className="flex justify-between gap-2 items-center justify-center">
+          <div className="flex justify-between gap-2 items-center ">
             {/* Product Info */}
             <div>
-              <p className="D font-normal text-base text-[#6C737F]">
+              <p className="D font-normal text-base text-[#6C737F] pb-2">
                 Product Information
               </p>
               <h1 className="md:text-5xl text-[32px] font-bold mt-2 font-title">
@@ -41,24 +41,18 @@ const Rating = ({ card }) => {
               </h1>
             </div>
             {/* Heart and share button */}
-            <div className="  flex gap-2 md:gap-4 item-center justify-center">
+            <div className="flex gap-2 md:gap-4 item-center justify-center mt-10 md:mt-6">
               <div className="svg-sizing p-4">
                 {isClicked ? (
                   <button
                     className="rounded-full text-base"
                     onClick={handleClick}
                   >
-                    <BsBookmarkFill
-                      className="rounded-full"
-                      // style={{ height: "16px", width: "16px" }}
-                    ></BsBookmarkFill>
+                    <FaHeart className="md:w-5 w-4 h-4 md:h-5 text-[#FF3B3B]" />
                   </button>
                 ) : (
                   <button className="rounded-full" onClick={handleClick}>
-                    <BsBookmark
-                      // style={{ height: "20px", width: "20px" }}
-                      className="md:w-5 w-4 h-4 md:h-5"
-                    ></BsBookmark>
+                    <FaRegHeart className="md:w-5 w-4 h-4 md:h-5" />
                   </button>
                 )}
               </div>
@@ -102,7 +96,7 @@ const Rating = ({ card }) => {
               </div>
               <div className="">
                 {/* Price per period */}
-                <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-6 md:mt-0">
+                <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">
                   ${card.price}
                   <span className="text-base ms-2 font-normal text-[#4D5761] ">
                     /{card.pricePeriod}
@@ -338,15 +332,16 @@ const Rating = ({ card }) => {
                   <div className="social-links mt-4 md:mt-[26px]">
                     {/* link */}
                     <div className="text-[#4D5761] text-base font-normal">
-                      <h2>Explore {card.toolName} on Social media</h2>
+                      <p>Explore {card.toolName} on Social media</p>
                     </div>
                     <div className="mt-[11px]">
                       <div className="flex gap-4 items-center">
                         {card.discord && (
-                          <a href={card.discord}>
+                          <a href={card?.discord}>
                             <svg
-                              width="26"
-                              height="26"
+                              width="33"
+                              height="33"
+                              className="mt-1"
                               viewBox="0 0 71 80"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
