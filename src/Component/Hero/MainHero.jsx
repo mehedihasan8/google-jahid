@@ -113,10 +113,10 @@ const Hero = ({ allsubcategoriesData }) => {
             Popular Categories
           </p>
 
-          <div className="flex items-center md:gap-6 gap-2 cata">
+          <div className="flex items-center md:gap-6 gap-2">
             {/* Main Wrapper */}
-            <div className="items-container md:w-[790px] overflow-hidden">
-              <div className="flex items-center gap-5">
+            <div className="items-container md:w-[790px] overflow-hidden py-2">
+              <div className="flex items-center gap-5 ">
                 {/* pre button  */}
                 <button
                   onClick={goPrev}
@@ -168,39 +168,6 @@ const Hero = ({ allsubcategoriesData }) => {
                 </button>
               </div>
             </div>
-
-            {/* <div
-              className="popular-item flex md:gap-10 gap-2 my-1 justify-center"
-              {...handlers}
-              style={{
-                transform: `translateX(-${visibleStartIndex * 110}px)`,
-              }}
-            >
-              {firstSixItem.map((item, index) => (
-                <button
-                  key={index}
-                  name={item.SubCategory}
-                  onClick={(e) => handleClick(e, item)}
-                  className="item cursor-pointer hover:scale-105 ease-in-out duration-30 'hidden'p-text px-4 py-auto bg-transparent"
-                  style={{
-                    height: "fit-content",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    padding: "-1px",
-                    fontSize: "14px",
-                    textOverflow: "ellipsis",
-                    display: `${
-                      index < visibleStartIndex ||
-                      index >= visibleStartIndex + 6
-                        ? "none"
-                        : "block"
-                    }`,
-                  }}
-                >
-                  {item.SubCategory}
-                </button>
-              ))}
-            </div> */}
           </div>
         </div>
 

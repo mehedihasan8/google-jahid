@@ -165,6 +165,10 @@ const Rate = ({ id, name }) => {
     inactiveFillColor: "#E5E7EB",
   };
 
+  const handleClicks = () => {
+    setIsModalOpen(!isModalOpen); // Toggle the value of isModalOpen
+  };
+
   const handleClick = () => {
     if (user && available) {
       setTrue();

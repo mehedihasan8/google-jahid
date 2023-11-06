@@ -501,17 +501,22 @@ const Rating = ({ card }) => {
               How to use
             </button>
           </div>
-
+          <div className="flex justify-center mt-8">
+            <audio controls className="md:w-2/4">
+              <source src="/path_to_your_audio_file.mp3" type="audio/mp3" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
           {isToggled ? (
             <div
-              className="mt-8"
+              className="mt-8 leading-7"
               dangerouslySetInnerHTML={{
                 __html: card?.works?.replace(/["\n]/g, "") || "",
               }}
             ></div>
           ) : (
             <div
-              className="mt-8"
+              className="mt-8 leading-7 "
               dangerouslySetInnerHTML={{
                 __html: card?.description?.replace(/["\n]/g, "") || "",
               }}

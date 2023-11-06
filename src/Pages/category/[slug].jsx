@@ -114,7 +114,7 @@ const Home = ({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0">
+      <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0 mt-24">
         <ul>
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/">Home</Link>

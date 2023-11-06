@@ -66,41 +66,53 @@ export default function News({ data, categories }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0">
+      <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0 mt-24">
         <ul>
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/">Home</Link>
           </li>
           <li className="text-[#6C737F] font-paragraph text-sm">
-            {item.newsTitle}
+            {item?.newsTitle}
           </li>
         </ul>
       </div>
       <div className="mx-auto font-paragraph ">
         {/* Single News Section */}
-        <div className="md:pt-[40px] mb-[40px] pt-6 md:mx-0 mx-4">
-          <div className="md:p-10 px-4 pt-4 pb-7 mb-26 border-[#E5E7EB] border rounded-2xl">
+        <div className="md:pt-[40px] mb-[40px] pt-6 md:mx-0 mx-2">
+          <div className="px-4 md:px-6  pt-4 pb-7 mb-26 border-[#E5E7EB] border rounded-2xl">
             {/* Hero section */}
             <img
-              className="hero md:mb-10 mb-6 rounded-lg mx-auto"
+              className="md:mb-10 mb-6 rounded-lg mx-auto w-full"
               alt={item.newsTitle}
-              src={`https://api.goodtools.ai/uploads/${item.image}`}
+              src={`https://i.ibb.co/1fGrFQp/Image.png`}
+              // src={`https://api.goodtools.ai/uploads/${item.image}`}
             />
             <div className="md:grid md:grid-cols-2 ">
               {/* right-div */}
-              <div className=" md:w-[752px]">
+              <div className="md:w-[760px]">
                 <div className="date">
-                  <p className="date-title font-medium text-xl">
+                  <p className="font-paragraph font-medium text-xl">
                     {item.newsType}
                   </p>
-                  <div className=" invisible vertical-line"></div>
-                  <p className="date-dates hidden">{formateDte(item.date)}</p>
+                  <p className="vertical-line mx-[8px] font-bold "></p>
+                  <p className="font-normal text-[#6C737F]">
+                    {/* {formateDte(item?.date)} */}
+                    {formateDte(item?.date)}
+                  </p>
                 </div>
-                <div className="single-title mb-6 font-title">
-                  {item.newsTitle}
+
+                <div className="single-title mb-6">{item.newsTitle}</div>
+                <div className="flex justify-center mt-8 mb-10">
+                  <audio controls className="md:w-4/5">
+                    <source
+                      src="/path_to_your_audio_file.mp3"
+                      type="audio/mp3"
+                    />
+                    Your browser does not support the audio element.
+                  </audio>
                 </div>
                 {/* {saiful er kahini } */}
-                <div className="hide-scrollbar">
+                <div className="hide-scrollbar leading-8 font-paragraph font-normal">
                   <div
                     dangerouslySetInnerHTML={{ __html: item.newsBody }}
                   ></div>
@@ -108,8 +120,8 @@ export default function News({ data, categories }) {
               </div>
 
               {/* Left Div */}
-              <div className="md:w-[398px] w-full md:ml-[33%] mx-auto md:mx-0 mt-7 md:mt-0">
-                <div className="small-blue-card md:p-[40px] p-6">
+              <div className="md:w-[420px] w-full md:ml-[35%] mx-auto md:mx-0 mt-7 md:mt-0">
+                <div className="small-blue-card md:p-[40px]">
                   <div className="small-card-title font-title">
                     Explore all of our Ai tools now
                   </div>
@@ -127,9 +139,9 @@ export default function News({ data, categories }) {
                 {/* Popular */}
 
                 <div className="category mt-6 mb-10  text-xl font-paragraph font-medium">
-                  <div className="text-xl font-paragraph font-normal">
-                    Popular Categories
-                  </div>
+                  <h2 className="text-xl font-paragraph font-semibold">
+                    Popular Categories :
+                  </h2>
                   <div className="flex flex-wrap gap-4 mt-4 text-lg font-normal">
                     {cata?.map((subItem, index) => (
                       <p
@@ -144,7 +156,9 @@ export default function News({ data, categories }) {
                 </div>
 
                 <div className="category mb-10 text-xl font-paragraph font-medium">
-                  <div className="text-lg font-normal w-full">Tags</div>
+                  <h2 className="text-xl font-paragraph font-semibold">
+                    Tags :
+                  </h2>
                   <div className="flex flex-wrap gap-4  mt-2 text-lg font-normal w-full p-2 font-paragraph text-[#4D5761]">
                     <p className="h-fit w-fit border rounded-3xl text-center py-2 px-4 font-paragraph font-normal text-sm text-[#4D5761]">
                       Ai Detection
@@ -169,14 +183,14 @@ export default function News({ data, categories }) {
               </div>
             </div>
             <div className="large-card md:mt-10 mb-15">
-              <div className="large-right font-title ">
-                <p className="font font-bold text-[56px]">
+              <div className="large-right md:w-[45%]">
+                <h1 className="font font-title font-bold text-[56px]">
                   Let’s Contact
                   <br />
                   With Us.
-                </p>
+                </h1>
               </div>
-              <div className="vertical"></div>
+              <div className="vertical mr-6"></div>
               <div className="large-left">
                 <div className="text-paragraph text-base font-normal text-white ">
                   Find the best AI tools for your needs. Go to the filter and
