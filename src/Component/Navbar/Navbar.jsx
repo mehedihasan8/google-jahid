@@ -51,7 +51,7 @@ const Navbar = () => {
       <ul className="md:flex justify-between w-[12rem] md:mt-2 hidden">
         <Link href="/">
           <li
-            className={`hover:text-[#2970ff] hover:translate transition-all duration-500  ${
+            className={`hover:text-[#2970ff] hover:translate transition-all duration-500 text-[#4D5761]  ${
               router.pathname === "/" ? "active relative" : ""
             }`}
           >
@@ -63,7 +63,7 @@ const Navbar = () => {
         </Link>
         <Link href="/news">
           <li
-            className={`hover:text-[#2970ff] hover:translate transition-all duration-500  ${
+            className={`hover:text-[#2970ff] hover:translate transition-all duration-500 text-[#4D5761]  ${
               router.pathname === "/news" ? "active relative" : ""
             }`}
           >
