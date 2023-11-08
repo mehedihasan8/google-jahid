@@ -3,10 +3,10 @@ import Card from "../Component/Card/Card";
 import Hero from "../Component/Hero/MainHero";
 import Filter from "../Component/Filter/MainFilter";
 import { useEffect, useState } from "react";
-import CookiePopup from "../Component/Popup/Popup";
 import Head from "next/head";
 import { useInView } from "react-intersection-observer";
 import Footer from "../Component/Footer/Footer";
+import CookiePopup from "../Component/Popup/CookiePopup";
 
 const Home = ({ allsubcategoriesData, filterData }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -120,6 +120,21 @@ const Home = ({ allsubcategoriesData, filterData }) => {
   useEffect(() => {
     setIsLoading(true);
     loadToolsData();
+  }, []);
+
+  const [isPopUp, setPopUp] = useState("hidden");
+  useEffect(() => {
+    if (sessionStorage.getItem("popup") < 0) {
+      return;
+    }
+    // setTimeout(() => {
+    //   setPopUp("block");
+    //   sessionStorage.setItem("popup", 1);
+    // }, 1000);
+    else {
+      setPopUp("block");
+      sessionStorage.setItem("popup", 1);
+    }
   }, []);
 
   return (
@@ -248,10 +263,10 @@ const Home = ({ allsubcategoriesData, filterData }) => {
           <Card toolsData={toolsData} sortOption={sortOption} />
         </div>
         <div
-          className="flex justify-center items-center p-4 col-span-1 sm:col-span-2 md:col-span-3 !md:w-full bg-[#F9FAFB]"
+          className="flex justify-center items-center p-4 col-span-1 sm:col-span-2 md:col-span-3 "
           ref={ref}
         >
-          {isLoading ? (
+          {isLoading && (
             <div
               className="inline-block h-10 w-10 animate-spin rounded-full border-4 text-[#2970ff] border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
               role="status"
@@ -260,14 +275,12 @@ const Home = ({ allsubcategoriesData, filterData }) => {
                 Loading...
               </span>
             </div>
-          ) : (
-            <Footer />
           )}
         </div>
 
-        {/* {isLoading || <Footer />} */}
+        {isLoading || <Footer />}
 
-        <CookiePopup />
+        <CookiePopup isPopUp={isPopUp} setPopUp={setPopUp} />
       </div>
     </div>
   );

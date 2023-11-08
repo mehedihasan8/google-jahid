@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import CookiePopup from "../Popup/Popup";
 import Link from "next/link";
-const Footer = () => {
-  const [isPopUp, setPopUp] = useState("hidden");
-  useEffect(() => {
-    if (sessionStorage.getItem("popup") > 0) {
-      return;
-    }
-    setTimeout(() => {
-      setPopUp("block");
-      sessionStorage.setItem("popup", 1);
-    }, 1000);
-  }, []);
+const Footer = ({ isPopUp, setPopUp }) => {
+  // const [isPopUp, setPopUp] = useState("hidden");
+  // useEffect(() => {
+  //   if (sessionStorage.getItem("popup") < 0) {
+  //     return;
+  //   }
+  //   // setTimeout(() => {
+  //   //   setPopUp("block");
+  //   //   sessionStorage.setItem("popup", 1);
+  //   // }, 1000);
+  //   else {
+  //     setPopUp("block");
+  //     sessionStorage.setItem("popup", 1);
+  //   }
+  // }, []);
 
   return (
     <div className="md:h-[318px] h-fit bg-[#F9FAFB] mt-10 md:my-0 md:pb-0">
@@ -167,27 +171,11 @@ const Footer = () => {
             </div>
           </div>
         </footer>
-
-        <CookiePopup></CookiePopup>
       </div>
       <hr className="mx-auto bg-[#D2D6DB] mt-6 mb:mt-0 md:mb-0 w-[1280px]" />
       <p className="text-center w-full text-base font-paragraph h-[70px] flex justify-center items-center">
         Copyright © 2023 - ToolsFinder
       </p>
-      <div className={`flex justify-center bg-[#081120] ${isPopUp} `}>
-        <div className="flex items-center text-white px-4 py-6 ">
-          <p className="text-left md:text-center text-base font-paragraph">
-            We use cookies to improve your experience on our site. If you
-            continue to use this site we will assume that you are happy with it.
-          </p>
-          <button
-            onClick={() => setPopUp("hidden")}
-            className="bg-white text-[#081120] py-1 px-3 font-semibold text-lg rounded-md ml-6"
-          >
-            Ok
-          </button>
-        </div>
-      </div>
     </div>
   );
 };
