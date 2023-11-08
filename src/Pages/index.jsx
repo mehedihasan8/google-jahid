@@ -124,17 +124,17 @@ const Home = ({ allsubcategoriesData, filterData }) => {
 
   const [isPopUp, setPopUp] = useState("hidden");
   useEffect(() => {
-    if (sessionStorage.getItem("popup") < 0) {
+    if (localStorage.getItem("popup") > 0) {
       return;
     }
-    // setTimeout(() => {
-    //   setPopUp("block");
-    //   sessionStorage.setItem("popup", 1);
-    // }, 1000);
-    else {
+    setTimeout(() => {
       setPopUp("block");
-      sessionStorage.setItem("popup", 1);
-    }
+      localStorage.setItem("popup", 1);
+    }, 1000);
+    // else {
+    //   setPopUp("block");
+    //   localStorage.setItem("popup", 1);
+    // }
   }, []);
 
   return (

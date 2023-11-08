@@ -56,18 +56,20 @@ const Hero = ({ allsubcategoriesData }) => {
   };
 
   return (
-    <div className="hero-content text-center mt-16 md:mt-24">
-      <div className="max-w-3xl p-0">
-        <h1 className="md:text-[56px] text-[35px]  md:font-bold hero-title mb-6">
-          We are listing the best AI
-          <br /> tools Everyday.
-        </h1>
-        <p className={`hero-subtitle font-paragraph md:mb-11 mb-6`}>
-          Find the best AI tools for your needs. Go to the filter <br /> and
-          choose your Category.{" "}
-        </p>
+    <div className="hero-content !p-2 text-center mt-16 md:mt-24">
+      <div className="">
+        <div className="max-w-3xl">
+          <h1 className="md:text-[56px] text-[35px]  md:font-bold hero-title mb-6">
+            We are listing the best AI
+            <br /> tools Everyday.
+          </h1>
+          <p className={`hero-subtitle font-paragraph md:mb-11 mb-6`}>
+            Find the best AI tools for your needs. Go to the filter <br /> and
+            choose your Category.{" "}
+          </p>
+        </div>
 
-        <div className="relative input-container mx-auto md:w-[478px] h-[52px] w-full">
+        <div className="input-container mx-auto md:w-[800px] h-[52px] w-full">
           <div
             onBlur={handleBlur}
             className="h-full w-full flex justify-between"
@@ -113,65 +115,61 @@ const Hero = ({ allsubcategoriesData }) => {
             Popular Categories
           </p>
 
-          <div className="flex items-center md:gap-6 gap-2">
-            {/* Main Wrapper */}
-            <div className="items-container md:w-[790px] overflow-hidden py-2">
-              <div className="flex items-center gap-5 ">
-                {/* pre button  */}
-                <button
-                  onClick={goPrev}
-                  className="rounded-full h-9 w-9 border-[1.4px]"
-                >
-                  <BsArrowLeftShort className="h-8 w-8" />
-                </button>
+          {/* Main Wrapper */}
+          <div className=" md:w-[790px] overflow-hidden py-2">
+            <div className="flex justify-start items-center md:gap-2 ">
+              {/* pre button  */}
+              <button
+                onClick={goPrev}
+                className="hidden md:block rounded-full h-9 w-9 border-[1.4px] text-[#6C737F]"
+              >
+                <BsArrowLeftShort className="h-8 w-8" />
+              </button>
 
-                {/* swiper  */}
-                <div className="w-[240px] md:w-[650px] mx-auto">
-                  <Swiper
-                    slidesPerView={1}
-                    // grid={{ rows: 2 }}
-                    spaceBetween={10}
-                    navigation={{
-                      prevEl: ".swiper-button-prev",
-                      nextEl: ".swiper-button-next",
-                    }}
-                    autoWidth={true}
-                    onSwiper={(swiper) => (swiperRef.current = swiper)}
-                    className="mySwiper"
-                    breakpoints={{
-                      640: {
-                        slidesPerView: 1,
-                      },
-                    }}
-                  >
-                    {firstSixItem.map((item, index) => (
-                      <SwiperSlide>
-                        <button
-                          key={index}
-                          // name={item.SubCategory}
-                          onClick={(e) => handleClick(e, item)}
-                          className="font-normal item h-fit w-full whitespace-nowrap border-2 cursor-pointer hover:scale-105 ease-in-out duration-30 'hidden'p-text px-4 py-auto bg-transparent"
-                        >
-                          {item.SubCategory}
-                        </button>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
-
-                {/* next button  */}
-                <button
-                  onClick={goNext}
-                  className="rounded-full h-9 w-9 border-[1.4px]"
+              {/* swiper  */}
+              <div className="w-[300px] md:w-[690px] mx-auto">
+                <Swiper
+                  slidesPerView={1}
+                  // grid={{ rows: 2 }}
+                  spaceBetween={10}
+                  navigation={{
+                    prevEl: ".swiper-button-prev",
+                    nextEl: ".swiper-button-next",
+                  }}
+                  autoWidth={true}
+                  onSwiper={(swiper) => (swiperRef.current = swiper)}
+                  className="mySwiper"
+                  breakpoints={{
+                    640: {
+                      slidesPerView: 1,
+                    },
+                  }}
                 >
-                  <BsArrowRightShort className="h-8 w-8" />
-                </button>
+                  {firstSixItem.map((item, index) => (
+                    <SwiperSlide>
+                      <button
+                        key={index}
+                        // name={item.SubCategory}
+                        onClick={(e) => handleClick(e, item)}
+                        className="font-normal item h-fit w-full mr-0 md:mr-3 text-[#4D5761] whitespace-nowrap border-2 cursor-pointer hover:scale-105 ease-in-out duration-30 'hidden'p-text px-4 py-auto bg-transparent"
+                      >
+                        {item.SubCategory}
+                      </button>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
+
+              {/* next button  */}
+              <button
+                onClick={goNext}
+                className="rounded-full h-9 w-9 border-[1.4px]"
+              >
+                <BsArrowRightShort className="h-8 w-8 font-extralight text-[#6C737F]" />
+              </button>
             </div>
           </div>
         </div>
-
-        {/* ... Rest of your component */}
       </div>
     </div>
   );

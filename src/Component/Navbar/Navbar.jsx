@@ -37,10 +37,13 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("click", handleClickOutsideDropdown);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   return (
-    <div className="max-w-screen-xl mx-auto md:pt-7 py-4 top-0 backdrop-blur-sm z-10 w-full fixed flex justify-between items-center ml-[0.3rem] md:ml-0">
+    <div
+      // ref={dropdownRef}
+      className="max-w-screen-xl mx-auto md:pt-7 py-4 top-0 backdrop-blur-sm md:backdrop-blur-sm z-50 w-full fixed flex justify-between items-center pl-[0.3rem] md:pl-0"
+    >
       <Link href="/">
         <Image
           src={Logo}
@@ -51,25 +54,26 @@ const Navbar = () => {
       <ul className="md:flex justify-between w-[12rem] md:mt-2 hidden">
         <Link href="/">
           <li
-            className={`hover:text-[#2970ff] hover:translate transition-all duration-500 text-[#4D5761]  ${
-              router.pathname === "/" ? "active relative" : ""
+            className={`nav-item hover:text-[#2970ff] hover:translate transition-all duration-300 ${
+              router.pathname === "/" ? "active" : ""
             }`}
           >
             AI Tools Finder
             {router.pathname === "/" ? (
-              <div className="absolute h-[3px] left-1/2 transform -translate-x-1/2 rounded-full bg-[#2970ff] w-6"></div>
+              <div className="active-indicator"></div>
             ) : null}
           </li>
         </Link>
+
         <Link href="/news">
           <li
-            className={`hover:text-[#2970ff] hover:translate transition-all duration-500 text-[#4D5761]  ${
-              router.pathname === "/news" ? "active relative" : ""
+            className={`nav-item hover:text-[#2970ff] hover:translate transition-all duration-300${
+              router.pathname === "/news" ? "active" : ""
             }`}
           >
             News
             {router.pathname === "/news" ? (
-              <div className="absolute h-[3px] left-1/2 transform -translate-x-1/2 rounded-full bg-[#2970ff] w-6"></div>
+              <div className="active-indicator"></div>
             ) : null}
           </li>
         </Link>
@@ -81,16 +85,16 @@ const Navbar = () => {
 
       {/* toggole Button  */}
       <button
-        ref={dropdownRef}
+        // ref={dropdownRef}
         onClick={handleMenuToggle}
-        className="lg:hidden text-black p-2 focus:outline-none transition-opacity duration-300 ease-in-out"
+        className="lg:hidden z-10 text-black p-2 focus:outline-none transition-opacity duration-300 ease-in-out"
         aria-controls="mobile-menu"
         aria-expanded={isMenuOpen}
         style={{ opacity: isMenuOpen ? 0.5 : 1 }}
       >
         {isMenuOpen ? (
           <svg
-            className="w-6 h-6"
+            className="w-6 h-6 bg-[#f3f4f6] rounded-full border-2"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -122,22 +126,27 @@ const Navbar = () => {
       </button>
 
       <div
+        ref={dropdownRef}
+        onClick={handleUserClick}
         className={`${
           isMenuOpen ? "block" : "hidden"
         } absolute right-3 top-10 z-[1] p-2 shadow bg-white border border-gray-200 rounded transition-all duration-300`}
         id="mobile-menu"
       >
-        <ul className="flex flex-col gap-3 text-center">
+        <ul className="flex flex-col items-center gap-3 text-center">
           <Link href="/" onClick={closeMenu}>
-            <li className="px-4 border-b border-gray-300 hover:bg-blue-100">
+            <li className="px-4 border-b border-gray-300 hover:border-b-[#2970ff]">
               AI Tools Finder
             </li>
           </Link>
           <Link href="/news" onClick={closeMenu}>
-            <li className="px-4 border-b border-gray-300 hover:bg-blue-100">
+            <li className="px-4 border-b border-gray-300 hover:border-b-[#2970ff]">
               News
             </li>
           </Link>
+          <li>
+            <Login />
+          </li>
         </ul>
       </div>
     </div>

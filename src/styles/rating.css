@@ -1,58 +1,43 @@
-
-.tt{
+.tt {
   color: var(--neutral-950, #081120);
-/* Body Text/Inter 16px/Medium */
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 150%;
+  /* Body Text/Inter 16px/Medium */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
 }
 .svg-sizing {
-
   display: flex;
-  width: 44px;
-  height: 44px;
+  width: 50px;
+  height: 50px;
   padding: 10px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 100px;
-  background: var(--neutral-100, #F3F4F6);
+  border-radius: 50%;
+  background: var(--neutral-100, #f3f4f6);
 }
 
 @media only screen and (max-width: 767px) {
-  
   .my-element {
     margin-top: 0px;
-
   }
-  .tt{
+  .tt {
     color: var(--neutral-950, #081120);
 
-/* Body Text/Inter 16px/Semi Bold */
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 600;
-line-height: 150%; /* 24px */
-  }
-  .svg-sizing{
-    display: flex;
-width: 30px;
-height: 30px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-border-radius: 100px;
-background: var(--neutral-100, #F3F4F6);
+    /* Body Text/Inter 16px/Semi Bold */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
   }
 
-  
+  .svg-sizing {
+    width: 33px;
+    height: 33px;
+  }
 }
 /* div{
   border:1px solid red;
 } */
-
-
-

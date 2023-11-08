@@ -63,7 +63,7 @@ const Filter = ({ filterData }) => {
 
       {/* <!-- Dropdown menu --> */}
       <div
-        className={`z-50 ${
+        className={`z-10 ${
           toggle ? "hidden" : "block absolute bottom-30 left-0"
         } font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-xl md:w-[200px] w-full text-base`}
       >
