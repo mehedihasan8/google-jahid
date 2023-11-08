@@ -1,12 +1,19 @@
+"use client";
 import Card from "../Component/Card/Card";
 import Hero from "../Component/Hero/MainHero";
 import Filter from "../Component/Filter/MainFilter";
 import { useEffect, useState } from "react";
 import CookiePopup from "../Component/Popup/Popup";
 import Head from "next/head";
+import { useInView } from "react-intersection-observer";
+import Footer from "../Component/Footer/Footer";
 
-const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
+const Home = ({ allsubcategoriesData, filterData }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [total, setTotal] = useState(0);
+  const [toolsData, setToolsData] = useState([]);
+  const [page, setPage] = useState(0);
+  const { ref, inView } = useInView();
   const [searchData, setSearchData] = useState("");
   const [sortOption, setSortOption] = useState("All");
   const decoration = (x) => {
@@ -90,6 +97,31 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
     }
   };
 
+  const loadToolsData = async () => {
+    const nextPage = page + 1;
+    const response = await fetch(
+      `https://api.goodtools.ai/tool?page=${nextPage}&limit=2`
+    );
+    const data = await response.json();
+    console.log("104", data);
+
+    setToolsData([...toolsData, ...data.tools]);
+    setPage(nextPage);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+    if (inView) {
+      loadToolsData();
+    }
+  }, [inView]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    loadToolsData();
+  }, []);
+
   return (
     <div className="">
       <Head>
@@ -116,11 +148,11 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
       </Head>
 
       <div className="md:mt-[66px] mt-[40px]">
-        <div className=" md:mb-[100px] mb-[41.5px]">
+        <div className="max-w-screen-xl mx-auto md:mb-[100px] mb-[41.5px]">
           <Hero allsubcategoriesData={allsubcategoriesData} />
         </div>
 
-        <div className=" md:flex items-center justify-between md:mb-11 mb-[30px]">
+        <div className=" max-w-screen-xl mx-auto md:flex items-center justify-between md:mb-11 mb-[30px]">
           <div className="md:flex items-center ">
             <div className="w-full md:w-fit mx-auto mb-4 md:mb-0">
               <Filter filterData={filterData} />
@@ -129,7 +161,7 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
               Showing{" "}
               <span className="text-[#081120] font-paragraph font-semibold">
                 {" "}
-                {decoration(toolsData.length)}
+                {decoration(toolsData?.length)}
               </span>{" "}
               Best Ai Tools
             </div>
@@ -212,9 +244,28 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
           </div>
         </div>
 
-        <div className="">
+        <div className="max-w-screen-xl mx-auto mb-20">
           <Card toolsData={toolsData} sortOption={sortOption} />
         </div>
+        <div
+          className="flex justify-center items-center p-4 col-span-1 sm:col-span-2 md:col-span-3 !md:w-full bg-[#F9FAFB]"
+          ref={ref}
+        >
+          {isLoading ? (
+            <div
+              className="inline-block h-10 w-10 animate-spin rounded-full border-4 text-[#2970ff] border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              role="status"
+            >
+              <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                Loading...
+              </span>
+            </div>
+          ) : (
+            <Footer />
+          )}
+        </div>
+
+        {/* {isLoading || <Footer />} */}
 
         <CookiePopup />
       </div>
@@ -237,9 +288,12 @@ const Home = ({ toolsData, allsubcategoriesData, filterData }) => {
 
 //   return { props: { toolsData, allsubcategoriesData, filterData } };
 // }
+
+// console.log("259 line", posts);
+
 export async function getServerSideProps() {
   const [tools, allsubcategories, filtersubcategories] = await Promise.all([
-    fetch("http://api.goodtools.ai/tool"),
+    fetch("https://api.goodtools.ai/tool?page=1&limit=2"),
     fetch("http://api.goodtools.ai/allsubcategories"),
     fetch("http://api.goodtools.ai/sublist"),
   ]);

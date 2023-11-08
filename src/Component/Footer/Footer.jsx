@@ -1,8 +1,20 @@
+import { useEffect, useState } from "react";
 import CookiePopup from "../Popup/Popup";
 import Link from "next/link";
 const Footer = () => {
+  const [isPopUp, setPopUp] = useState("hidden");
+  useEffect(() => {
+    if (sessionStorage.getItem("popup") > 0) {
+      return;
+    }
+    setTimeout(() => {
+      setPopUp("block");
+      sessionStorage.setItem("popup", 1);
+    }, 1000);
+  }, []);
+
   return (
-    <div className="md:h-[318px] h-fit bg-[#F9FAFB]   mt-10 md:my-0 md:pb-0">
+    <div className="md:h-[318px] h-fit bg-[#F9FAFB] mt-10 md:my-0 md:pb-0">
       <div className="font-paragraph bg-[#F9FAFB]  md:pt-[80px] pt-[64px] md:pb-[60px] w-full px-4 md:px-0">
         <footer className="mt-6 md:mt-0 md:max-w-[1280px] w-full text-base font-paragraph mx-auto flex flex-col md:flex-row items-center">
           <div className="flex items-center w-full md:w-[70%] justify-between ">
@@ -46,7 +58,7 @@ const Footer = () => {
           </div>
           <div className="divider divider-horizontal"></div>
 
-          <div className="md:h-[94px] h-[60px] w-[30%] flex flex-col md:col-span-1 col-span-2 md:items-end items-center md:my-auto mt-8 md:mt-0">
+          <div className="md:h-[94px] h-[60px] w-[30%]  flex flex-col md:col-span-1 col-span-2 md:items-end items-center md:my-auto mt-8 md:mt-0">
             <div className="flex flex-col md:items-start items-center">
               <a className="link link-hover nav-text mb-[11px]">Social Link</a>
               <div className="flex justify-between items-center w-[152px]">
@@ -162,13 +174,16 @@ const Footer = () => {
       <p className="text-center w-full text-base font-paragraph h-[70px] flex justify-center items-center">
         Copyright © 2023 - ToolsFinder
       </p>
-      <div className="flex justify-center bg-[#081120]">
+      <div className={`flex justify-center bg-[#081120] ${isPopUp} `}>
         <div className="flex items-center text-white px-4 py-6 ">
           <p className="text-left md:text-center text-base font-paragraph">
             We use cookies to improve your experience on our site. If you
             continue to use this site we will assume that you are happy with it.
           </p>
-          <button className="bg-white text-[#081120] py-1 px-3 font-semibold text-lg rounded-md ml-6">
+          <button
+            onClick={() => setPopUp("hidden")}
+            className="bg-white text-[#081120] py-1 px-3 font-semibold text-lg rounded-md ml-6"
+          >
             Ok
           </button>
         </div>

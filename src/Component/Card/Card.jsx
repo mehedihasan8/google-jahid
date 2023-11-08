@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+// "use client";
+import React, { useState, useEffect } from "react";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import Link from "next/link";
 
@@ -12,13 +13,13 @@ const Card = ({ toolsData, sortOption }) => {
   useEffect(() => {
     setIsLoading(false);
     setTools(toolsData);
-    setLastElem(toolsData.length - 1);
-    toolsData.forEach((tool) => {
+    setLastElem(toolsData?.length - 1);
+    toolsData?.forEach((tool) => {
       const storageKey = `myHeartClicked-${tool._id}`;
       const isClicked = loadStateFromLocalStorage(storageKey);
       initialButtonStates[tool._id] = isClicked;
     });
-  }, []);
+  }, [toolsData]);
 
   // let toolsCount = 0;
   const component = (tool, indx) => {

@@ -40,7 +40,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="max-w-screen-xl md:pt-7 py-4 top-0 backdrop-blur-sm z-10 w-full fixed flex justify-between items-center ml-[0.3rem] md:ml-0">
+    <div className="max-w-screen-xl mx-auto md:pt-7 py-4 top-0 backdrop-blur-sm z-10 w-full fixed flex justify-between items-center ml-[0.3rem] md:ml-0">
       <Link href="/">
         <Image
           src={Logo}

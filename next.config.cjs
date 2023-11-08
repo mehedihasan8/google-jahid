@@ -2,6 +2,9 @@ module.exports = {
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "ts", "tsx"],
   dynamicParams: true,
+  experimental: {
+    serverAction: true,
+  },
   generateStaticParams: async () => {
     const [tools, newses, subCategories] = await Promise.all([
       fetch("https://api.goodtools.ai/tool"),
