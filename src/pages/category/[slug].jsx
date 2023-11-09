@@ -1,13 +1,14 @@
-import Card from "../../Component/Card/Card";
-import CategoryFilter from "../../Component/Filter/CategoryFilter";
-import CategoryHero from "../../Component/Hero/CategoryHero";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
-
 import Head from "next/head";
-import Footer from "../../Component/Footer/Footer";
-import CookiePopup from "../../Component/Popup/CookiePopup";
+import dynamic from "next/dynamic";
+
+const Card = dynamic(() => import("../../Component/Card/Card"));
+const CategoryFilter = dynamic(() => import("../../Component/Filter/CategoryFilter"));
+const CategoryHero = dynamic(() => import("../../Component/Hero/CategoryHero"));
+const Footer = dynamic(() => import("../../Component/Footer/Footer"));
+const CookiePopup = dynamic(() => import("../../Component/Popup/CookiePopup"));
 
 const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filterData, slug }) => {
   const [sortOption, setSortOption] = useState("All");

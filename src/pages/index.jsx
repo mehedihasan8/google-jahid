@@ -1,12 +1,14 @@
 "use client";
-import Card from "../Component/Card/Card";
-import Hero from "../Component/Hero/MainHero";
-import Filter from "../Component/Filter/MainFilter";
-import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import Footer from "../Component/Footer/Footer";
-import CookiePopup from "../Component/Popup/CookiePopup";
+
+const Card = dynamic(() => import('../Component/Card/Card'));
+const Hero = dynamic(() => import('../Component/Hero/MainHero'));
+const Filter = dynamic(() => import('../Component/Filter/MainFilter'));
+const Footer = dynamic(() => import('../Component/Footer/Footer'));
+const CookiePopup = dynamic(() => import('../Component/Popup/CookiePopup'));
 
 const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -114,7 +116,7 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
     setTotal(preToolsData.total);
     setToolsData([...toolsData, ...preToolsData.tools]);
     setIsLoading(false);
-  },[]);
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);

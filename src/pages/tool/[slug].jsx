@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import Rate from "../../Component/Rate/Rate";
-import Rattingg from "../../Component/Rating/Rating";
-import Link from "next/link";
-import RelatedCards from "../../Component/Card/RelatedCard";
 import Head from "next/head";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const Rate = dynamic(() => import("../../Component/Rate/Rate"));
+const Rattingg = dynamic(() => import("../../Component/Rating/Rating"));
+const RelatedCards = dynamic(() => import("../../Component/Card/RelatedCard"));
 
 export default function Tool({ data }) {
   const [cards, setCards] = useState(null);
