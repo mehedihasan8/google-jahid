@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { BiLinkExternal } from "react-icons/bi";
 import { FiShare2 } from "react-icons/fi";
+import Image from "next/image"
 
 const Rating = ({ card }) => {
   // consoleisClicked
@@ -36,14 +37,13 @@ const Rating = ({ card }) => {
             {/* Product Info */}
             <div>
               <p className="D font-normal text-base text-[#6C737F] pb-2">
-                Product Information
+                Tool Information
               </p>
               <div className="flex items-center justify-center gap-1 md:gap-6">
                 <h1 className="md:text-5xl text-[28px] font-bold mt-2 font-title">
                   {card.toolName}
                 </h1>
                 <a href={card?.link} target="_blank" rel="noopener noreferrer">
-                  {" "}
                   <BiLinkExternal className="md:text-[25px] text-[20px] mt-[10px] md:mt-4 text-[#6C737F]" />
                 </a>
               </div>
@@ -74,10 +74,17 @@ const Rating = ({ card }) => {
             {/* Product image */}
             <div className="md:grid grid-cols-2  md:mt-10 mt-6 md:gap-[80px]">
               <div className="">
-                <img
+                <Image
                   src={`https://api.goodtools.ai/uploads/${card.image}`}
                   alt={card.toolName}
                   className="bg-black text-white md:rounded-2xl rounded-lg h-[210px] md:h-[344px]"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={card.imageBlur}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: '100%', height: '100%' }}
                 />
               </div>
               <div className="">
@@ -310,9 +317,9 @@ const Rating = ({ card }) => {
                   <hr />
                 </div>
                 {card.facebook == "" &&
-                card.linkedin == "" &&
-                card.twitter == "" &&
-                card.discord == "" ? (
+                  card.linkedin == "" &&
+                  card.twitter == "" &&
+                  card.discord == "" ? (
                   <div></div>
                 ) : (
                   <div className="social-links mt-4 md:mt-[26px]">

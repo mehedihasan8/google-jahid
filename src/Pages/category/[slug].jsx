@@ -95,7 +95,7 @@ const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
   const loadToolsData = async () => {
     const nextPage = page + 1;
     const response = await fetch(
-      `https://api.goodtools.ai/category/${slug}?page=${nextPage}&limit=1`
+      `https://api.goodtools.ai/category/${slug}/tools?page=${nextPage}&limit=9`
     );
     const data = await response.json();
     setToolsData([...toolsData, ...data.tools]);
@@ -139,7 +139,7 @@ const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
           content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${categoryData.Title}`}
         />
         <meta name="robots" content="max-image-preview:large" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta
           property="og:title"
@@ -177,7 +177,7 @@ const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
             <div className="text-[#6C737F] my-auto h-fit w-fit text-base font-medium md:ml-[32px] font-paragraph ">
               Showing{" "}
               <span className="text-[#081120] font-paragraph">
-                {toolsData.length} {}
+                {toolsData.length} { }
                 Best
               </span>{" "}
               Ai Tools
@@ -292,8 +292,8 @@ export async function getServerSideProps(context) {
   const { slug } = context.params;
   const [category, tools, allsubcategories, filtersubcategories] =
     await Promise.all([
-      fetch(`https://api.goodtools.ai/tools/category/${slug}`),
-      fetch(`https://api.goodtools.ai/category/${slug}?page=1&limit=1`),
+      fetch(`https://api.goodtools.ai/category/${slug}`),
+      fetch(`https://api.goodtools.ai/category/${slug}/tools?page=1&limit=9`),
       fetch("https://api.goodtools.ai/allsubcategories"),
       fetch("https://api.goodtools.ai/sublist"),
     ]);

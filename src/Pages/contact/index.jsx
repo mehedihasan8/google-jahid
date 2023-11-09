@@ -17,7 +17,7 @@ const Contact = () => {
           content="Ai Tools, Best Ai Tools, Ai Tools Finder"
         />
         <meta name="robots" content="max-image-preview:large" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta property="og:title" content="GoodTools.Ai - AI Tools Finder" />
         <meta

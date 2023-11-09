@@ -1,7 +1,7 @@
-// "use client";
 import React, { useState, useEffect } from "react";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import Link from "next/link";
+import Image from "next/image";
 
 const Card = ({ toolsData, sortOption }) => {
   const [tools, setTools] = useState([]);
@@ -74,10 +74,17 @@ const Card = ({ toolsData, sortOption }) => {
           <Link key={tool.slug} href={`/tool/${tool.slug}`}>
             <div className="relative w-full md:mb-6 mb-4 rounded-2xl">
               <div className="">
-                <img
+                <Image
                   src={`https://api.goodtools.ai/uploads/${tool?.image}`}
                   alt={tool?.toolName}
                   className="h-[230px] rounded-[16px] border-2"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={tool?.imageBlur}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: '100%', height: '100%' }}
                 />
               </div>
 

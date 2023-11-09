@@ -25,13 +25,13 @@ export default function Tool({ data }) {
           content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${data.toolName}`}
         />
         <meta name="robots" content="max-image-preview:large" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta property="og:title" content={`GoodTools.Ai - ${data.toolName}`} />
         <meta property="og:description" content={data.description} />
         <meta
           property="og:image"
-          content={`https://goodtools.ai/${data.image}`}
+          content={`https://goodtools.ai/uploads/${data.image}`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
@@ -68,7 +68,7 @@ export default function Tool({ data }) {
                   </clipPath>
                 </defs>
               </svg>
-              <Link href="/">Card</Link>
+              {/* <Link href="/">Card</Link>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -92,7 +92,7 @@ export default function Tool({ data }) {
                     />
                   </clipPath>
                 </defs>
-              </svg>
+              </svg> */}
               <li className="font-paragraph text-sm">{cards?.toolName}</li>
             </ul>
             <div className=" mt-10 md:px-0 md:py-0 px-4 py-4 border border-[#E5E7EB] rounded-2xl">

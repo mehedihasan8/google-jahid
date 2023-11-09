@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 
 export default function News({ data }) {
   const [news, setNews] = useState([]);
@@ -43,7 +44,7 @@ export default function News({ data }) {
           content={`Ai Tools, Best Ai Tools, Ai Tools Finder, Ai News, Tech News`}
         />
         <meta name="robots" content="max-image-preview:large" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta property="og:title" content="GoodTools.Ai - News" />
         <meta
@@ -110,22 +111,23 @@ export default function News({ data }) {
                     }}
                   >
                     <div className="">
-                      <img
+                      <Image
                         className="w-full rounded-xl h-[285px] border-2 "
-                        // src={`https://api.goodtools.ai/uploads/${item.image}`}
-                        src={`https://i.ibb.co/8c144dc/Image.jpg`}
+                        src={`https://api.goodtools.ai/uploads/${item.image}`}
+                        //src={`https://i.ibb.co/8c144dc/Image.jpg`}
                         alt={item?.newsTitle}
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL={item.imageBlur}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{ width: '100%', height: '100%' }}
                       />
                     </div>
                     <div className=" md:mt-6 pb-2 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">
                       <p className="date-title font-medium font-paragraph text-xl">
                         {item?.newsType}
-                      </p>
-                      {/* <div className="invisible vertical-line mr-[18px]">|</div> */}
-                      <p className="vertical-line mx-[10px] font-bold"></p>
-                      <p className="">
-                        {/* {formateDte(item?.date)} */}
-                        {formateDte(item?.date)}
                       </p>
                     </div>
 

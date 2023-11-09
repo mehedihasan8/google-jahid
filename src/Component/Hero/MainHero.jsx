@@ -47,9 +47,9 @@ const Hero = ({ allsubcategoriesData }) => {
     }
   };
 
-  const handleSearch = () => {};
+  const handleSearch = () => { };
 
-  const handleBlur = () => {};
+  const handleBlur = () => { };
 
   const handleClick = (event, item) => {
     navigate.push(`/category/${item.slug}`);
@@ -138,7 +138,7 @@ const Hero = ({ allsubcategoriesData }) => {
                     prevEl: ".swiper-button-prev",
                     nextEl: ".swiper-button-next",
                   }}
-                  autoWidth={true}
+                  //autowidth
                   onSwiper={(swiper) => (swiperRef.current = swiper)}
                   className="mySwiper"
                   breakpoints={{

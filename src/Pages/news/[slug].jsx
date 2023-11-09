@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function News({ data, categories }) {
   const [item, setItem] = useState(null);
@@ -53,7 +54,7 @@ export default function News({ data, categories }) {
           content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${item.newsTitle}`}
         />
         <meta name="robots" content="max-image-preview:large" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta
           property="og:title"
@@ -81,11 +82,18 @@ export default function News({ data, categories }) {
         <div className="md:pt-[40px] mb-[40px] pt-6 md:mx-0 mx-2">
           <div className="px-4 md:px-6  pt-4 pb-7 mb-26 border-[#E5E7EB] border rounded-2xl">
             {/* Hero section */}
-            <img
+            <Image
               className="md:mb-10 mb-6 rounded-lg mx-auto w-full"
               alt={item.newsTitle}
-              src={`https://i.ibb.co/1fGrFQp/Image.png`}
-              // src={`https://api.goodtools.ai/uploads/${item.image}`}
+              //src={`https://i.ibb.co/1fGrFQp/Image.png`}
+              src={`https://api.goodtools.ai/uploads/${item.image}`}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={item.imageBlur}
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: '100%', height: '100%' }}
             />
             <div className="md:grid md:grid-cols-2 ">
               {/* right-div */}
@@ -93,11 +101,6 @@ export default function News({ data, categories }) {
                 <div className="date">
                   <p className="font-paragraph font-medium text-xl">
                     {item.newsType}
-                  </p>
-                  <p className="vertical-line mx-[8px] font-bold "></p>
-                  <p className="font-normal text-[#6C737F]">
-                    {/* {formateDte(item?.date)} */}
-                    {formateDte(item?.date)}
                   </p>
                 </div>
 

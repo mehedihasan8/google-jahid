@@ -100,7 +100,7 @@ const Home = ({ allsubcategoriesData, filterData }) => {
   const loadToolsData = async () => {
     const nextPage = page + 1;
     const response = await fetch(
-      `https://api.goodtools.ai/tool?page=${nextPage}&limit=2`
+      `https://api.goodtools.ai/tool?page=${nextPage}&limit=9`
     );
     const data = await response.json();
     console.log("104", data);
@@ -147,7 +147,7 @@ const Home = ({ allsubcategoriesData, filterData }) => {
           content="Ai Tools, Best Ai Tools, Ai Tools Finder"
         />
         <meta name="robots" content="max-image-preview:large" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta property="og:title" content="GoodTools.Ai - AI Tools Finder" />
         <meta
@@ -284,7 +284,7 @@ const Home = ({ allsubcategoriesData, filterData }) => {
 
 export async function getServerSideProps() {
   const [tools, allsubcategories, filtersubcategories] = await Promise.all([
-    fetch("https://api.goodtools.ai/tool?page=1&limit=2"),
+    fetch("https://api.goodtools.ai/tool?page=1&limit=9"),
     fetch("http://api.goodtools.ai/allsubcategories"),
     fetch("http://api.goodtools.ai/sublist"),
   ]);
