@@ -14,6 +14,10 @@ export default function Tool({ data }) {
     setIsloading(false);
   }, []);
 
+  function removeHtmlTags(text) {
+    return input.replace(/<\/?[^>]+(>|$)/g, "");
+  }
+
   return (
     <div>
       <Head>
@@ -28,10 +32,10 @@ export default function Tool({ data }) {
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta property="og:title" content={`GoodTools.Ai - ${data.toolName}`} />
-        <meta property="og:description" content={data.description} />
+        <meta property="og:description" content={removeHtmlTags(data.description)} />
         <meta
           property="og:image"
-          content={`https://goodtools.ai/uploads/${data.image}`}
+          content={`https://api.goodtools.ai/uploads/${data.image}`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>

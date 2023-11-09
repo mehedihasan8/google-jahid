@@ -43,6 +43,10 @@ export default function News({ data, categories }) {
     );
   }
 
+  function removeHtmlTags(text) {
+    return input.replace(/<\/?[^>]+(>|$)/g, "");
+  }
+
   return (
     <div>
       <Head>
@@ -60,10 +64,10 @@ export default function News({ data, categories }) {
           property="og:title"
           content={`GoodTools.Ai - ${item.newsTitle}`}
         />
-        <meta property="og:description" content={item.newsBody} />
+        <meta property="og:description" content={removeHtmlTags(item.newsBody)} />
         <meta
           property="og:image"
-          content={`https://goodtools.ai/${item.image}`}
+          content={`https://api.goodtools.ai/uploads/${item.image}`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
