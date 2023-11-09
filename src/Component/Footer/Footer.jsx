@@ -47,10 +47,11 @@ const Footer = () => {
 
           <div className="md:h-[94px] h-[60px] w-[30%]  flex flex-col md:col-span-1 col-span-2 md:items-end items-center md:my-auto mt-8 md:mt-0">
             <div className="flex flex-col md:items-start items-center">
-              <a className="link link-hover nav-text mb-[11px]">Social Link</a>
+              <p className="link link-hover nav-text mb-[11px]">Social Link</p>
               <div className="flex justify-between items-center w-[152px]">
-                <a
-                  href=""
+                <Link
+                  href="https://twitter.com/"
+                  target="_blank"
                   className="bg-[#5865F2] w-[26px] h-[26px] flex items-center justify-between rounded-full pl-[5px]"
                 >
                   <svg
@@ -65,9 +66,10 @@ const Footer = () => {
                       fill="white"
                     />
                   </svg>
-                </a>
-                <a
-                  href=""
+                </Link>
+                <Link
+                  href="https://facebook.com/"
+                  target="_blank"
                   className=" w-[26px] h-[26px] flex items-center justify-between rounded-full"
                 >
                   <svg
@@ -93,9 +95,10 @@ const Footer = () => {
                       </clipPath>
                     </defs>
                   </svg>
-                </a>
-                <a
-                  href=""
+                </Link>
+                <Link
+                  href="https://discord.com/"
+                  target="_blank"
                   className=" w-[26px] h-[26px] flex items-center justify-between rounded-full"
                 >
                   <svg
@@ -121,9 +124,10 @@ const Footer = () => {
                       </clipPath>
                     </defs>
                   </svg>
-                </a>
-                <a
-                  href=""
+                </Link>
+                <Link
+                  href="https://twitter.com/"
+                  target="_blank"
                   className=" w-[26px] h-[26px] flex items-center justify-between rounded-full"
                 >
                   <svg
@@ -149,7 +153,7 @@ const Footer = () => {
                       </clipPath>
                     </defs>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { BiLinkExternal } from "react-icons/bi";
 import { FiShare2 } from "react-icons/fi";
 import Image from "next/image"
+import Link from "next/link";
 
 const Rating = ({ card }) => {
   // consoleisClicked
@@ -43,9 +44,9 @@ const Rating = ({ card }) => {
                 <h1 className="md:text-5xl text-[28px] font-bold mt-2 font-title">
                   {card.toolName}
                 </h1>
-                <a href={card?.link} target="_blank" rel="noopener noreferrer">
+                <Link href={card?.link} target="_blank" rel="noopener noreferrer">
                   <BiLinkExternal className="md:text-[25px] text-[20px] mt-[10px] md:mt-4 text-[#6C737F]" />
-                </a>
+                </Link>
               </div>
             </div>
             {/* Heart and share button */}
@@ -330,7 +331,7 @@ const Rating = ({ card }) => {
                     <div className="mt-[11px]">
                       <div className="flex gap-4 items-center">
                         {card.discord && (
-                          <a href={card?.discord}>
+                          <Link href={`https://discordapp.com/users/${card?.discord}`} target="_blank">
                             <svg
                               width="33"
                               height="33"
@@ -344,11 +345,11 @@ const Rating = ({ card }) => {
                                 fill="#5865F2"
                               />
                             </svg>
-                          </a>
+                          </Link>
                         )}
                         {card.twitter && (
                           <div>
-                            <a href={card.twitter}>
+                            <Link href={`https://twitter.com/${card.twitter}`} target="_blank">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="26"
@@ -372,13 +373,13 @@ const Rating = ({ card }) => {
                                   </clipPath>
                                 </defs>
                               </svg>
-                            </a>
+                            </Link>
                           </div>
                         )}
                         {card.linkedin && (
                           <div>
                             <div>
-                              <a href={card.linkedin}>
+                              <Link href={`https://www.linkedin.com/in/${card.linkedin}`} target="_blank">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   width="26"
@@ -406,13 +407,13 @@ const Rating = ({ card }) => {
                                     </clipPath>
                                   </defs>
                                 </svg>
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         )}
                         {card.facebook && (
                           <div>
-                            <a href={card.facebook}>
+                            <Link href={`https://www.facebook.com/${card.facebook}`} target="_blank">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="26"
@@ -436,7 +437,7 @@ const Rating = ({ card }) => {
                                   </clipPath>
                                 </defs>
                               </svg>
-                            </a>
+                            </Link>
                           </div>
                         )}
                       </div>
@@ -518,7 +519,7 @@ const Rating = ({ card }) => {
         </div>
       </div>
       <div className="flex justify-center md:mt-10 mt-6 border-b w-11/12 mx-auto md:pb-[60px] pb-[30px]">
-        <a target="_blank" href={card.link}>
+        <Link target="_blank" href={card.link}>
           <svg
             width="172"
             height="55"
@@ -548,7 +549,7 @@ const Rating = ({ card }) => {
               </clipPath>
             </defs>
           </svg>
-        </a>
+        </Link>
       </div>
     </div>
   );
