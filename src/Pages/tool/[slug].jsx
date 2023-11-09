@@ -17,7 +17,7 @@ export default function Tool({ data }) {
   return (
     <div>
       <Head>
-        <title>GoodTools.Ai - {data.toolName}</title>
+        <title>{`GoodTools.Ai - ${data.toolName}`}</title>
         <meta name="title" content={`GoodTools.Ai - ${data.toolName}`} />
         <meta name="description" content={data.description} />
         <meta
@@ -35,66 +35,21 @@ export default function Tool({ data }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+      <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-24">
+        <ul>
+          <li className="text-[#081120] font-paragraph text-sm">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="text-[#6C737F] font-paragraph text-sm">
+            {cards?.toolName}
+          </li>
+        </ul>
+      </div>
       <div className=" rounded-md">
         {isLoading ? (
           <span className="loading loading-ring md:w-40 md:h-40 w-20 h-20 md:ml-[45%] ml-[40%] md:my-40 my-20"></span>
         ) : (
           <div className="text-sm font-normal mb-10 md:mb-14 w-full px-2 md:px-0 mt-24">
-            <ul className=" md:ml-[0.5%] flex">
-              <li className="text-[#081120] font-paragraph text-sm">
-                <Link href="/">Home</Link>
-              </li>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="21"
-                viewBox="0 0 20 21"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_810_9466)">
-                  <path
-                    d="M8.3332 5.5L7.1582 6.675L10.9749 10.5L7.1582 14.325L8.3332 15.5L13.3332 10.5L8.3332 5.5Z"
-                    fill="#6C737F"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_810_9466">
-                    <rect
-                      width="20"
-                      height="20"
-                      fill="white"
-                      transform="translate(0 0.5)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
-              {/* <Link href="/">Card</Link>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="21"
-                viewBox="0 0 20 21"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_810_9466)">
-                  <path
-                    d="M8.3332 5.5L7.1582 6.675L10.9749 10.5L7.1582 14.325L8.3332 15.5L13.3332 10.5L8.3332 5.5Z"
-                    fill="#6C737F"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_810_9466">
-                    <rect
-                      width="20"
-                      height="20"
-                      fill="white"
-                      transform="translate(0 0.5)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg> */}
-              <li className="font-paragraph text-sm">{cards?.toolName}</li>
-            </ul>
             <div className=" mt-10 md:px-0 md:py-0 px-4 py-4 border border-[#E5E7EB] rounded-2xl">
               <Rattingg card={cards} />
               <Rate id={cards._id} name={cards?.toolName}></Rate>

@@ -103,8 +103,8 @@ const Home = ({ allsubcategoriesData, filterData }) => {
       `https://api.goodtools.ai/tool?page=${nextPage}&limit=9`
     );
     const data = await response.json();
-    console.log("104", data);
 
+    setTotal((data.limit * data.totalPages));
     setToolsData([...toolsData, ...data.tools]);
     setPage(nextPage);
     setIsLoading(false);
@@ -172,7 +172,7 @@ const Home = ({ allsubcategoriesData, filterData }) => {
               Showing{" "}
               <span className="text-[#081120] font-paragraph font-semibold">
                 {" "}
-                {decoration(toolsData?.length)}
+                {decoration(total)}
               </span>{" "}
               Best Ai Tools
             </div>
@@ -283,19 +283,17 @@ const Home = ({ allsubcategoriesData, filterData }) => {
 };
 
 export async function getServerSideProps() {
-  const [tools, allsubcategories, filtersubcategories] = await Promise.all([
-    fetch("https://api.goodtools.ai/tool?page=1&limit=9"),
+  const [allsubcategories, filtersubcategories] = await Promise.all([
     fetch("http://api.goodtools.ai/allsubcategories"),
     fetch("http://api.goodtools.ai/sublist"),
   ]);
 
-  const [toolsData, allsubcategoriesData, filterData] = await Promise.all([
-    tools.json(),
+  const [allsubcategoriesData, filterData] = await Promise.all([
     allsubcategories.json(),
     filtersubcategories.json(),
   ]);
 
-  return { props: { toolsData, allsubcategoriesData, filterData } };
+  return { props: { allsubcategoriesData, filterData } };
 }
 
 export default Home;

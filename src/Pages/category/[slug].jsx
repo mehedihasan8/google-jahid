@@ -9,9 +9,10 @@ import Head from "next/head";
 import Footer from "../../Component/Footer/Footer";
 import CookiePopup from "../../Component/Popup/CookiePopup";
 
-const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
+const CategoryData = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
   const [sortOption, setSortOption] = useState("All");
   const [toolsData, setToolsData] = useState([]);
+  const [total, setTotal] = useState(0);
   const [page, setPage] = useState(0);
   const { ref, inView } = useInView();
   const [isLoading, setIsLoading] = useState(true);
@@ -98,6 +99,7 @@ const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
       `https://api.goodtools.ai/category/${slug}/tools?page=${nextPage}&limit=9`
     );
     const data = await response.json();
+    setTotal((data.limit * data.totalPages));
     setToolsData([...toolsData, ...data.tools]);
     setPage(nextPage);
     setIsLoading(false);
@@ -128,7 +130,7 @@ const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
   return (
     <div className="">
       <Head>
-        <title>GoodTools.Ai - {categoryData.Title}</title>
+        <title>{`GoodTools.Ai - ${categoryData.Title}`}</title>
         <meta
           name="title"
           content={`Browse ${categoryData.count}+ Best AI ${categoryData.Title} Tools`}
@@ -176,11 +178,11 @@ const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
             </div>
             <div className="text-[#6C737F] my-auto h-fit w-fit text-base font-medium md:ml-[32px] font-paragraph ">
               Showing{" "}
-              <span className="text-[#081120] font-paragraph">
-                {toolsData.length} { }
-                Best
+              <span className="text-[#081120] font-paragraph font-semibold">
+                {" "}
+                {decoration(total)}
               </span>{" "}
-              Ai Tools
+              Best Ai Tools
             </div>
           </div>
           <div className=" flex items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6">
@@ -290,25 +292,23 @@ const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
 
 export async function getServerSideProps(context) {
   const { slug } = context.params;
-  const [category, tools, allsubcategories, filtersubcategories] =
+  const [category, allsubcategories, filtersubcategories] =
     await Promise.all([
       fetch(`https://api.goodtools.ai/category/${slug}`),
-      fetch(`https://api.goodtools.ai/category/${slug}/tools?page=1&limit=9`),
       fetch("https://api.goodtools.ai/allsubcategories"),
       fetch("https://api.goodtools.ai/sublist"),
     ]);
 
-  const [categoryData, toolsData, allsubcategoriesData, filterData] =
+  const [categoryData, allsubcategoriesData, filterData] =
     await Promise.all([
       category.json(),
-      tools.json(),
       allsubcategories.json(),
       filtersubcategories.json(),
     ]);
 
   return {
-    props: { categoryData, toolsData, allsubcategoriesData, filterData, slug },
+    props: { categoryData, allsubcategoriesData, filterData, slug },
   };
 }
 
-export default Home;
+export default CategoryData;

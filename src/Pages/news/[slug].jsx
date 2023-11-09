@@ -46,7 +46,7 @@ export default function News({ data, categories }) {
   return (
     <div>
       <Head>
-        <title>GoodTools.Ai - {item.newsTitle}</title>
+        <title>{`GoodTools.Ai - ${item.newsTitle}`}</title>
         <meta name="title" content={`GoodTools.Ai - ${item.newsTitle}`} />
         <meta name="description" content={data.description} />
         <meta

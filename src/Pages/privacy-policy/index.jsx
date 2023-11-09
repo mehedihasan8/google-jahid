@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 const PrivacyPolicy = () => {
   return (
@@ -26,35 +27,15 @@ const PrivacyPolicy = () => {
         <meta property="og:image" content="https://goodtools.ai/logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="flex items-center ml-[3.5%] md:ml-[0%] mt-24">
-        <a href="/" className="text-[#081120] font-paragraph text-sm">
-          Home
-        </a>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="21"
-          viewBox="0 0 20 21"
-          fill="none"
-        >
-          <g clipPath="url(#clip0_810_9466)">
-            <path
-              d="M8.3332 5.5L7.1582 6.675L10.9749 10.5L7.1582 14.325L8.3332 15.5L13.3332 10.5L8.3332 5.5Z"
-              fill="#6C737F"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_810_9466">
-              <rect
-                width="20"
-                height="20"
-                fill="white"
-                transform="translate(0 0.5)"
-              />
-            </clipPath>
-          </defs>
-        </svg>
-        <p className="text-[#6C737F] font-paragraph text-sm">Privacy Policy</p>
+      <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-24">
+        <ul>
+          <li className="text-[#081120] font-paragraph text-sm">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="text-[#6C737F] font-paragraph text-sm">
+            Privacy Policy
+          </li>
+        </ul>
       </div>
       <div className="pp my-10  md:mb-32 mt-8 border rounded-lg p-4 md:p-8">
         <h1 className="font-title text-3xl mb-6 pp-title font-bold">

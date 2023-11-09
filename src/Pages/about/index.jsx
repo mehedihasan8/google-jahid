@@ -29,8 +29,8 @@ const About = () => {
       <div className="font-paragraph mt-24">
         <div className="breadcrumbs px-2 mb-5 text-sm font-normal">
           <ul>
-            <li>
-              <Link href="/" className="text-[#081120] font-paragraph text-sm">
+            <li className="text-[#081120] font-paragraph text-sm">
+              <Link href="/">
                 Home
               </Link>
             </li>
