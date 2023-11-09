@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import Progress from "../../pages/Progress/Progress";
+import Progress from "../Progress/Progress"
 import SingleReview from "../SingleReview/SingleReview";
 import { AuthContext } from "../Context/AuthProvider";
 import Review from "../Review/Review";
