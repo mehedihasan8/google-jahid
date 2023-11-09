@@ -8,7 +8,7 @@ import { useInView } from "react-intersection-observer";
 import Footer from "../Component/Footer/Footer";
 import CookiePopup from "../Component/Popup/CookiePopup";
 
-const Home = ({ allsubcategoriesData, filterData }) => {
+const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [total, setTotal] = useState(0);
   const [toolsData, setToolsData] = useState([]);
@@ -104,11 +104,17 @@ const Home = ({ allsubcategoriesData, filterData }) => {
     );
     const data = await response.json();
 
-    setTotal((data.limit * data.totalPages));
+    setTotal(data.total);
     setToolsData([...toolsData, ...data.tools]);
     setPage(nextPage);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    setTotal(preToolsData.total);
+    setToolsData([...toolsData, ...preToolsData.tools]);
+    setIsLoading(false);
+  },[]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -283,17 +289,19 @@ const Home = ({ allsubcategoriesData, filterData }) => {
 };
 
 export async function getServerSideProps() {
-  const [allsubcategories, filtersubcategories] = await Promise.all([
+  const [tools, allsubcategories, filtersubcategories] = await Promise.all([
+    fetch("https://api.goodtools.ai/tool?page=1&limit=9"),
     fetch("http://api.goodtools.ai/allsubcategories"),
     fetch("http://api.goodtools.ai/sublist"),
   ]);
 
-  const [allsubcategoriesData, filterData] = await Promise.all([
+  const [preToolsData, allsubcategoriesData, filterData] = await Promise.all([
+    tools.json(),
     allsubcategories.json(),
     filtersubcategories.json(),
   ]);
 
-  return { props: { allsubcategoriesData, filterData } };
+  return { props: { preToolsData, allsubcategoriesData, filterData } };
 }
 
 export default Home;

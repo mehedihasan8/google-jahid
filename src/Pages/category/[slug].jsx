@@ -9,7 +9,7 @@ import Head from "next/head";
 import Footer from "../../Component/Footer/Footer";
 import CookiePopup from "../../Component/Popup/CookiePopup";
 
-const CategoryData = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
+const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filterData, slug }) => {
   const [sortOption, setSortOption] = useState("All");
   const [toolsData, setToolsData] = useState([]);
   const [total, setTotal] = useState(0);
@@ -99,11 +99,17 @@ const CategoryData = ({ categoryData, allsubcategoriesData, filterData, slug }) 
       `https://api.goodtools.ai/category/${slug}/tools?page=${nextPage}&limit=9`
     );
     const data = await response.json();
-    setTotal((data.limit * data.totalPages));
+    setTotal(data.total);
     setToolsData([...toolsData, ...data.tools]);
     setPage(nextPage);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    setTotal(preToolsData.total);
+    setToolsData([...toolsData, ...preToolsData.tools]);
+    setIsLoading(false);
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -292,22 +298,24 @@ const CategoryData = ({ categoryData, allsubcategoriesData, filterData, slug }) 
 
 export async function getServerSideProps(context) {
   const { slug } = context.params;
-  const [category, allsubcategories, filtersubcategories] =
+  const [category, tools, allsubcategories, filtersubcategories] =
     await Promise.all([
       fetch(`https://api.goodtools.ai/category/${slug}`),
+      fetch(`https://api.goodtools.ai/category/${slug}/tools?page=1&limit=9`),
       fetch("https://api.goodtools.ai/allsubcategories"),
       fetch("https://api.goodtools.ai/sublist"),
     ]);
 
-  const [categoryData, allsubcategoriesData, filterData] =
+  const [categoryData, preToolsData, allsubcategoriesData, filterData] =
     await Promise.all([
       category.json(),
+      tools.json(),
       allsubcategories.json(),
       filtersubcategories.json(),
     ]);
 
   return {
-    props: { categoryData, allsubcategoriesData, filterData, slug },
+    props: { categoryData, preToolsData, allsubcategoriesData, filterData, slug },
   };
 }
 
