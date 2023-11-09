@@ -21,18 +21,8 @@ const Card = ({ toolsData, sortOption }) => {
     });
   }, [toolsData]);
 
-  console.log("");
 
-  // let toolsCount = 0;
   const component = (tool, indx) => {
-    // toolsCount++;
-
-    // if (tool == null) {
-    //   toolsCount--;
-    // }
-    // if (indx === lastElem) {
-    //   getToolsCount(toolsCount)
-    // }
 
     if (tool) {
       const storageKey = `myHeartClicked-${tool._id}`;
@@ -71,7 +61,7 @@ const Card = ({ toolsData, sortOption }) => {
             display: "inline-flex",
           }}
         >
-          <Link key={tool.slug} href={`/tool/${tool.slug}`}>
+          <Link key={tool.slug} href={`/tool/${tool.slug}`} target="_blank">
             <div className="relative w-full md:mb-6 mb-4 rounded-2xl">
               <div className="">
                 <Image

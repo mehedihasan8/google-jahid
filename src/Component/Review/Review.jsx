@@ -32,7 +32,6 @@ const Review = ({ func, userRating, id, gmail, userName, product }) => {
   const htmlContent = draftToHtml(
     convertToRaw(editorState.getCurrentContent())
   );
-  console.log(htmlContent);
 
   useMemo(
     () => setFinal(draftToHtml(convertToRaw(editorState.getCurrentContent()))),

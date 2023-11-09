@@ -62,7 +62,7 @@ const RelatedCards = ({ subs, id }) => {
             display: "inline-flex",
           }}
         >
-          <Link href={`/tool/${tool.slug}`}>
+          <Link key={tool.slug} href={`/tool/${tool.slug}`} target="_blank">
             <figure className="relative w-full md:mb-6 mb-4">
               <Image
                 src={`https://api.goodtools.ai/uploads/${tool?.image}`}

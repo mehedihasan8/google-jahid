@@ -12,8 +12,6 @@ export default function Layout({ children }) {
     pathname === "/category/:slug" ||
     pathname.includes("/category");
 
-  console.log(pathname);
-
   return (
     <div>
       <div className="h-screen overflow-y-scroll hide-scrollbar">

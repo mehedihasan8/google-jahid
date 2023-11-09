@@ -54,9 +54,8 @@ const Navbar = () => {
       <ul className="md:flex justify-between w-[12rem] md:mt-2 hidden">
         <Link href="/">
           <li
-            className={`nav-item hover:text-[#2970ff] hover:translate transition-all duration-300 ${
-              router.pathname === "/" ? "active" : ""
-            }`}
+            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/" ? "active" : ""
+              }`}
           >
             AI Tools Finder
             {router.pathname === "/" ? (
@@ -67,9 +66,8 @@ const Navbar = () => {
 
         <Link href="/news">
           <li
-            className={`nav-item hover:text-[#2970ff] hover:translate transition-all duration-300 ${
-              router.pathname === "/news" ? "active" : ""
-            }`}
+            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/news" ? "active" : ""
+              }`}
           >
             News
             {router.pathname === "/news" ? (
@@ -129,17 +127,15 @@ const Navbar = () => {
       <div
         ref={dropdownRef}
         onClick={handleUserClick}
-        className={`${
-          isMenuOpen ? "block" : "hidden"
-        } absolute right-3 top-10 z-[1] p-2 shadow bg-white border border-gray-200 rounded transition-all duration-300`}
+        className={`${isMenuOpen ? "block" : "hidden"
+          } absolute right-3 top-10 z-[1] p-2 shadow bg-white border border-gray-200 rounded transition-all duration-300`}
         id="mobile-menu"
       >
         <ul className="flex flex-col items-center gap-3 text-center">
           <Link href="/" onClick={closeMenu}>
             <li
-              className={`nav-item border-b border-gray-300 hover:text-[#2970ff] ${
-                router.pathname === "/" ? "active" : ""
-              }`}
+              className={`nav-item border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/" ? "active" : ""
+                }`}
             >
               AI Tools Finder
               {router.pathname === "/" ? (
@@ -150,9 +146,8 @@ const Navbar = () => {
 
           <Link href="/news" onClick={closeMenu}>
             <li
-              className={`nav-item px-4 border-b border-gray-300 hover:text-[#2970ff] ${
-                router.pathname === "/news" ? "active" : ""
-              }`}
+              className={`nav-item px-4 border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/news" ? "active" : ""
+                }`}
             >
               News
               {router.pathname === "/news" ? (
