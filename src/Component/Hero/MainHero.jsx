@@ -69,6 +69,7 @@ const Hero = ({ allsubcategoriesData }) => {
           </p>
         </div>
 
+        {/* search var  */}
         <div className="input-container mx-auto md:w-[800px] h-[52px] w-full">
           <div
             onBlur={handleBlur}
@@ -110,12 +111,13 @@ const Hero = ({ allsubcategoriesData }) => {
             </div>
           </div>
         </div>
+
+        {/* populer Categories  */}
         <div className="popular-section md:mt-6 mt-4 max">
           <p className="popular-title mb-4 font-paragraph h-6 text-base">
             Popular Categories
           </p>
 
-          {/* Main Wrapper */}
           <div className=" md:w-[790px] overflow-hidden py-2">
             <div className="flex justify-start items-center md:gap-2 ">
               {/* pre button  */}

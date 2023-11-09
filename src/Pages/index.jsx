@@ -282,24 +282,6 @@ const Home = ({ allsubcategoriesData, filterData }) => {
   );
 };
 
-// export async function getServerSideProps() {
-//   const [tools, allsubcategories, filtersubcategories] = await Promise.all([
-//     fetch("http://api.goodtools.ai/tool"),
-//     fetch("http://api.goodtools.ai/allsubcategories"),
-//     fetch("http://api.goodtools.ai/sublist"),
-//   ]);
-
-//   const [toolsData, allsubcategoriesData, filterData] = await Promise.all([
-//     tools.json(),
-//     allsubcategories.json(),
-//     filtersubcategories.json(),
-//   ]);
-
-//   return { props: { toolsData, allsubcategoriesData, filterData } };
-// }
-
-// console.log("259 line", posts);
-
 export async function getServerSideProps() {
   const [tools, allsubcategories, filtersubcategories] = await Promise.all([
     fetch("https://api.goodtools.ai/tool?page=1&limit=2"),

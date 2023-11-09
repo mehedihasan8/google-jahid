@@ -91,7 +91,7 @@ const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
       setSortOption("All");
     }
   };
-  console.log(categoryData);
+
   const loadToolsData = async () => {
     const nextPage = page + 1;
     const response = await fetch(
