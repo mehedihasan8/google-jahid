@@ -43,7 +43,7 @@ export default function News({ data, categories }) {
     );
   }
 
-  function removeHtmlTags(text) {
+  function removeHtmlTags(input) {
     return input.replace(/<\/?[^>]+(>|$)/g, "");
   }
 

@@ -14,7 +14,7 @@ export default function Tool({ data }) {
     setIsloading(false);
   }, []);
 
-  function removeHtmlTags(text) {
+  function removeHtmlTags(input) {
     return input.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
