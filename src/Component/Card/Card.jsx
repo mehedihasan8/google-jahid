@@ -21,6 +21,8 @@ const Card = ({ toolsData, sortOption }) => {
     });
   }, [toolsData]);
 
+  console.log("");
+
   // let toolsCount = 0;
   const component = (tool, indx) => {
     // toolsCount++;

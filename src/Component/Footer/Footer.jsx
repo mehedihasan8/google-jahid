@@ -1,22 +1,5 @@
-import { useEffect, useState } from "react";
-import CookiePopup from "../Popup/Popup";
 import Link from "next/link";
-const Footer = ({ isPopUp, setPopUp }) => {
-  // const [isPopUp, setPopUp] = useState("hidden");
-  // useEffect(() => {
-  //   if (sessionStorage.getItem("popup") < 0) {
-  //     return;
-  //   }
-  //   // setTimeout(() => {
-  //   //   setPopUp("block");
-  //   //   sessionStorage.setItem("popup", 1);
-  //   // }, 1000);
-  //   else {
-  //     setPopUp("block");
-  //     sessionStorage.setItem("popup", 1);
-  //   }
-  // }, []);
-
+const Footer = () => {
   return (
     <div className="md:h-[318px] h-fit bg-[#F9FAFB] mt-10 md:my-0 md:pb-0">
       <div className="font-paragraph bg-[#F9FAFB]  md:pt-[80px] pt-[64px] md:pb-[60px] w-full px-4 md:px-0">

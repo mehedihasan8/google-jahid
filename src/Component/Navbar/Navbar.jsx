@@ -67,7 +67,7 @@ const Navbar = () => {
 
         <Link href="/news">
           <li
-            className={`nav-item hover:text-[#2970ff] hover:translate transition-all duration-300${
+            className={`nav-item hover:text-[#2970ff] hover:translate transition-all duration-300 ${
               router.pathname === "/news" ? "active" : ""
             }`}
           >
@@ -85,7 +85,6 @@ const Navbar = () => {
 
       {/* toggole Button  */}
       <button
-        // ref={dropdownRef}
         onClick={handleMenuToggle}
         className="lg:hidden z-10 text-black p-2 focus:outline-none transition-opacity duration-300 ease-in-out"
         aria-controls="mobile-menu"
@@ -94,6 +93,7 @@ const Navbar = () => {
       >
         {isMenuOpen ? (
           <svg
+            ref={dropdownRef}
             className="w-6 h-6 bg-[#f3f4f6] rounded-full border-2"
             fill="none"
             stroke="currentColor"
@@ -109,6 +109,7 @@ const Navbar = () => {
           </svg>
         ) : (
           <svg
+            ref={dropdownRef}
             className="w-6 h-6"
             fill="none"
             stroke="currentColor"
@@ -135,13 +136,28 @@ const Navbar = () => {
       >
         <ul className="flex flex-col items-center gap-3 text-center">
           <Link href="/" onClick={closeMenu}>
-            <li className="px-4 border-b border-gray-300 hover:border-b-[#2970ff]">
+            <li
+              className={`nav-item border-b border-gray-300 hover:text-[#2970ff] ${
+                router.pathname === "/" ? "active" : ""
+              }`}
+            >
               AI Tools Finder
+              {router.pathname === "/" ? (
+                <div className="active-indicator"></div>
+              ) : null}
             </li>
           </Link>
+
           <Link href="/news" onClick={closeMenu}>
-            <li className="px-4 border-b border-gray-300 hover:border-b-[#2970ff]">
+            <li
+              className={`nav-item px-4 border-b border-gray-300 hover:text-[#2970ff] ${
+                router.pathname === "/news" ? "active" : ""
+              }`}
+            >
               News
+              {router.pathname === "/news" ? (
+                <div className="active-indicator"></div>
+              ) : null}
             </li>
           </Link>
           <li>

@@ -3,16 +3,19 @@ import CategoryFilter from "../../Component/Filter/CategoryFilter";
 import CategoryHero from "../../Component/Hero/CategoryHero";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import CookiePopup from "../../Component/Popup/Popup";
-import Head from "next/head";
+import { useInView } from "react-intersection-observer";
 
-const Home = ({
-  categoryData,
-  toolsData,
-  allsubcategoriesData,
-  filterData,
-}) => {
+import Head from "next/head";
+import Footer from "../../Component/Footer/Footer";
+import CookiePopup from "../../Component/Popup/CookiePopup";
+
+const Home = ({ categoryData, allsubcategoriesData, filterData, slug }) => {
   const [sortOption, setSortOption] = useState("All");
+  const [toolsData, setToolsData] = useState([]);
+  const [page, setPage] = useState(0);
+  const { ref, inView } = useInView();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isPopUp, setPopUp] = useState("hidden");
 
   const decoration = (x) => {
     let str = x + "";
@@ -88,6 +91,39 @@ const Home = ({
       setSortOption("All");
     }
   };
+  console.log(categoryData);
+  const loadToolsData = async () => {
+    const nextPage = page + 1;
+    const response = await fetch(
+      `https://api.goodtools.ai/category/${slug}?page=${nextPage}&limit=1`
+    );
+    const data = await response.json();
+    setToolsData([...toolsData, ...data.tools]);
+    setPage(nextPage);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+    if (inView) {
+      loadToolsData();
+    }
+  }, [inView]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    loadToolsData();
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("popup") > 0) {
+      return;
+    }
+    setTimeout(() => {
+      setPopUp("block");
+      localStorage.setItem("popup", 1);
+    }, 1000);
+  }, []);
 
   return (
     <div className="">
@@ -114,7 +150,7 @@ const Home = ({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0 mt-24">
+      <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-24">
         <ul>
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/">Home</Link>
@@ -125,7 +161,7 @@ const Home = ({
         </ul>
       </div>
 
-      <div className="mx-4 md:mt-[66px] mt-[40px]">
+      <div className="max-w-screen-xl mx-auto md:mt-[66px] mt-[40px]">
         <div className=" md:mb-[100px] mb-[41.5px]">
           <CategoryHero
             categoryData={categoryData}
@@ -141,8 +177,8 @@ const Home = ({
             <div className="text-[#6C737F] my-auto h-fit w-fit text-base font-medium md:ml-[32px] font-paragraph ">
               Showing{" "}
               <span className="text-[#081120] font-paragraph">
-                {" "}
-                {decoration(categoryData.count)} Best
+                {toolsData.length} {}
+                Best
               </span>{" "}
               Ai Tools
             </div>
@@ -225,23 +261,39 @@ const Home = ({
           </div>
         </div>
 
-        <div className="">
+        <div className="mb-10">
           <Card toolsData={toolsData} sortOption={sortOption} />
         </div>
 
-        <CookiePopup />
+        <div
+          className="flex justify-center items-center p-4 col-span-1 sm:col-span-2 md:col-span-3 "
+          ref={ref}
+        >
+          {isLoading && (
+            <div
+              className="inline-block h-10 w-10 animate-spin rounded-full border-4 text-[#2970ff] border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              role="status"
+            >
+              <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                Loading...
+              </span>
+            </div>
+          )}
+        </div>
       </div>
+      {isLoading || <Footer />}
+
+      <CookiePopup isPopUp={isPopUp} setPopUp={setPopUp} />
     </div>
   );
 };
 
 export async function getServerSideProps(context) {
   const { slug } = context.params;
-
   const [category, tools, allsubcategories, filtersubcategories] =
     await Promise.all([
-      fetch(`https://api.goodtools.ai/category/${slug}`),
       fetch(`https://api.goodtools.ai/tools/category/${slug}`),
+      fetch(`https://api.goodtools.ai/category/${slug}?page=1&limit=1`),
       fetch("https://api.goodtools.ai/allsubcategories"),
       fetch("https://api.goodtools.ai/sublist"),
     ]);
@@ -255,7 +307,7 @@ export async function getServerSideProps(context) {
     ]);
 
   return {
-    props: { categoryData, toolsData, allsubcategoriesData, filterData },
+    props: { categoryData, toolsData, allsubcategoriesData, filterData, slug },
   };
 }
 

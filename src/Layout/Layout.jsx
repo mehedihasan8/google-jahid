@@ -18,9 +18,7 @@ export default function Layout({ children }) {
     <div>
       <div className="h-screen overflow-y-scroll hide-scrollbar">
         <AuthProvider>
-          <div
-            className={`${pathname === "/" ? "" : "max-w-screen-xl"} mx-auto`}
-          >
+          <div className={`${isHomePage ? "" : "max-w-screen-xl"} mx-auto`}>
             <div className="max-w-screen-xl mx-auto">
               <Navbar />
             </div>

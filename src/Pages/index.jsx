@@ -131,10 +131,6 @@ const Home = ({ allsubcategoriesData, filterData }) => {
       setPopUp("block");
       localStorage.setItem("popup", 1);
     }, 1000);
-    // else {
-    //   setPopUp("block");
-    //   localStorage.setItem("popup", 1);
-    // }
   }, []);
 
   return (

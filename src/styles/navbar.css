@@ -1,25 +1,3 @@
-/* .active {
-  color: var(--Primary, #2970ff);
-  font-weight: 600;
-}
-
-.nav-effect {
-  position: relative;
-}
-.nav-effect::after {
-  content: "";
-  background-color: #2970ff;
-  height: 2px;
-  width: 0;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transition: 0.5s;
-}
-.nav-effect:hover::after {
-  width: 100%;
-} */
-
 .active-indicator {
   position: absolute;
   bottom: 0;
@@ -34,10 +12,6 @@
 .active:hover .active-indicator {
   opacity: 0;
 }
-
-/* .nav-item:hover .active-indicator::after {
-  transform: scaleX(1);
-} */
 
 /* --------------- */
 .nav-item {

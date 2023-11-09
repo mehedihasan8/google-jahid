@@ -56,7 +56,7 @@ const Hero = ({ allsubcategoriesData }) => {
   };
 
   return (
-    <div className="hero-content !p-2 text-center mt-16 md:mt-24">
+    <div className="hero-content !p-2 text-center mt-16 md:mt-32">
       <div className="">
         <div className="max-w-3xl">
           <h1 className="md:text-[56px] text-[35px]  md:font-bold hero-title mb-6">
@@ -151,7 +151,7 @@ const Hero = ({ allsubcategoriesData }) => {
                         key={index}
                         // name={item.SubCategory}
                         onClick={(e) => handleClick(e, item)}
-                        className="font-normal item h-fit w-full mr-0 md:mr-3 text-[#4D5761] whitespace-nowrap border-2 cursor-pointer hover:scale-105 ease-in-out duration-30 'hidden'p-text px-4 py-auto bg-transparent"
+                        className="font-normal item h-fit w-full mr-0 md:mr-3 text-[#4D5761] whitespace-nowrap border-2 cursor-pointer hover:scale-105 ease-in-out duration-30 p-text px-4 py-auto bg-transparent"
                       >
                         {item.SubCategory}
                       </button>
