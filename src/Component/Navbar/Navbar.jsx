@@ -42,7 +42,7 @@ const Navbar = () => {
   return (
     <div
       // ref={dropdownRef}
-      className="max-w-screen-xl mx-auto md:pt-7 py-4 top-0 backdrop-blur-sm md:backdrop-blur-sm z-50 w-full fixed flex justify-between items-center "
+      className="max-w-screen-xl mx-auto md:pt-7 py-4 top-0 backdrop-blur-sm md:backdrop-blur-sm z-40 w-full fixed flex justify-between items-center "
     >
       <Link href="/">
         <Image
