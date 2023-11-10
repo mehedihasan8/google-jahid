@@ -74,20 +74,20 @@ const Rating = ({ card }) => {
           <div className=" border-green-500 flex">
             {/* Product image */}
             <div className="md:grid grid-cols-2  md:mt-10 mt-6 md:gap-[80px]">
-              <div className="">
-                <Image
-                  src={`https://api.goodtools.ai/uploads/${card.image}`}
-                  alt={card.toolName}
-                  className="bg-black text-white md:rounded-2xl rounded-lg h-[210px] md:h-[344px]"
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL={card.imageBlur}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{ width: '100%', height: '100%' }}
-                />
-              </div>
+
+              <Image
+                src={`https://api.goodtools.ai/uploads/${card.image}`}
+                alt={card.toolName}
+                className="h-[344px] relative rounded-[20px]"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={card.imageBlur}
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{ width: '100%', height: '100%' }}
+              />
+
               <div className="">
                 {/* Price per period */}
                 <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">

@@ -67,7 +67,7 @@ const RelatedCards = ({ subs, id }) => {
               <Image
                 src={`https://api.goodtools.ai/uploads/${tool?.image}`}
                 alt={tool?.toolName}
-                className="rounded-xl"
+                className="h-[240px] rounded-[12px]"
                 loading="lazy"
                 placeholder="blur"
                 blurDataURL={tool?.imageBlur}

@@ -92,7 +92,7 @@ export default function News({ data }) {
                   >
                     <div className="">
                       <Image
-                        className="w-full rounded-xl h-[285px] border-2 "
+                        className="h-[286px] relative rounded-xl"
                         src={`https://api.goodtools.ai/uploads/${item.image}`}
                         //src={`https://i.ibb.co/8c144dc/Image.jpg`}
                         alt={item?.newsTitle}
