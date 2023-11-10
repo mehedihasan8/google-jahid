@@ -51,7 +51,7 @@ export default function Tool({ data }) {
           </li>
         </ul>
       </div>
-      <div className=" rounded-md">
+      <div className="rounded-md">
         {isLoading ? (
           <span className="loading loading-ring md:w-40 md:h-40 w-20 h-20 md:ml-[45%] ml-[40%] md:my-40 my-20"></span>
         ) : (

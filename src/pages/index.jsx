@@ -114,7 +114,7 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
 
   useEffect(() => {
     setTotal(preToolsData.total);
-    setToolsData([...toolsData, ...preToolsData.tools]);
+    setToolsData(preToolsData.tools);
     setIsLoading(false);
   }, []);
 
@@ -125,10 +125,10 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
     }
   }, [inView]);
 
-  useEffect(() => {
-    setIsLoading(true);
-    loadToolsData();
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   loadToolsData();
+  // }, []);
 
   const [isPopUp, setPopUp] = useState("hidden");
   useEffect(() => {
