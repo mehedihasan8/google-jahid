@@ -14,37 +14,37 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-    const tmpStoreKeyNews = 'ToolsFinder(GoodToolsAi)RegularStoring:_newsId'
-    const tmpStoreKeyTool = 'ToolsFinder(GoodToolsAi)RegularStoring:_toolId'
+    const tmpStoreKeyNews = 'GoodTools.Ai(GoodToolsAi)RegularStoring:_newsId'
+    const tmpStoreKeyTool = 'GoodTools.Ai(GoodToolsAi)RegularStoring:_toolId'
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [toggle,setToggle] = useState(false);
+    const [toggle, setToggle] = useState(false);
     const [loadData, setLoadData] = useState(false);
 
-    const storeNewsId = (value)=>{
+    const storeNewsId = (value) => {
         sessionStorage.setItem(tmpStoreKeyNews, JSON.stringify(value))
     }
-    const storeToolId = (value)=>{
+    const storeToolId = (value) => {
         sessionStorage.setItem(tmpStoreKeyTool, JSON.stringify(value))
     }
 
-    const setTrue=()=>{
+    const setTrue = () => {
         setToggle(true)
     }
-    const setFalse=()=>{
+    const setFalse = () => {
         setToggle(false)
     }
 
     const googleSignIn = () => {
         setLoading(true);
         return signInWithPopup(auth, provider)
-            .finally(() => setLoading(false)); 
+            .finally(() => setLoading(false));
     };
 
     const logOut = () => {
         setLoading(true);
         return signOut(auth)
-            .finally(() => setLoading(false));  
+            .finally(() => setLoading(false));
     };
 
     useEffect(() => {

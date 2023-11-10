@@ -161,7 +161,7 @@ const Footer = () => {
       </div>
       <hr className="mx-auto bg-[#D2D6DB] mt-6 mb:mt-0 md:mb-0 w-[1280px]" />
       <p className="text-center w-full text-base font-paragraph h-[70px] flex justify-center items-center">
-        Copyright © 2023 - ToolsFinder
+        Copyright © 2023 - GoodTools.Ai
       </p>
     </div>
   );

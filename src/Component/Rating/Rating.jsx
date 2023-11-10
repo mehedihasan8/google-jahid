@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Rating = ({ card }) => {
   // consoleisClicked
-  const tmpStoreKeyTool = "ToolsFinder(GoodToolsAi)RegularStoring:_toolId";
+  const tmpStoreKeyTool = "GoodTools.Ai(GoodToolsAi)RegularStoring:_toolId";
   const toolId = JSON.parse(sessionStorage.getItem(tmpStoreKeyTool));
   const [isToggled, setIsToggled] = useState(false);
   const storageKey = `myHeartClicked-${toolId}`;

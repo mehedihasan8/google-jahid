@@ -45,7 +45,7 @@ const About = () => {
               </h1>
               <h2 className="text-xl font-medium md:mb-4 mb-2">About us:</h2>
               <p className="text-base font-normal mb-7">
-                ToolsFinder is a collective of entrepreneurs with global
+                GoodTools.Ai is a collective of entrepreneurs with global
                 perspectives who believe in AI for good. We believe in a future
                 where AI enhances every professional's toolkit. Our team delves
                 deep into tools, plugins and apps to deliver high quality
@@ -53,7 +53,7 @@ const About = () => {
                 Tailored for the proactive modern professional, we provide
                 comprehensive resources that illuminate the path to AI
                 integration in the workplace. Create a free account and elevate
-                your professional journey with ToolsFinder.
+                your professional journey with GoodTools.Ai.
               </p>
               <h2 className="text-xl font-medium mb-4">Our mission:</h2>
               <p className="text-base font-normal mb-7">

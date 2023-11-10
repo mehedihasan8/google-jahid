@@ -43,7 +43,7 @@ const PrivacyPolicy = () => {
         </h1>
         <h2 className="subtitle mb-4">Your privacy is important to us:</h2>
         <p className="privacy-text  mb-6">
-          It is ToolsFinder policy to respect your privacy regarding any
+          It is GoodTools.Ai policy to respect your privacy regarding any
           information we may collect while operating our website. This Privacy
           Policy applies to futurepedia.io (hereinafter, "us", "we", or
           "futurepedia.io"). We respect your privacy and are committed to
@@ -73,13 +73,13 @@ const PrivacyPolicy = () => {
         </p>
         <h2 className="subtitle mb-4">1. Website Visitors:</h2>
         <p className="privacy-text mb-6 ">
-          Like most website operators, ToolsFinder collects
+          Like most website operators, GoodTools.Ai collects
           non-personally-identifying information of the sort that web browsers
           and servers typically make available, such as the browser type,
           language preference, referring site, and the date and time of each
-          visitor request. ToolsFinder purpose in collecting non-personally
-          identifying information is to better understand how ToolsFinder
-          visitors use its website. From time to time, ToolsFinder may release
+          visitor request. GoodTools.Ai purpose in collecting non-personally
+          identifying information is to better understand how GoodTools.Ai
+          visitors use its website. From time to time, GoodTools.Ai may release
           non-personally-identifying information in the aggregate, e.g., by
           publishing a report on trends in the usage of its website.
         </p>
@@ -109,13 +109,13 @@ const PrivacyPolicy = () => {
         </p>
         <h2 className="subtitle mb-4">5. E-commerce:</h2>
         <p className="privacy-text mb-6 ">
-          Those who engage in transactions with ToolsFinder – by purchasing
-          ToolsFinder services or products, are asked to provide additional
+          Those who engage in transactions with GoodTools.Ai – by purchasing
+          GoodTools.Ai services or products, are asked to provide additional
           information, including as necessary the personal and financial
           information required to process those transactions. In each case,
-          ToolsFinder collects such information only insofar as is necessary or
+          GoodTools.Ai collects such information only insofar as is necessary or
           appropriate to ful fill the purpose of the visitor's interaction with
-          ToolsFinder. ToolsFinder does not disclose personally-identifying
+          GoodTools.Ai. GoodTools.Ai does not disclose personally-identifying
           information other than as described below. And visitors can always
           refuse to supply personally-identifying information, with the caveat
           that it may prevent them from engaging in certain website-related
@@ -124,7 +124,7 @@ const PrivacyPolicy = () => {
         <h2 className="subtitle mb-4">6. Prohibited Activities:</h2>
         <p className="privacy-text mb-6 ">
           Collect, use, copy, download, or transfer any information, including,
-          but not limited to, personal information obtained from ToolsFinder
+          but not limited to, personal information obtained from GoodTools.Ai
           except as expressly permitted in these Terms or as the owner of such
           information may expressly permit; Record, process or mine information
           about other users; Use manual or automated software, devices, scripts
