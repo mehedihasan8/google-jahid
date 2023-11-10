@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { set } from "react-hook-form";
 
 const Card = dynamic(() => import("../../Component/Card/Card"));
 const CategoryFilter = dynamic(() =>
@@ -116,7 +117,8 @@ const CategoryData = ({
 
   useEffect(() => {
     setTotal(preToolsData.total);
-    setToolsData([...toolsData, ...preToolsData.tools]);
+    setToolsData(preToolsData.tools);
+    setPage(1);
     setIsLoading(false);
   }, []);
 

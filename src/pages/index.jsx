@@ -115,6 +115,7 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
   useEffect(() => {
     setTotal(preToolsData.total);
     setToolsData(preToolsData.tools);
+    setPage(1);
     setIsLoading(false);
   }, []);
 
