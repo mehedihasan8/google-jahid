@@ -92,8 +92,8 @@ export default function News({ data, categories }) {
             <Image
               className="md:mb-10 mb-6 rounded-lg mx-auto w-full"
               alt={item.newsTitle}
-              src={`https://i.ibb.co/1fGrFQp/Image.png`}
-              // src={`https://api.goodtools.ai/uploads/${item.image}`}
+              //src={`https://i.ibb.co/1fGrFQp/Image.png`}
+              src={`https://api.goodtools.ai/uploads/${item.image}`}
               loading="lazy"
               placeholder="blur"
               blurDataURL={item.imageBlur}
