@@ -322,9 +322,9 @@ const Rating = ({ card }) => {
                   <hr />
                 </div>
                 {card.facebook == "" &&
-                card.linkedin == "" &&
-                card.twitter == "" &&
-                card.discord == "" ? (
+                  card.linkedin == "" &&
+                  card.twitter == "" &&
+                  card.discord == "" ? (
                   <div></div>
                 ) : (
                   <div className="social-links mt-4 md:mt-[26px]">

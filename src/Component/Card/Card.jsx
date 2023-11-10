@@ -71,7 +71,9 @@ const Card = ({ toolsData, sortOption }) => {
                 width={0}
                 height={0}
                 sizes="100vw"
-                style={{ width: "100%", height: "100%" }}
+                scale="fill"
+                style={{ width: "100%" }}
+                scale="fill"
               />
 
               <div

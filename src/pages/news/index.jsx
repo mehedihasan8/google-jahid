@@ -102,7 +102,8 @@ export default function News({ data }) {
                         width={0}
                         height={0}
                         sizes="100vw"
-                        style={{ width: '100%', height: '100%' }}
+                        scale="fill"
+                        style={{ width: '100%' }}
                       />
                     </div>
                     <div className=" md:mt-6 pb-2 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">
