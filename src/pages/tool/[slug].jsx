@@ -34,7 +34,10 @@ export default function Tool({ data }) {
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta property="og:title" content={`GoodTools.Ai - ${data.toolName}`} />
-        <meta property="og:description" content={removeHtmlTags(data.description)} />
+        <meta
+          property="og:description"
+          content={removeHtmlTags(data.description)}
+        />
         <meta
           property="og:image"
           content={`https://api.goodtools.ai/uploads/${data.image}`}
@@ -55,7 +58,7 @@ export default function Tool({ data }) {
         {isLoading ? (
           <span className="loading loading-ring md:w-40 md:h-40 w-20 h-20 md:ml-[45%] ml-[40%] md:my-40 my-20"></span>
         ) : (
-          <div className="text-sm font-normal mb-10 md:mb-14 w-full px-2 md:px-0 mt-24">
+          <div className="text-sm font-normal mb-10 md:mb-14 w-full px-2 md:px-0  md:mt-12">
             <div className=" mt-10 md:px-0 md:py-0 px-4 py-4 border border-[#E5E7EB] rounded-2xl">
               <Rattingg card={cards} />
               <Rate id={cards._id} name={cards?.toolName}></Rate>

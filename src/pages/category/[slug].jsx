@@ -5,12 +5,20 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 
 const Card = dynamic(() => import("../../Component/Card/Card"));
-const CategoryFilter = dynamic(() => import("../../Component/Filter/CategoryFilter"));
+const CategoryFilter = dynamic(() =>
+  import("../../Component/Filter/CategoryFilter")
+);
 const CategoryHero = dynamic(() => import("../../Component/Hero/CategoryHero"));
 const Footer = dynamic(() => import("../../Component/Footer/Footer"));
 const CookiePopup = dynamic(() => import("../../Component/Popup/CookiePopup"));
 
-const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filterData, slug }) => {
+const CategoryData = ({
+  categoryData,
+  preToolsData,
+  allsubcategoriesData,
+  filterData,
+  slug,
+}) => {
   const [sortOption, setSortOption] = useState("All");
   const [toolsData, setToolsData] = useState([]);
   const [total, setTotal] = useState(0);
@@ -159,7 +167,7 @@ const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filter
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-24">
+      <div className="max-w-screen-xl mx-auto px-4 md:px-0  breadcrumbs py-0 text-sm font-normal mt-24">
         <ul>
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/">Home</Link>
@@ -170,7 +178,7 @@ const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filter
         </ul>
       </div>
 
-      <div className="max-w-screen-xl mx-auto md:mt-[66px] mt-[40px]">
+      <div className="max-w-screen-xl mx-auto md:mt-[66px] z-[5px] mt-[40px]">
         <div className=" md:mb-[100px] mb-[41.5px]">
           <CategoryHero
             categoryData={categoryData}
@@ -178,12 +186,12 @@ const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filter
           />
         </div>
 
-        <div className=" md:flex items-center justify-between md:mb-11 mb-[30px]">
+        <div className="px-4 md:px-0 max-w-screen-xl mx-auto md:flex items-center justify-between md:mb-11 mb-[30px]">
           <div className="md:flex items-center ">
-            <div className="w-full md:w-fit mx-auto mb-4 md:mb-0">
+            <div className="w-full md:w-fit mx-auto mb-4 md:mb-0 ">
               <CategoryFilter filterData={filterData} />
             </div>
-            <div className="text-[#6C737F] my-auto h-fit w-fit text-base font-medium md:ml-[32px] font-paragraph ">
+            <div className="text-[#6C737F] my-auto  w-fit text-base font-medium  md:ml-[32px] font-paragraph  md:mx-0 ">
               Showing{" "}
               <span className="text-[#081120] font-paragraph font-semibold">
                 {" "}
@@ -193,10 +201,10 @@ const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filter
             </div>
           </div>
           <div className=" flex items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6">
-            <span className="text-[#081120] md:font-medium md:mr-6 font-paragraph  md:text-xl text-base font-normal">
+            <span className="text-[#081120] font-semibold md:mr-6 font-paragraph  md:text-xl text-base">
               Sort by :{" "}
             </span>
-            <div className="w-fit flex justify-between gap-4 mt-1">
+            <div className="w-fit flex justify-between gap-2 md:gap-4 mt-1">
               <button
                 onClick={() => setSortOption("All")}
                 name="All"
@@ -219,7 +227,7 @@ const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filter
                     : setSortOption("Free")
                 }
                 name="Free"
-                className="flex items-center gap-2 font-paragraph"
+                className="flex items-center gap-2 font-paragraph font-bold"
               >
                 <input
                   onClick={handleChecked}
@@ -228,7 +236,7 @@ const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filter
                   id="Free"
                   name="Free"
                 />
-                <div className="col">Free</div>
+                <div className="col font-semibold">Free</div>
               </button>
               <button
                 onClick={() =>
@@ -270,7 +278,7 @@ const CategoryData = ({ categoryData, preToolsData, allsubcategoriesData, filter
           </div>
         </div>
 
-        <div className="mb-10">
+        <div className="mb-10 px-2 md:px-0">
           <Card toolsData={toolsData} sortOption={sortOption} />
         </div>
 
@@ -316,7 +324,13 @@ export async function getServerSideProps(context) {
     ]);
 
   return {
-    props: { categoryData, preToolsData, allsubcategoriesData, filterData, slug },
+    props: {
+      categoryData,
+      preToolsData,
+      allsubcategoriesData,
+      filterData,
+      slug,
+    },
   };
 }
 

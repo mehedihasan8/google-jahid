@@ -4,11 +4,11 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-const Card = dynamic(() => import('../Component/Card/Card'));
-const Hero = dynamic(() => import('../Component/Hero/MainHero'));
-const Filter = dynamic(() => import('../Component/Filter/MainFilter'));
-const Footer = dynamic(() => import('../Component/Footer/Footer'));
-const CookiePopup = dynamic(() => import('../Component/Popup/CookiePopup'));
+const Card = dynamic(() => import("../Component/Card/Card"));
+const Hero = dynamic(() => import("../Component/Hero/MainHero"));
+const Filter = dynamic(() => import("../Component/Filter/MainFilter"));
+const Footer = dynamic(() => import("../Component/Footer/Footer"));
+const CookiePopup = dynamic(() => import("../Component/Popup/CookiePopup"));
 
 const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -125,11 +125,6 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
     }
   }, [inView]);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   loadToolsData();
-  // }, []);
-
   const [isPopUp, setPopUp] = useState("hidden");
   useEffect(() => {
     if (localStorage.getItem("popup") > 0) {
@@ -167,11 +162,11 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
       </Head>
 
       <div className="md:mt-[66px] mt-[40px]">
-        <div className="max-w-screen-xl mx-auto md:mb-[100px] mb-[41.5px]">
+        <div className="px-2 md:px-0 max-w-screen-xl mx-auto md:mb-[100px] mb-[41.5px]">
           <Hero allsubcategoriesData={allsubcategoriesData} />
         </div>
 
-        <div className=" max-w-screen-xl mx-auto md:flex items-center justify-between md:mb-11 mb-[30px]">
+        <div className="px-2 md:px-0 max-w-screen-xl mx-auto md:flex items-center justify-between md:mb-11 mb-[30px]">
           <div className="md:flex items-center ">
             <div className="w-full md:w-fit mx-auto mb-4 md:mb-0">
               <Filter filterData={filterData} />
@@ -189,7 +184,7 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
             <span className="text-[#081120] font-semibold md:mr-6 font-paragraph  md:text-xl text-base">
               Sort by :{" "}
             </span>
-            <div className="w-fit flex justify-between gap-4 mt-1">
+            <div className="w-fit flex justify-between gap-2 md:gap-4 mt-1">
               <button
                 onClick={() => setSortOption("All")}
                 name="All"
@@ -263,7 +258,7 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
           </div>
         </div>
 
-        <div className="max-w-screen-xl mx-auto mb-20">
+        <div className="px-2 md:px-0 max-w-screen-xl mx-auto mb-20">
           <Card toolsData={toolsData} sortOption={sortOption} />
         </div>
         <div

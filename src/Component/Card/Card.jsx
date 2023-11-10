@@ -21,9 +21,7 @@ const Card = ({ toolsData, sortOption }) => {
     });
   }, [toolsData]);
 
-
   const component = (tool, indx) => {
-
     if (tool) {
       const storageKey = `myHeartClicked-${tool._id}`;
       const isClicked = loadStateFromLocalStorage(storageKey);
@@ -63,7 +61,6 @@ const Card = ({ toolsData, sortOption }) => {
         >
           <Link key={tool.slug} href={`/tool/${tool.slug}`} target="_blank">
             <div className="relative w-full md:mb-6 mb-4 rounded-2xl">
-
               <Image
                 src={`https://api.goodtools.ai/uploads/${tool?.image}`}
                 alt={tool?.toolName}
@@ -74,7 +71,7 @@ const Card = ({ toolsData, sortOption }) => {
                 width={0}
                 height={0}
                 sizes="100vw"
-                style={{ width: '100%', height: '100%' }}
+                style={{ width: "100%", height: "100%" }}
               />
 
               <div
@@ -93,11 +90,9 @@ const Card = ({ toolsData, sortOption }) => {
 
             <div className="h-fit">
               <div className="flex justify-between items-center md:mb-6 mb-4">
-                <div className="Title">
-                  <h2 className="font-title font-bold font text-[24px] text-[#081120]">
-                    {tool?.toolName}
-                  </h2>
-                </div>
+                <h2 className="font-title font-bold text-[20px] md:text-[24px] text-[#081120]">
+                  {tool?.toolName}
+                </h2>
                 <div className="inline-flex justify-between px-4 py-2 bg-[#F3F4F6] rounded-full gap-[10px] items-center">
                   <div className="">
                     <svg

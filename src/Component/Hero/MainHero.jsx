@@ -47,9 +47,9 @@ const Hero = ({ allsubcategoriesData }) => {
     }
   };
 
-  const handleSearch = () => { };
+  const handleSearch = () => {};
 
-  const handleBlur = () => { };
+  const handleBlur = () => {};
 
   const handleClick = (event, item) => {
     navigate.push(`/category/${item.slug}`);

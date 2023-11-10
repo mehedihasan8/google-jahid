@@ -1,7 +1,7 @@
 const CookiePopup = ({ isPopUp, setPopUp }) => {
   return (
     <div
-      className={`z-10 sticky bottom-0 flex justify-center bg-[#081120] w-full ${isPopUp} `}
+      className={`z-10 fixed md:sticky bottom-0 flex justify-center bg-[#081120] w-full ${isPopUp} `}
     >
       <div className="flex items-center text-white px-4 py-6 ">
         <p className="text-left md:text-center text-base font-paragraph">

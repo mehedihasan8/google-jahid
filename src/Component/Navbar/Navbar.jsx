@@ -42,20 +42,21 @@ const Navbar = () => {
   return (
     <div
       // ref={dropdownRef}
-      className="max-w-screen-xl mx-auto md:pt-7 py-4 top-0 backdrop-blur-sm md:backdrop-blur-sm z-50 w-full fixed flex justify-between items-center pl-[0.3rem] md:pl-0"
+      className="max-w-screen-xl mx-auto md:pt-7 py-4 top-0 backdrop-blur-sm md:backdrop-blur-sm z-50 w-full fixed flex justify-between items-center "
     >
       <Link href="/">
         <Image
           src={Logo}
           alt="logo"
-          className="w-[150px] h-[35px] md:w-[175px] md:h-[45px]"
+          className="w-[150px] h-[35px] md:w-[175px] md:h-[45px] pl-[6px] md:pl-0"
         />
       </Link>
       <ul className="md:flex justify-between w-[12rem] md:mt-2 hidden">
         <Link href="/">
           <li
-            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/" ? "active" : ""
-              }`}
+            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${
+              router.pathname === "/" ? "active" : ""
+            }`}
           >
             AI Tools Finder
             {router.pathname === "/" ? (
@@ -66,8 +67,9 @@ const Navbar = () => {
 
         <Link href="/news">
           <li
-            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/news" ? "active" : ""
-              }`}
+            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${
+              router.pathname === "/news" ? "active" : ""
+            }`}
           >
             News
             {router.pathname === "/news" ? (
@@ -84,7 +86,7 @@ const Navbar = () => {
       {/* toggole Button  */}
       <button
         onClick={handleMenuToggle}
-        className="lg:hidden z-10 text-black p-2 focus:outline-none transition-opacity duration-300 ease-in-out"
+        className="lg:hidden z-10 text-black pr-5 md:pr-0 focus:outline-none transition-opacity duration-300 ease-in-out"
         aria-controls="mobile-menu"
         aria-expanded={isMenuOpen}
         style={{ opacity: isMenuOpen ? 0.5 : 1 }}
@@ -127,15 +129,17 @@ const Navbar = () => {
       <div
         ref={dropdownRef}
         onClick={handleUserClick}
-        className={`${isMenuOpen ? "block" : "hidden"
-          } absolute right-3 top-10 z-[1] p-2 shadow bg-white border border-gray-200 rounded transition-all duration-300`}
+        className={`${
+          isMenuOpen ? "block" : "hidden"
+        } absolute right-6 top-10 z-50 px-2 py-3 shadow bg-white border border-gray-200 rounded transition-all duration-300`}
         id="mobile-menu"
       >
         <ul className="flex flex-col items-center gap-3 text-center">
           <Link href="/" onClick={closeMenu}>
             <li
-              className={`nav-item border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/" ? "active" : ""
-                }`}
+              className={`nav-item border-b border-gray-300 hover:text-[#2970ff] ${
+                router.pathname === "/" ? "active" : ""
+              }`}
             >
               AI Tools Finder
               {router.pathname === "/" ? (
@@ -146,8 +150,9 @@ const Navbar = () => {
 
           <Link href="/news" onClick={closeMenu}>
             <li
-              className={`nav-item px-4 border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/news" ? "active" : ""
-                }`}
+              className={`nav-item px-4 border-b border-gray-300 hover:text-[#2970ff] ${
+                router.pathname === "/news" ? "active" : ""
+              }`}
             >
               News
               {router.pathname === "/news" ? (

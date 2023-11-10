@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { BiLinkExternal } from "react-icons/bi";
 import { FiShare2 } from "react-icons/fi";
-import Image from "next/image"
+import Image from "next/image";
 import Link from "next/link";
 
 const Rating = ({ card }) => {
@@ -44,13 +44,17 @@ const Rating = ({ card }) => {
                 <h1 className="md:text-5xl text-[28px] font-bold mt-2 font-title">
                   {card.toolName}
                 </h1>
-                <Link href={card?.link} target="_blank" rel="noopener noreferrer">
+                <Link
+                  href={card?.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <BiLinkExternal className="md:text-[25px] text-[20px] mt-[10px] md:mt-4 text-[#6C737F]" />
                 </Link>
               </div>
             </div>
             {/* Heart and share button */}
-            <div className="flex gap-2 md:gap-4 item-center justify-center mt-10 md:mt-6">
+            <div className="flex gap-2 md:gap-4 item-center justify-center mb-10 md:mt-6">
               <div className="svg-sizing p-4">
                 {isClicked ? (
                   <button
@@ -85,7 +89,7 @@ const Rating = ({ card }) => {
                   width={0}
                   height={0}
                   sizes="100vw"
-                  style={{ width: '100%', height: '100%' }}
+                  style={{ width: "100%", height: "100%" }}
                 />
               </div>
               <div className="">
@@ -318,9 +322,9 @@ const Rating = ({ card }) => {
                   <hr />
                 </div>
                 {card.facebook == "" &&
-                  card.linkedin == "" &&
-                  card.twitter == "" &&
-                  card.discord == "" ? (
+                card.linkedin == "" &&
+                card.twitter == "" &&
+                card.discord == "" ? (
                   <div></div>
                 ) : (
                   <div className="social-links mt-4 md:mt-[26px]">
@@ -331,7 +335,10 @@ const Rating = ({ card }) => {
                     <div className="mt-[11px]">
                       <div className="flex gap-4 items-center">
                         {card.discord && (
-                          <Link href={`https://discordapp.com/users/${card?.discord}`} target="_blank">
+                          <Link
+                            href={`https://discordapp.com/users/${card?.discord}`}
+                            target="_blank"
+                          >
                             <svg
                               width="33"
                               height="33"
@@ -349,7 +356,10 @@ const Rating = ({ card }) => {
                         )}
                         {card.twitter && (
                           <div>
-                            <Link href={`https://twitter.com/${card.twitter}`} target="_blank">
+                            <Link
+                              href={`https://twitter.com/${card.twitter}`}
+                              target="_blank"
+                            >
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="26"
@@ -379,7 +389,10 @@ const Rating = ({ card }) => {
                         {card.linkedin && (
                           <div>
                             <div>
-                              <Link href={`https://www.linkedin.com/in/${card.linkedin}`} target="_blank">
+                              <Link
+                                href={`https://www.linkedin.com/in/${card.linkedin}`}
+                                target="_blank"
+                              >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   width="26"
@@ -413,7 +426,10 @@ const Rating = ({ card }) => {
                         )}
                         {card.facebook && (
                           <div>
-                            <Link href={`https://www.facebook.com/${card.facebook}`} target="_blank">
+                            <Link
+                              href={`https://www.facebook.com/${card.facebook}`}
+                              target="_blank"
+                            >
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="26"

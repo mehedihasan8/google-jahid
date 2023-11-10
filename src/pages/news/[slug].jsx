@@ -64,7 +64,10 @@ export default function News({ data, categories }) {
           property="og:title"
           content={`GoodTools.Ai - ${item.newsTitle}`}
         />
-        <meta property="og:description" content={removeHtmlTags(item.newsBody)} />
+        <meta
+          property="og:description"
+          content={removeHtmlTags(item.newsBody)}
+        />
         <meta
           property="og:image"
           content={`https://api.goodtools.ai/uploads/${item.image}`}
@@ -89,15 +92,15 @@ export default function News({ data, categories }) {
             <Image
               className="md:mb-10 mb-6 rounded-lg mx-auto w-full"
               alt={item.newsTitle}
-              //src={`https://i.ibb.co/1fGrFQp/Image.png`}
-              src={`https://api.goodtools.ai/uploads/${item.image}`}
+              src={`https://i.ibb.co/1fGrFQp/Image.png`}
+              // src={`https://api.goodtools.ai/uploads/${item.image}`}
               loading="lazy"
               placeholder="blur"
               blurDataURL={item.imageBlur}
               width={0}
               height={0}
               sizes="100vw"
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: "100%", height: "100%" }}
             />
             <div className="md:grid md:grid-cols-2 ">
               {/* right-div */}
