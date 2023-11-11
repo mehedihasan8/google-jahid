@@ -11,9 +11,7 @@ const Hero = ({ allsubcategoriesData }) => {
   const navigate = useRouter();
 
   const [data, setData] = useState([]);
-  const firstSixItem = data;
-  const [visibleStartIndex, setVisibleStartIndex] = useState(0);
-  const [maxStartIndex, setMaxStartIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const swiperRef = useRef(null);
 
@@ -24,22 +22,22 @@ const Hero = ({ allsubcategoriesData }) => {
   };
 
   const goNext = () => {
+    const con = isMobile ? (swiperRef.current.slides.length / 3) : (swiperRef.current.slides.length / 6);
+
+    if (isMobile) {
+      if (swiperRef.current.activeIndex > con) return;
+    } else {
+      if (swiperRef.current.activeIndex >= con) return;
+    }
+
     if (swiperRef.current !== null) {
       swiperRef.current.slideNext();
     }
   };
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () =>
-      setVisibleStartIndex((prev) => Math.min(prev + 7, maxStartIndex)),
-    onSwipedRight: () => setVisibleStartIndex((prev) => Math.max(prev - 7, 0)),
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true,
-  });
-
   useEffect(() => {
     setData(allsubcategoriesData);
-    setMaxStartIndex(Math.max(allsubcategoriesData.length - 7, 0));
+    setIsMobile(window.innerWidth < 768);
   }, []);
 
   const handleKeyPress = (e) => {
@@ -47,9 +45,9 @@ const Hero = ({ allsubcategoriesData }) => {
     }
   };
 
-  const handleSearch = () => {};
+  const handleSearch = () => { };
 
-  const handleBlur = () => {};
+  const handleBlur = () => { };
 
   const handleClick = (event, item) => {
     navigate.push(`/category/${item.slug}`);
@@ -147,7 +145,7 @@ const Hero = ({ allsubcategoriesData }) => {
                     },
                   }}
                 >
-                  {firstSixItem.map((item, index) => (
+                  {data.map((item, index) => (
                     <SwiperSlide>
                       <button
                         key={index}
