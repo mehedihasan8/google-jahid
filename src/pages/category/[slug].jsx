@@ -169,7 +169,7 @@ const CategoryData = ({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <div className="max-w-screen-xl mx-auto px-4 md:px-0  breadcrumbs py-0 text-sm font-normal mt-24">
+      <div className="max-w-screen-xl mx-auto px-4 md:px-0  breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24">
         <ul>
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/">Home</Link>
@@ -180,8 +180,8 @@ const CategoryData = ({
         </ul>
       </div>
 
-      <div className="max-w-screen-xl mx-auto md:mt-[66px] z-[5px] mt-[40px]">
-        <div className=" md:mb-[100px] mb-[41.5px]">
+      <div className="max-w-screen-xl mx-auto md:mt-[60px] z-[5px] mt-[25px]">
+        <div className=" md:mb-[100px] mb-[41.5px] ">
           <CategoryHero
             categoryData={categoryData}
             allsubcategoriesData={allsubcategoriesData}

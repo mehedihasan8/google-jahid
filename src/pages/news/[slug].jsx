@@ -74,8 +74,8 @@ export default function News({ data, categories }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0 mt-24">
-        <ul>
+      <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0 mt-16 md:mt-24">
+        <ul className="text-left">
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/">Home</Link>
           </li>
@@ -84,7 +84,7 @@ export default function News({ data, categories }) {
           </li>
         </ul>
       </div>
-      <div className="mx-auto font-paragraph ">
+      <div className="mx-auto font-paragraph mb-10  md:mb-24">
         {/* Single News Section */}
         <div className="md:pt-[40px] mb-[40px] pt-6 md:mx-0 mx-2">
           <div className="px-4 md:px-6  pt-4 pb-7 mb-26 border-[#E5E7EB] border rounded-2xl">

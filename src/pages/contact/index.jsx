@@ -27,17 +27,15 @@ const Contact = () => {
         <meta property="og:image" content="https://goodtools.ai/logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="font-paragraph mt-24">
-        <div className="breadcrumbs privacy-menu mb-5  text-sm font-normal ">
-          <ul>
-            <li className="text-[#081120] font-paragraph text-sm">
-              <Link href="/">Home</Link>
-            </li>
-            <li className="text-[#6C737F] font-paragraph text-sm">
-              Contact Us
-            </li>
-          </ul>
-        </div>
+      <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24">
+        <ul>
+          <li className="text-[#081120] font-paragraph text-sm">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="text-[#6C737F] font-paragraph text-sm">Contact Us</li>
+        </ul>
+      </div>
+      <div className="font-paragraph mt-6 md:mt-10  mb-10 md:mb-24">
         <div
           className="grid md:grid-cols-2 grid-cols-1 pp rounded-xl mb-24"
           style={{ border: "1px solid #E5E7EB" }}

@@ -54,19 +54,16 @@ export default function News({ data }) {
         <meta property="og:image" content="https://goodtools.ai/logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-24">
+      <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24">
         <ul>
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/">Home</Link>
           </li>
-          <li className="text-[#6C737F] font-paragraph text-sm">
-            News
-          </li>
+          <li className="text-[#6C737F] font-paragraph text-sm">News</li>
         </ul>
       </div>
-      <div className="font-paragraph md:mb-[100px] mb-[40px] mx-2 md:mx-0 mt-20 md:mt-24">
-
-        <div className=" border md:p-10 p-4 rounded-3xl">
+      <div className="font-paragraph mb-10 md:mb-24 mx-2 md:mx-0 mt-6 md:mt-10">
+        <div className="border md:p-10 p-4 rounded-3xl">
           <div>
             <div className="md:rounded-xl">
               <p className="text-center news-title font-bold text-3xl md:text-5xl font-title md:text-left ">
@@ -103,7 +100,7 @@ export default function News({ data }) {
                         height={0}
                         sizes="100vw"
                         scale="fill"
-                        style={{ width: '100%' }}
+                        style={{ width: "100%" }}
                       />
                     </div>
                     <div className=" md:mt-6 pb-2 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">

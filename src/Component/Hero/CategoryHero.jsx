@@ -21,7 +21,9 @@ const CategoryHero = ({ categoryData, allsubcategoriesData }) => {
   };
 
   const goNext = () => {
-    const con = isMobile ? (swiperRef.current.slides.length / 3) : (swiperRef.current.slides.length / 6);
+    const con = isMobile
+      ? swiperRef.current.slides.length / 3
+      : swiperRef.current.slides.length / 6;
 
     if (isMobile) {
       if (swiperRef.current.activeIndex > con) return;
@@ -54,7 +56,7 @@ const CategoryHero = ({ categoryData, allsubcategoriesData }) => {
 
   return (
     <div>
-      <div className="hero-content text-center">
+      <div className="hero-content text-center ">
         <div className="">
           <div className="max-w-3xl px-2 md:px-0">
             <h1 className="md:text-5xl md:w-[592px] text-4xl font-bold text-[#081120] text-center w-fit mx-auto md:mb-6 mb-4">

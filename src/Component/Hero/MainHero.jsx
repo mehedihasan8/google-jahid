@@ -22,7 +22,9 @@ const Hero = ({ allsubcategoriesData }) => {
   };
 
   const goNext = () => {
-    const con = isMobile ? (swiperRef.current.slides.length / 3) : (swiperRef.current.slides.length / 6);
+    const con = isMobile
+      ? swiperRef.current.slides.length / 3
+      : swiperRef.current.slides.length / 6;
 
     if (isMobile) {
       if (swiperRef.current.activeIndex > con) return;
@@ -45,16 +47,16 @@ const Hero = ({ allsubcategoriesData }) => {
     }
   };
 
-  const handleSearch = () => { };
+  const handleSearch = () => {};
 
-  const handleBlur = () => { };
+  const handleBlur = () => {};
 
   const handleClick = (event, item) => {
     navigate.push(`/category/${item.slug}`);
   };
 
   return (
-    <div className="hero-content !p-2 text-center mt-16 md:mt-32">
+    <div className="hero-content !p-2 text-center mt-[72px] md:mt-32">
       <div className="">
         <div className="max-w-3xl">
           <h1 className="md:text-[56px] text-[35px]  md:font-bold hero-title mb-6">
