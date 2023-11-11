@@ -37,16 +37,16 @@ export default function News({ data }) {
   return (
     <div>
       <Head>
-        <title>GoodTools.Ai - News</title>
-        <meta name="description" content="Latest Our AI News & Articles" />
+        <title>GoodTools.Ai - Blog</title>
+        <meta name="description" content="Latest Our AI Blog & Articles" />
         <meta
           name="keywords"
-          content={`Ai Tools, Best Ai Tools, Ai Tools Finder, Ai News, Tech News`}
+          content={`Ai Tools, Best Ai Tools, Ai Tools Finder, Ai Blog, Tech Blog`}
         />
         <meta name="robots" content="max-image-preview:large" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
-        <meta property="og:title" content="GoodTools.Ai - News" />
+        <meta property="og:title" content="GoodTools.Ai - Blog" />
         <meta
           property="og:description"
           content="Latest Our AI News & Articles"
@@ -59,7 +59,7 @@ export default function News({ data }) {
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/">Home</Link>
           </li>
-          <li className="text-[#6C737F] font-paragraph text-sm">News</li>
+          <li className="text-[#6C737F] font-paragraph text-sm">Blog</li>
         </ul>
       </div>
       <div className="font-paragraph mb-10 md:mb-24 mx-2 md:mx-0 mt-6 md:mt-10">

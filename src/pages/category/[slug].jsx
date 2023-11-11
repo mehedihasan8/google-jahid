@@ -14,6 +14,7 @@ const Footer = dynamic(() => import("../../Component/Footer/Footer"));
 const CookiePopup = dynamic(() => import("../../Component/Popup/CookiePopup"));
 
 const CategoryData = ({
+  filter,
   categoryData,
   preToolsData,
   allsubcategoriesData,
@@ -123,7 +124,7 @@ const CategoryData = ({
   const loadToolsData = async () => {
     const nextPage = page + 1;
     const response = await fetch(
-      `https://api.goodtools.ai/category/${slug}/tools?page=${nextPage}&limit=9`
+      `https://api.goodtools.ai/category/${slug}/tools?page=${nextPage}&limit=9&filter=${filter}`
     );
     const data = await response.json();
     setTotal(data.total);
@@ -145,11 +146,6 @@ const CategoryData = ({
       loadToolsData();
     }
   }, [inView]);
-
-  useEffect(() => {
-    setIsLoading(true);
-    loadToolsData();
-  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("popup") > 0) {
@@ -346,7 +342,7 @@ export async function getServerSideProps(context) {
   const [category, tools, allsubcategories, filtersubcategories] =
     await Promise.all([
       fetch(`https://api.goodtools.ai/category/${slug}`),
-      fetch(`https://api.goodtools.ai/category/${slug}/tools?page=1&limit=9`),
+      fetch(`https://api.goodtools.ai/category/${slug}/tools?page=1&limit=9&filter=${filter}`),
       fetch("https://api.goodtools.ai/allsubcategories"),
       fetch("https://api.goodtools.ai/sublist"),
     ]);
@@ -359,8 +355,11 @@ export async function getServerSideProps(context) {
       filtersubcategories.json(),
     ]);
 
+  console.log(categoryData);
+  console.log(preToolsData);
   return {
     props: {
+      filter,
       categoryData,
       preToolsData,
       allsubcategoriesData,
