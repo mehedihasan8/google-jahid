@@ -80,10 +80,10 @@ export default function News({ data, categories }) {
       <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0 mt-16 md:mt-24">
         <ul className="text-left">
           <li className="text-[#081120] font-paragraph text-sm">
-            <Link href="/">Home</Link>
+            <Link href="/" scroll={true}>Home</Link>
           </li>
           <li className="text-[#081120] font-paragraph text-sm">
-            <Link href="/blog">Blog</Link>
+            <Link href="/blog" scroll={true}>Blog</Link>
           </li>
           <li className="text-[#6C737F] font-paragraph text-sm">
             {item?.newsTitle}
@@ -150,6 +150,7 @@ export default function News({ data, categories }) {
                     <Link
                       href="/"
                       className="explore-btn explore-btn-text mt-6"
+                      scroll={true}
                     >
                       Explore Now
                     </Link>
@@ -217,6 +218,7 @@ export default function News({ data, categories }) {
                   <Link
                     href="/"
                     className="explore-btn explore-btn-text font-medium text-paragraph text-base  mt-6  "
+                    scroll={true}
                   >
                     Explore Now
                   </Link>

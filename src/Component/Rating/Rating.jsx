@@ -48,6 +48,7 @@ const Rating = ({ card }) => {
                   href={card?.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  scroll={true}
                 >
                   <BiLinkExternal className="md:text-[25px] text-[20px] mt-[10px] md:mt-4 text-[#6C737F]" />
                 </Link>

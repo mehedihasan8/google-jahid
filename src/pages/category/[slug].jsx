@@ -203,7 +203,7 @@ const CategoryData = ({
       <div className="max-w-screen-xl mx-auto px-4 md:px-0  breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24">
         <ul>
           <li className="text-[#081120] font-paragraph text-sm">
-            <Link href="/">Home</Link>
+            <Link href="/" scroll={true}>Home</Link>
           </li>
           <li className="text-[#6C737F] font-paragraph text-sm">
             {categoryData.Title}

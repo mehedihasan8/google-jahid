@@ -44,15 +44,16 @@ const Navbar = () => {
       // ref={dropdownRef}
       className="max-w-screen-xl mx-auto md:pt-7 py-4 top-0 backdrop-blur-sm md:backdrop-blur-sm z-40 w-full fixed flex justify-between items-center "
     >
-      <Link href="/">
+      <Link href="/" scroll={true}>
         <Image
           src={Logo}
           alt="logo"
           className="w-[150px] h-[35px] md:w-[175px] md:h-[45px] pl-[6px] md:pl-0"
+          scroll={true}
         />
       </Link>
       <ul className="md:flex justify-between w-[12rem] md:mt-2 hidden">
-        <Link href="/">
+        <Link href="/" scroll={true}>
           <li
             className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/" ? "active" : ""
               }`}
@@ -64,7 +65,7 @@ const Navbar = () => {
           </li>
         </Link>
 
-        <Link href="/blog">
+        <Link href="/blog" scroll={true}>
           <li
             className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/blog" ? "active" : ""
               }`}
@@ -132,7 +133,7 @@ const Navbar = () => {
         id="mobile-menu"
       >
         <ul className="flex flex-col items-center gap-3 text-center">
-          <Link href="/" onClick={closeMenu}>
+          <Link href="/" onClick={closeMenu} scroll={true}>
             <li
               className={`nav-item border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/" ? "active" : ""
                 }`}
@@ -144,7 +145,7 @@ const Navbar = () => {
             </li>
           </Link>
 
-          <Link href="/blog" onClick={closeMenu}>
+          <Link href="/blog" onClick={closeMenu} scroll={true}>
             <li
               className={`nav-item px-4 border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/blog" ? "active" : ""
                 }`}

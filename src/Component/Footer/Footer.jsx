@@ -9,18 +9,21 @@ const Footer = () => {
               <Link
                 href="/privacy-policy"
                 className="link link-hover nav-text block mb-[11px]"
+                scroll={true}
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
                 className="link link-hover nav-text block mb-[11px]"
+                scroll={true}
               >
                 Term of Service
               </Link>
               <Link
                 href="/about"
                 className="link mb-7 link-hover nav-text block"
+                scroll={true}
               >
                 About Us
               </Link>
@@ -31,12 +34,14 @@ const Footer = () => {
                 <Link
                   href="/contact"
                   className="link link-hover nav-text block mb-[11px]"
+                  scroll={true}
                 >
                   Contact
                 </Link>
                 <Link
-                  href="/about"
+                  href="/contact"
                   className="link mb-7 link-hover nav-text block"
+                  scroll={true}
                 >
                   Request A Feature
                 </Link>

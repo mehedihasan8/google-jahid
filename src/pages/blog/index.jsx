@@ -60,7 +60,7 @@ export default function News({ data }) {
       <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24">
         <ul>
           <li className="text-[#081120] font-paragraph text-sm">
-            <Link href="/">Home</Link>
+            <Link href="/" scroll={true}>Home</Link>
           </li>
           <li className="text-[#6C737F] font-paragraph text-sm">Blog</li>
         </ul>
@@ -80,7 +80,7 @@ export default function News({ data }) {
               <span className="loading  loading-ring md:w-40 md:h-40 w-20  md:ml-[90%] ml-[50%] mb-10 mt-5"></span>
             ) : (
               news.map((item, index) => (
-                <Link key={index} href={`/blog/${item.slug}`}>
+                <Link key={index} href={`/blog/${item.slug}`} scroll={true}>
                   <div
                     className="relative p-5 rounded-xl h-full "
                     style={{
