@@ -62,7 +62,7 @@ const RelatedCards = ({ subs, id }) => {
           }}
         >
           <Link key={tool.slug} href={`/tool/${tool.slug}`} target="_blank">
-            <figure className="relative w-full md:mb-6 mb-4">
+            <div className="relative w-full md:mb-6 mb-4 rounded-2xl">
               <Image
                 src={`https://api.goodtools.ai/uploads/${tool?.image}`}
                 alt={tool?.toolName}
@@ -91,7 +91,7 @@ const RelatedCards = ({ subs, id }) => {
                   )}
                 </div>
               </div>
-            </figure>
+            </div>
 
             <div className="h-fit">
               <div className="flex justify-between items-center md:mb-6 mb-4">
@@ -125,10 +125,8 @@ const RelatedCards = ({ subs, id }) => {
                       </defs>
                     </svg>
                   </div>
-                  <div className=" ">
-                    <button className="font-paragraph text-xs text-[#081120]">
-                      {tool?.priceType}
-                    </button>
+                  <div className="font-paragraph text-xs text-[#081120]">
+                    {tool?.priceType}
                   </div>
                 </div>
               </div>

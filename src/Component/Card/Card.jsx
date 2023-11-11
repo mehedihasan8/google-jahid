@@ -5,7 +5,6 @@ import Image from "next/image";
 
 const Card = ({ toolsData, sortOption }) => {
   const [tools, setTools] = useState([]);
-  const [lastElem, setLastElem] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isBookmarkClicked, setIsBookmarkClicked] = useState(false);
   const initialButtonStates = {};
@@ -13,13 +12,18 @@ const Card = ({ toolsData, sortOption }) => {
   useEffect(() => {
     setIsLoading(false);
     setTools(toolsData);
-    setLastElem(toolsData?.length - 1);
     toolsData?.forEach((tool) => {
       const storageKey = `myHeartClicked-${tool._id}`;
       const isClicked = loadStateFromLocalStorage(storageKey);
       initialButtonStates[tool._id] = isClicked;
     });
-  }, [toolsData]);
+  });
+
+
+  const handleSubCategoryClick = (event, item) => {
+    event.stopPropagation();
+    console.log(item);
+  }
 
   const component = (tool, indx) => {
     if (tool) {
@@ -44,7 +48,7 @@ const Card = ({ toolsData, sortOption }) => {
 
       return (
         <div
-          key={indx}
+          key={tool.slug}
           style={{
             width: "100%",
             height: "100%",
@@ -122,10 +126,8 @@ const Card = ({ toolsData, sortOption }) => {
                       </defs>
                     </svg>
                   </div>
-                  <div className=" ">
-                    <button className="text-[#081120] font-paragraph font-normal text-xs">
-                      {tool?.priceType}
-                    </button>
+                  <div className="text-[#081120] font-paragraph font-normal text-xs">
+                    {tool?.priceType}
                   </div>
                 </div>
               </div>
@@ -141,14 +143,15 @@ const Card = ({ toolsData, sortOption }) => {
 
               <div className=" flex flex-wrap gap-3 items-center gap-y-[6px] mb-5">
                 {tool?.SubCategory.slice(0, 3).map((item, index) => (
-                  <div
+                  <button
                     key={index}
-                    className="flex w-fit h-fit justify-between grid-cols-4 gap-1"
+                    onClick={(event) => handleSubCategoryClick(event, item)}
+                    className="flex w-fit h-fit cursor-pointer hover:scale-105 justify-between grid-cols-4 gap-1"
                   >
-                    <div className="px-3 py-[10px] flex items-center justify-between border-[0.5px] border-[#E5E7EB] rounded-[100px] text-[10px] font-paragraph">
+                    <p className="px-3 py-[10px] flex items-center justify-between border-[0.5px] border-[#E5E7EB] rounded-[100px] text-[10px] font-paragraph">
                       {item}
-                    </div>
-                  </div>
+                    </p>
+                  </button>
                 ))}
                 {tool?.SubCategory.length > 3 && (
                   <div className="px-3 text-[10px] py-[10px] flex items-center justify-between rounded-[100px] bg-[#F3F4F6] font-paragraph">

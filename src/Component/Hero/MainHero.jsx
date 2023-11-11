@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+import Link from "next/link";
 
 // Import Swiper styles
 import "swiper/css";
@@ -47,9 +48,9 @@ const Hero = ({ allsubcategoriesData }) => {
     }
   };
 
-  const handleSearch = () => {};
+  const handleSearch = () => { };
 
-  const handleBlur = () => {};
+  const handleBlur = () => { };
 
   const handleClick = (event, item) => {
     navigate.push(`/category/${item.slug}`);
@@ -147,10 +148,10 @@ const Hero = ({ allsubcategoriesData }) => {
                     },
                   }}
                 >
-                  {data.map((item, index) => (
+                  {data.map(item => (
                     <SwiperSlide>
                       <button
-                        key={index}
+                        key={item.slug}
                         // name={item.SubCategory}
                         onClick={(e) => handleClick(e, item)}
                         className="font-normal item h-fit w-full mr-0 md:mr-3 text-[#4D5761] whitespace-nowrap border-2 cursor-pointer hover:scale-105 ease-in-out duration-30 p-text px-4 py-auto bg-transparent"
