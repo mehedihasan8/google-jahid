@@ -1,10 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+
+const PageWraper = dynamic(() => import("../../Layout/PageWraper"));
 
 const Contact = () => {
   return (
-    <div>
+    <PageWraper>
       <Head>
         <title>GoodTools.Ai - Contact Us</title>
         <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
@@ -148,7 +151,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageWraper>
   );
 };
 

@@ -1,10 +1,13 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const PageWraper = dynamic(() => import("../../Layout/PageWraper"));
 
 const PrivacyPolicy = () => {
   return (
-    <div>
+    <PageWraper>
       <Head>
         <title>GoodTools.Ai - Privacy & Policy</title>
         <meta name="title" content="GoodTools.Ai - Privacy & Policy" />
@@ -132,7 +135,7 @@ const PrivacyPolicy = () => {
           “spider,” or index any web pages or any other portion of the Services.
         </p>
       </div>
-    </div>
+    </PageWraper>
   );
 };
 

@@ -5,6 +5,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
+const PageWraper = dynamic(() => import("../../Layout/PageWraper"));
 const Card = dynamic(() => import("../../Component/Card/Card"));
 const CategoryFilter = dynamic(() =>
   import("../../Component/Filter/CategoryFilter")
@@ -51,7 +52,9 @@ const CategoryData = ({
     return res;
   };
 
-  useEffect(() => {
+
+  const handleChecked = (event) => {
+    setSortOption(event.target.name);
     if (sortOption === "All") {
       document.getElementById("All").checked = true;
       document.getElementById("top_10").checked = false;
@@ -65,7 +68,7 @@ const CategoryData = ({
       document.getElementById("All").checked = false;
       document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
-      navigate.push(`/category/${slug}/?filter=${sortOption}`);
+      navigate.push(`/category/${slug}/?sort=${sortOption}`);
     }
     else if (sortOption === "Free") {
       document.getElementById("Free").checked = true;
@@ -73,51 +76,21 @@ const CategoryData = ({
       document.getElementById("All").checked = false;
       document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
-      navigate.push(`/category/${slug}/?filter=${sortOption}`);
+      navigate.push(`/category/${slug}/?sort=${sortOption}`);
     } else if (sortOption === "Freemium") {
       document.getElementById("Freemium").checked = true;
       document.getElementById("All").checked = false;
       document.getElementById("top_10").checked = false;
       document.getElementById("Free").checked = false;
       document.getElementById("Paid").checked = false;
-      navigate.push(`/category/${slug}/?filter=${sortOption}`);
+      navigate.push(`/category/${slug}/?sort=${sortOption}`);
     } else if (sortOption === "Paid") {
       document.getElementById("Paid").checked = true;
       document.getElementById("top_10").checked = false;
       document.getElementById("All").checked = false;
       document.getElementById("Free").checked = false;
       document.getElementById("Freemium").checked = false;
-      navigate.push(`/category/${slug}/?filter=${sortOption}`);
-    }
-  }, [sortOption]);
-
-  const handleChecked = (event) => {
-    if (event.target.name === "All" && event.target.checked) {
-      document.getElementById("Free").checked = false;
-      document.getElementById("Freemium").checked = false;
-      document.getElementById("Paid").checked = false;
-      setSortOption(event.target.name);
-    } else if (event.target.name === "Free" && event.target.checked) {
-      document.getElementById("All").checked = false;
-      document.getElementById("Freemium").checked = false;
-      document.getElementById("Paid").checked = false;
-      setSortOption(event.target.name);
-    } else if (event.target.name === "Freemium" && event.target.checked) {
-      document.getElementById("All").checked = false;
-      document.getElementById("Free").checked = false;
-      document.getElementById("Paid").checked = false;
-      setSortOption(event.target.name);
-    } else if (event.target.name === "Paid" && event.target.checked) {
-      document.getElementById("All").checked = false;
-      document.getElementById("Free").checked = false;
-      document.getElementById("Freemium").checked = false;
-      setSortOption(event.target.name);
-    } else if (!event.target.checked) {
-      document.getElementById("All").checked = true;
-      document.getElementById("Free").checked = false;
-      document.getElementById("Freemium").checked = false;
-      document.getElementById("Paid").checked = false;
-      setSortOption("All");
+      navigate.push(`/category/${slug}/?sort=${sortOption}`);
     }
   };
 
@@ -126,7 +99,9 @@ const CategoryData = ({
     const response = await fetch(
       `https://api.goodtools.ai/category/${slug}/tools?page=${nextPage}&limit=9&filter=${filter}`
     );
+
     const data = await response.json();
+
     setTotal(data.total);
     setToolsData([...toolsData, ...data.tools]);
     setPage(nextPage);
@@ -137,7 +112,6 @@ const CategoryData = ({
     setTotal(preToolsData.total);
     setToolsData(preToolsData.tools);
     setPage(1);
-    setIsLoading(false);
   });
 
   useEffect(() => {
@@ -158,7 +132,7 @@ const CategoryData = ({
   }, []);
 
   return (
-    <div className="">
+    <PageWraper>
       <Head>
         <title>{`GoodTools.Ai - ${categoryData.Title}`}</title>
         <meta
@@ -331,7 +305,7 @@ const CategoryData = ({
       {isLoading || <Footer />}
 
       <CookiePopup isPopUp={isPopUp} setPopUp={setPopUp} />
-    </div>
+    </PageWraper>
   );
 };
 
@@ -355,8 +329,7 @@ export async function getServerSideProps(context) {
       filtersubcategories.json(),
     ]);
 
-  console.log(categoryData);
-  console.log(preToolsData);
+
   return {
     props: {
       filter,

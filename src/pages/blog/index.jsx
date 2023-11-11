@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const PageWraper = dynamic(() => import("../../Layout/PageWraper"));
 
 export default function News({ data }) {
   const [news, setNews] = useState([]);
@@ -35,7 +38,7 @@ export default function News({ data }) {
   };
 
   return (
-    <div>
+    <PageWraper>
       <Head>
         <title>GoodTools.Ai - Blog</title>
         <meta name="description" content="Latest Our AI Blog & Articles" />
@@ -99,7 +102,7 @@ export default function News({ data }) {
                       width={0}
                       height={0}
                       sizes="100vw"
-                      scale="fill"
+                      layout="responsive"
                       style={{ width: "100%" }}
                       decoding="async"
                       data-nimg="fill"
@@ -140,7 +143,7 @@ export default function News({ data }) {
           </div>
         </div>
       </div>
-    </div>
+    </PageWraper>
   );
 }
 

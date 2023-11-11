@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/router";
 
+const PageWraper = dynamic(() => import("../Layout/PageWraper"));
 const Card = dynamic(() => import("../Component/Card/Card"));
 const Hero = dynamic(() => import("../Component/Hero/MainHero"));
 const Filter = dynamic(() => import("../Component/Filter/MainFilter"));
@@ -42,7 +43,9 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
     return res;
   };
 
-  useEffect(() => {
+  const handleChecked = (event) => {
+    setSortOption(event.target.name);
+
     if (sortOption === "All") {
       document.getElementById("All").checked = true;
       document.getElementById("Free").checked = false;
@@ -67,36 +70,6 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
       document.getElementById("Free").checked = false;
       document.getElementById("Freemium").checked = false;
       navigate.push(`/?sort=${sortOption}`)
-    }
-  }, [sortOption]);
-
-  const handleChecked = (event) => {
-    if (event.target.name === "All" && event.target.checked) {
-      document.getElementById("Free").checked = false;
-      document.getElementById("Freemium").checked = false;
-      document.getElementById("Paid").checked = false;
-      setSortOption(event.target.name);
-    } else if (event.target.name === "Free" && event.target.checked) {
-      document.getElementById("All").checked = false;
-      document.getElementById("Freemium").checked = false;
-      document.getElementById("Paid").checked = false;
-      setSortOption(event.target.name);
-    } else if (event.target.name === "Freemium" && event.target.checked) {
-      document.getElementById("All").checked = false;
-      document.getElementById("Free").checked = false;
-      document.getElementById("Paid").checked = false;
-      setSortOption(event.target.name);
-    } else if (event.target.name === "Paid" && event.target.checked) {
-      document.getElementById("All").checked = false;
-      document.getElementById("Free").checked = false;
-      document.getElementById("Freemium").checked = false;
-      setSortOption(event.target.name);
-    } else if (!event.target.checked) {
-      document.getElementById("All").checked = true;
-      document.getElementById("Free").checked = false;
-      document.getElementById("Freemium").checked = false;
-      document.getElementById("Paid").checked = false;
-      setSortOption("All");
     }
   };
 
@@ -144,7 +117,7 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
   }, []);
 
   return (
-    <div className="">
+    <PageWraper>
       <Head>
         <title>GoodTools.Ai - AI Tools Finder</title>
         <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
@@ -288,7 +261,7 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
 
         <CookiePopup isPopUp={isPopUp} setPopUp={setPopUp} />
       </div>
-    </div>
+    </PageWraper>
   );
 };
 

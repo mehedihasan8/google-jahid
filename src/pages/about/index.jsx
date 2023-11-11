@@ -1,9 +1,12 @@
 import Link from "next/link";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+
+const PageWraper = dynamic(() => import("../../Layout/PageWraper"));
 
 const About = () => {
   return (
-    <div>
+    <PageWraper>
       <Head>
         <title>GoodTools.Ai - About Us</title>
         <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
@@ -61,7 +64,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageWraper>
   );
 };
 

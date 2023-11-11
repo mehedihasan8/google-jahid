@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
+const PageWraper = dynamic(() => import("../../Layout/PageWraper"));
 const Rate = dynamic(() => import("../../Component/Rate/Rate"));
 const Rattingg = dynamic(() => import("../../Component/Rating/Rating"));
 const RelatedCards = dynamic(() => import("../../Component/Card/RelatedCard"));
@@ -21,7 +22,7 @@ export default function Tool({ data }) {
   }
 
   return (
-    <div>
+    <PageWraper>
       <Head>
         <title>{`GoodTools.Ai - ${data.toolName}`}</title>
         <meta name="title" content={`GoodTools.Ai - ${data.toolName}`} />
@@ -63,7 +64,7 @@ export default function Tool({ data }) {
               <Rattingg card={cards} />
               <Rate id={cards._id} name={cards?.toolName}></Rate>
             </div>
-            <div className="md:my-[60px] mt-10 mb-5 mx-4 md:mx-0">
+            <div className="md:my-[60px] my-[40px]">
               <RelatedCards
                 id={cards._id}
                 subs={cards.SubCategory}
@@ -72,7 +73,7 @@ export default function Tool({ data }) {
           </div>
         )}
       </div>
-    </div>
+    </PageWraper>
   );
 }
 

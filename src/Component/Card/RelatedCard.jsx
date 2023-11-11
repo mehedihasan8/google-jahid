@@ -58,7 +58,6 @@ const RelatedCards = ({ subs, id }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            gap: 24,
             display: "inline-flex",
           }}
         >
@@ -74,20 +73,21 @@ const RelatedCards = ({ subs, id }) => {
                 width={0}
                 height={0}
                 sizes="100vw"
-                style={{ width: "100%", height: "240px" }}
+                layout="responsive"
+                style={{ width: "100%" }}
                 decoding="async"
                 data-nimg="fill"
               />
 
               <div
                 onClick={(event) => handleClick(event, storageKey)}
-                className={`md:w-[46px] md:h-[46px] p-[10px] rounded-full flex items-center justify-center absolute top-0 right-0 mr-5 mt-4 bg-white`}
+                className={`w-[44px] h-[44px] rounded-full flex items-center justify-center absolute top-0 right-0 mr-5 mt-4 bg-white`}
               >
-                <div className="gap-[10px] w-[46px] h-[46px] relative">
+                <div className="relative">
                   {isClicked ? (
-                    <BsBookmark className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px]" />
+                    <BsBookmarkFill className=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px]" />
                   ) : (
-                    <BsBookmarkFill className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px]" />
+                    <BsBookmark className=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px]" />
                   )}
                 </div>
               </div>

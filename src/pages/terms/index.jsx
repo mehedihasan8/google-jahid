@@ -1,10 +1,13 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const PageWraper = dynamic(() => import("../../Layout/PageWraper"));
 
 const Terms = () => {
   return (
-    <div>
+    <PageWraper>
       <Head>
         <title>GoodTools.Ai - Terms & Conditions</title>
         <meta name="title" content="GoodTools.Ai - Terms & Conditions" />
@@ -519,7 +522,7 @@ const Terms = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </PageWraper>
   );
 };
 

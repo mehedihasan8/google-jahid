@@ -48,7 +48,7 @@ const Card = ({ toolsData, sortOption }) => {
           style={{
             width: "100%",
             height: "100%",
-            padding: 15,
+            padding: 20,
             background: "var(--neutral-white, #FFF)",
             boxShadow: "0px 8px 24px rgba(58.44, 80.86, 50, 0.15)",
             borderRadius: 16,
@@ -71,7 +71,7 @@ const Card = ({ toolsData, sortOption }) => {
                 width={0}
                 height={0}
                 sizes="100vw"
-                scale="fill"
+                layout="responsive"
                 style={{ width: "100%" }}
                 decoding="async"
                 data-nimg="fill"
