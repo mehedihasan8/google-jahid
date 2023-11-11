@@ -79,6 +79,9 @@ export default function News({ data, categories }) {
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/">Home</Link>
           </li>
+          <li className="text-[#081120] font-paragraph text-sm">
+            <Link href="/blog">Blog</Link>
+          </li>
           <li className="text-[#6C737F] font-paragraph text-sm">
             {item?.newsTitle}
           </li>
