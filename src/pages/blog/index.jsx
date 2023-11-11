@@ -77,7 +77,7 @@ export default function News({ data }) {
               <span className="loading  loading-ring md:w-40 md:h-40 w-20  md:ml-[90%] ml-[50%] mb-10 mt-5"></span>
             ) : (
               news.map((item, index) => (
-                <Link key={index} href={`/news/${item.slug}`}>
+                <Link key={index} href={`/blog/${item.slug}`}>
                   <div
                     className="relative p-5 rounded-xl h-full "
                     style={{
@@ -87,22 +87,24 @@ export default function News({ data }) {
                       boxShadow: "0px 8px 24px rgba(58.44, 80.86, 50, 0.15)",
                     }}
                   >
-                    <div className="">
-                      <Image
-                        className="h-[286px] relative rounded-xl"
-                        src={`https://api.goodtools.ai/uploads/${item.image}`}
-                        //src={`https://i.ibb.co/8c144dc/Image.jpg`}
-                        alt={item?.newsTitle}
-                        loading="lazy"
-                        placeholder="blur"
-                        blurDataURL={item.imageBlur}
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        scale="fill"
-                        style={{ width: "100%" }}
-                      />
-                    </div>
+
+                    <Image
+                      className="h-[210px] md:h-[286px] relative rounded-xl"
+                      src={`https://api.goodtools.ai/uploads/${item.image}`}
+                      //src={`https://i.ibb.co/8c144dc/Image.jpg`}
+                      alt={item?.newsTitle}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL={item.imageBlur}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      scale="fill"
+                      style={{ width: "100%" }}
+                      decoding="async"
+                      data-nimg="fill"
+                    />
+
                     <div className=" md:mt-6 pb-2 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">
                       <p className="date-title font-medium font-paragraph text-xl">
                         {item?.newsType}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { set } from "react-hook-form";
+import { useRouter } from "next/router";
 
 const Card = dynamic(() => import("../../Component/Card/Card"));
 const CategoryFilter = dynamic(() =>
@@ -20,6 +20,7 @@ const CategoryData = ({
   filterData,
   slug,
 }) => {
+  const navigate = useRouter();
   const [sortOption, setSortOption] = useState("All");
   const [toolsData, setToolsData] = useState([]);
   const [total, setTotal] = useState(0);
@@ -52,39 +53,55 @@ const CategoryData = ({
   useEffect(() => {
     if (sortOption === "All") {
       document.getElementById("All").checked = true;
+      document.getElementById("top_10").checked = false;
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
-    } else if (sortOption === "Free") {
+      navigate.push(`/category/${slug}`);
+    } else if (sortOption === "top_10") {
+      document.getElementById("Free").checked = false;
+      document.getElementById("top_10").checked = true;
+      document.getElementById("All").checked = false;
+      document.getElementById("Freemium").checked = false;
+      document.getElementById("Paid").checked = false;
+      navigate.push(`/category/${slug}/?filter=${sortOption}`);
+    }
+    else if (sortOption === "Free") {
       document.getElementById("Free").checked = true;
+      document.getElementById("top_10").checked = false;
       document.getElementById("All").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
-    } else if (sortOption === "Premium") {
-      document.getElementById("Premium").checked = true;
+      navigate.push(`/category/${slug}/?filter=${sortOption}`);
+    } else if (sortOption === "Freemium") {
+      document.getElementById("Freemium").checked = true;
       document.getElementById("All").checked = false;
+      document.getElementById("top_10").checked = false;
       document.getElementById("Free").checked = false;
       document.getElementById("Paid").checked = false;
+      navigate.push(`/category/${slug}/?filter=${sortOption}`);
     } else if (sortOption === "Paid") {
       document.getElementById("Paid").checked = true;
+      document.getElementById("top_10").checked = false;
       document.getElementById("All").checked = false;
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
+      navigate.push(`/category/${slug}/?filter=${sortOption}`);
     }
   }, [sortOption]);
 
   const handleChecked = (event) => {
     if (event.target.name === "All" && event.target.checked) {
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
       setSortOption(event.target.name);
     } else if (event.target.name === "Free" && event.target.checked) {
       document.getElementById("All").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
       setSortOption(event.target.name);
-    } else if (event.target.name === "Premium" && event.target.checked) {
+    } else if (event.target.name === "Freemium" && event.target.checked) {
       document.getElementById("All").checked = false;
       document.getElementById("Free").checked = false;
       document.getElementById("Paid").checked = false;
@@ -92,12 +109,12 @@ const CategoryData = ({
     } else if (event.target.name === "Paid" && event.target.checked) {
       document.getElementById("All").checked = false;
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       setSortOption(event.target.name);
     } else if (!event.target.checked) {
       document.getElementById("All").checked = true;
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
       setSortOption("All");
     }
@@ -120,7 +137,7 @@ const CategoryData = ({
     setToolsData(preToolsData.tools);
     setPage(1);
     setIsLoading(false);
-  }, []);
+  });
 
   useEffect(() => {
     setIsLoading(true);
@@ -191,7 +208,7 @@ const CategoryData = ({
         <div className="px-4 md:px-0 max-w-screen-xl mx-auto md:flex items-center justify-between md:mb-11 mb-[30px]">
           <div className="md:flex items-center ">
             <div className="w-full md:w-fit mx-auto mb-4 md:mb-0 ">
-              <CategoryFilter filterData={filterData} />
+              <CategoryFilter filterData={filterData} categoryData={categoryData} />
             </div>
             <div className="text-[#6C737F] my-auto  w-fit text-base font-medium  md:ml-[32px] font-paragraph  md:mx-0 ">
               Showing{" "}
@@ -223,6 +240,21 @@ const CategoryData = ({
                 <div className="col">All</div>
               </button>
               <button
+                onClick={() => setSortOption("top_10")}
+                name="Top 10"
+                className="flex items-center md:gap-2 gap-1 font-paragraph"
+              >
+                <input
+                  onClick={handleChecked}
+                  className="focus:ring-0 focus:outline-0 rounded-sm h-3 w-3 font-paragraph font-normal text-base"
+                  type="checkbox"
+                  id="top_10"
+                  name="Top 10"
+                  defaultChecked
+                />
+                <div className="col">Top 10</div>
+              </button>
+              <button
                 onClick={() =>
                   sortOption === "Free"
                     ? setSortOption("All")
@@ -242,21 +274,21 @@ const CategoryData = ({
               </button>
               <button
                 onClick={() =>
-                  sortOption === "Premium"
+                  sortOption === "Freemium"
                     ? setSortOption("All")
-                    : setSortOption("Premium")
+                    : setSortOption("Freemium")
                 }
-                name="Premium"
+                name="Freemium"
                 className="flex items-center gap-2 font-paragraph"
               >
                 <input
                   onClick={handleChecked}
                   className="focus:ring-0 focus:outline-0 rounded-sm h-3 w-3 font-paragraph font-normal text-base"
                   type="checkbox"
-                  id="Premium"
-                  name="Premium"
+                  id="Freemium"
+                  name="Freemium"
                 />
-                <div className="col">Premium</div>
+                <div className="col">Freemium</div>
               </button>
               <button
                 onClick={() =>
@@ -309,6 +341,8 @@ const CategoryData = ({
 
 export async function getServerSideProps(context) {
   const { slug } = context.params;
+  const filter = context.query.sort || "";
+
   const [category, tools, allsubcategories, filtersubcategories] =
     await Promise.all([
       fetch(`https://api.goodtools.ai/category/${slug}`),

@@ -90,6 +90,8 @@ const Rating = ({ card }) => {
                   height={0}
                   sizes="100vw"
                   style={{ width: "100%", height: "100%" }}
+                  decoding="async"
+                  data-nimg="fill"
                 />
               </div>
               <div className="">

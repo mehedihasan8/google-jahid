@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import "flowbite";
 import { useRouter } from "next/router";
 
-const CategoryFilter = ({ filterData }) => {
+const CategoryFilter = ({ filterData, categoryData }) => {
+  const navigate = useRouter();
+
   const [choice, setChoice] = useState("");
   const [toggle, setToggle] = useState(true);
   const [subList, setSubList] = useState([]);
 
   useEffect(() => {
     setSubList(filterData);
-  }, []);
-
-  const navigate = useRouter();
+    setChoice(categoryData.SubCategory);
+  });
 
   const handleClick = (event, value) => {
     setToggle(true);
@@ -65,9 +66,8 @@ const CategoryFilter = ({ filterData }) => {
 
       {/* <!-- Dropdown menu --> */}
       <div
-        className={`z-50 ${
-          toggle ? "hidden" : "block absolute bottom-30 left-0"
-        } font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-xl md:w-[200px] w-11/12 text-base`}
+        className={`z-50 ${toggle ? "hidden" : "block absolute bottom-30 left-0"
+          } font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-xl md:w-[200px] w-11/12 text-base`}
       >
         {subList
           .sort((a, b) => (a._id > b._id ? 1 : -1))

@@ -54,9 +54,8 @@ const Navbar = () => {
       <ul className="md:flex justify-between w-[12rem] md:mt-2 hidden">
         <Link href="/">
           <li
-            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${
-              router.pathname === "/" ? "active" : ""
-            }`}
+            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/" ? "active" : ""
+              }`}
           >
             AI Tools Finder
             {router.pathname === "/" ? (
@@ -65,14 +64,13 @@ const Navbar = () => {
           </li>
         </Link>
 
-        <Link href="/news">
+        <Link href="/blog">
           <li
-            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${
-              router.pathname === "/news" ? "active" : ""
-            }`}
+            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/blog" ? "active" : ""
+              }`}
           >
-            News
-            {router.pathname === "/news" ? (
+            Blog
+            {router.pathname === "/blog" ? (
               <div className="active-indicator"></div>
             ) : null}
           </li>
@@ -129,17 +127,15 @@ const Navbar = () => {
       <div
         ref={dropdownRef}
         onClick={handleUserClick}
-        className={`${
-          isMenuOpen ? "block" : "hidden"
-        } absolute right-6 top-10 z-50 px-2 py-3 shadow bg-white border border-gray-200 rounded transition-all duration-300`}
+        className={`${isMenuOpen ? "block" : "hidden"
+          } absolute right-6 top-10 z-50 px-2 py-3 shadow bg-white border border-gray-200 rounded transition-all duration-300`}
         id="mobile-menu"
       >
         <ul className="flex flex-col items-center gap-3 text-center">
           <Link href="/" onClick={closeMenu}>
             <li
-              className={`nav-item border-b border-gray-300 hover:text-[#2970ff] ${
-                router.pathname === "/" ? "active" : ""
-              }`}
+              className={`nav-item border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/" ? "active" : ""
+                }`}
             >
               AI Tools Finder
               {router.pathname === "/" ? (
@@ -148,14 +144,13 @@ const Navbar = () => {
             </li>
           </Link>
 
-          <Link href="/news" onClick={closeMenu}>
+          <Link href="/blog" onClick={closeMenu}>
             <li
-              className={`nav-item px-4 border-b border-gray-300 hover:text-[#2970ff] ${
-                router.pathname === "/news" ? "active" : ""
-              }`}
+              className={`nav-item px-4 border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/blog" ? "active" : ""
+                }`}
             >
-              News
-              {router.pathname === "/news" ? (
+              Blog
+              {router.pathname === "/blog" ? (
                 <div className="active-indicator"></div>
               ) : null}
             </li>

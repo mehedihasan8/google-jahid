@@ -73,7 +73,8 @@ const Card = ({ toolsData, sortOption }) => {
                 sizes="100vw"
                 scale="fill"
                 style={{ width: "100%" }}
-                scale="fill"
+                decoding="async"
+                data-nimg="fill"
               />
 
               <div

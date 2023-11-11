@@ -11,16 +11,16 @@ const RelatedCards = ({ subs, id }) => {
   useEffect(() => {
     subs
       ? fetch(`https://api.goodtools.ai/relatedtools/${subs}`)
-          .then((res) => res.json())
-          .then((data) => {
-            setRelatedTools(data);
-            setIsLoadingRelated(false);
-            data.forEach((tool) => {
-              const storageKey = `myHeartClicked-${tool._id}`;
-              const isClicked = loadStateFromLocalStorage(storageKey);
-              initialButtonStates[tool._id] = isClicked;
-            });
-          })
+        .then((res) => res.json())
+        .then((data) => {
+          setRelatedTools(data);
+          setIsLoadingRelated(false);
+          data.forEach((tool) => {
+            const storageKey = `myHeartClicked-${tool._id}`;
+            const isClicked = loadStateFromLocalStorage(storageKey);
+            initialButtonStates[tool._id] = isClicked;
+          });
+        })
       : undefined;
   }, [subs]);
 
@@ -75,6 +75,8 @@ const RelatedCards = ({ subs, id }) => {
                 height={0}
                 sizes="100vw"
                 style={{ width: "100%", height: "240px" }}
+                decoding="async"
+                data-nimg="fill"
               />
 
               <div
@@ -197,9 +199,8 @@ const RelatedCards = ({ subs, id }) => {
 
   return (
     <div
-      className={`${
-        relatedTools.length > 1 ? "block" : "hidden"
-      }  grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 md:gap-6 gap-y-4`}
+      className={`${relatedTools.length > 1 ? "block" : "hidden"
+        }  grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 md:gap-6 gap-y-4`}
     >
       {isLoadingRelated ? (
         <span className="loading loading-ring md:w-40 md:h-40 w-20 h-20 md:ml-[10%] ml-[5%] md:my-40 my-20"></span>

@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useRouter } from "next/router";
 
 const Card = dynamic(() => import("../Component/Card/Card"));
 const Hero = dynamic(() => import("../Component/Hero/MainHero"));
@@ -10,7 +11,8 @@ const Filter = dynamic(() => import("../Component/Filter/MainFilter"));
 const Footer = dynamic(() => import("../Component/Footer/Footer"));
 const CookiePopup = dynamic(() => import("../Component/Popup/CookiePopup"));
 
-const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
+const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
+  const navigate = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [total, setTotal] = useState(0);
   const [toolsData, setToolsData] = useState([]);
@@ -18,6 +20,7 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
   const { ref, inView } = useInView();
   const [searchData, setSearchData] = useState("");
   const [sortOption, setSortOption] = useState("All");
+
   const decoration = (x) => {
     let str = x + "";
     const c = str.length % 3;
@@ -43,38 +46,42 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
     if (sortOption === "All") {
       document.getElementById("All").checked = true;
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
+      navigate.push(`/`)
     } else if (sortOption === "Free") {
       document.getElementById("Free").checked = true;
       document.getElementById("All").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
-    } else if (sortOption === "Premium") {
-      document.getElementById("Premium").checked = true;
+      navigate.push(`/?sort=${sortOption}`)
+    } else if (sortOption === "Freemium") {
+      document.getElementById("Freemium").checked = true;
       document.getElementById("All").checked = false;
       document.getElementById("Free").checked = false;
       document.getElementById("Paid").checked = false;
+      navigate.push(`/?sort=${sortOption}`)
     } else if (sortOption === "Paid") {
       document.getElementById("Paid").checked = true;
       document.getElementById("All").checked = false;
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
+      navigate.push(`/?sort=${sortOption}`)
     }
   }, [sortOption]);
 
   const handleChecked = (event) => {
     if (event.target.name === "All" && event.target.checked) {
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
       setSortOption(event.target.name);
     } else if (event.target.name === "Free" && event.target.checked) {
       document.getElementById("All").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
       setSortOption(event.target.name);
-    } else if (event.target.name === "Premium" && event.target.checked) {
+    } else if (event.target.name === "Freemium" && event.target.checked) {
       document.getElementById("All").checked = false;
       document.getElementById("Free").checked = false;
       document.getElementById("Paid").checked = false;
@@ -82,12 +89,12 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
     } else if (event.target.name === "Paid" && event.target.checked) {
       document.getElementById("All").checked = false;
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       setSortOption(event.target.name);
     } else if (!event.target.checked) {
       document.getElementById("All").checked = true;
       document.getElementById("Free").checked = false;
-      document.getElementById("Premium").checked = false;
+      document.getElementById("Freemium").checked = false;
       document.getElementById("Paid").checked = false;
       setSortOption("All");
     }
@@ -102,7 +109,7 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
   const loadToolsData = async () => {
     const nextPage = page + 1;
     const response = await fetch(
-      `https://api.goodtools.ai/tool?page=${nextPage}&limit=9`
+      `https://api.goodtools.ai/tool?page=${nextPage}&limit=9&filter=${filter}`
     );
     const data = await response.json();
 
@@ -116,8 +123,7 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
     setTotal(preToolsData.total);
     setToolsData(preToolsData.tools);
     setPage(1);
-    setIsLoading(false);
-  }, []);
+  });
 
   useEffect(() => {
     setIsLoading(true);
@@ -221,21 +227,21 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
               </button>
               <button
                 onClick={() =>
-                  sortOption === "Premium"
+                  sortOption === "Freemium"
                     ? setSortOption("All")
-                    : setSortOption("Premium")
+                    : setSortOption("Freemium")
                 }
-                name="Premium"
+                name="Freemium"
                 className="flex items-center gap-2 font-paragraph"
               >
                 <input
                   onClick={handleChecked}
                   className="focus:ring-0 focus:outline-0 rounded-sm h-3 w-3 font-paragraph font-normal text-base"
                   type="checkbox"
-                  id="Premium"
-                  name="Premium"
+                  id="Freemium"
+                  name="Freemium"
                 />
-                <div className="col">Premium</div>
+                <div className="col">Freemium</div>
               </button>
               <button
                 onClick={() =>
@@ -286,9 +292,12 @@ const Home = ({ preToolsData, allsubcategoriesData, filterData }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+
+  const filter = context.query.sort || "";
+
   const [tools, allsubcategories, filtersubcategories] = await Promise.all([
-    fetch("https://api.goodtools.ai/tool?page=1&limit=9"),
+    fetch(`https://api.goodtools.ai/tool?page=1&limit=9&filter=${filter}`),
     fetch("http://api.goodtools.ai/allsubcategories"),
     fetch("http://api.goodtools.ai/sublist"),
   ]);
@@ -299,7 +308,7 @@ export async function getServerSideProps() {
     filtersubcategories.json(),
   ]);
 
-  return { props: { preToolsData, allsubcategoriesData, filterData } };
+  return { props: { filter, preToolsData, allsubcategoriesData, filterData } };
 }
 
 export default Home;

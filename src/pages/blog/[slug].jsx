@@ -90,7 +90,7 @@ export default function News({ data, categories }) {
           <div className="px-4 md:px-6  pt-4 pb-7 mb-26 border-[#E5E7EB] border rounded-2xl">
             {/* Hero section */}
             <Image
-              className="md:mb-10 mb-6 rounded-lg mx-auto w-full h-[400px]"
+              className="md:mb-10 mb-6 rounded-lg mx-auto w-full md:h-[394px] h-[210px]"
               alt={item.newsTitle}
               //src={`https://i.ibb.co/1fGrFQp/Image.png`}
               src={`https://api.goodtools.ai/uploads/${item.image}`}
@@ -102,6 +102,8 @@ export default function News({ data, categories }) {
               sizes="100vw"
               style={{ width: "100%" }}
               scale="fill"
+              decoding="async"
+              data-nimg="fill"
             />
             <div className="md:grid md:grid-cols-2 ">
               {/* right-div */}
