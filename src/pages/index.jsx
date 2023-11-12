@@ -173,7 +173,7 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
       </Head>
 
       <div className="md:mt-[66px] mt-[40px]">
-        <div className="px-2 md:px-0 max-w-screen-xl mx-auto md:mb-[100px] mb-[41.5px]">
+        <div className="px-2 md:px-0 max-w-screen-xl mx-auto md:mb-[100px] mb-[40px]">
           <Hero allsubcategoriesData={allsubcategoriesData} />
         </div>
 
@@ -261,7 +261,7 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
           <Card toolsData={toolsData} sortOption={sortOption} />
         </div>
         <div
-          className="flex justify-center items-center p-4 col-span-1 sm:col-span-2 md:col-span-3 "
+          className="flex justify-center items-center"
           ref={ref}
         >
           {isLoading && (

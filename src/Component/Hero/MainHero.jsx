@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
-import Link from "next/link";
 
 // Import Swiper styles
 import "swiper/css";
