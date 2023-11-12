@@ -264,7 +264,6 @@ const CategoryData = ({
                   type="checkbox"
                   id="top_10"
                   name="Top 10"
-                  defaultChecked
                 />
                 <div className="col">Top 10</div>
               </button>

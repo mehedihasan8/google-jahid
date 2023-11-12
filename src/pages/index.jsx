@@ -58,19 +58,19 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
         document.getElementById("All").checked = false;
         document.getElementById("Freemium").checked = false;
         document.getElementById("Paid").checked = false;
-        navigate.replace(`/?sort=${sortOption}`)
+        navigate.replace(`?sort=${sortOption}`)
       } else if (sortOption === "Freemium") {
         document.getElementById("Freemium").checked = true;
         document.getElementById("All").checked = false;
         document.getElementById("Free").checked = false;
         document.getElementById("Paid").checked = false;
-        navigate.replace(`/?sort=${sortOption}`)
+        navigate.replace(`?sort=${sortOption}`)
       } else if (sortOption === "Paid") {
         document.getElementById("Paid").checked = true;
         document.getElementById("All").checked = false;
         document.getElementById("Free").checked = false;
         document.getElementById("Freemium").checked = false;
-        navigate.replace(`/?sort=${sortOption}`)
+        navigate.replace(`?sort=${sortOption}`)
       }
     } catch (e) { }
     setIsLoading(true);
