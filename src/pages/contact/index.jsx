@@ -2,12 +2,46 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PageWraper = dynamic(() => import("../../Layout/PageWraper"));
 
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setIsLoading(true);
+    try {
+      const formData = new FormData(event.currentTarget);
+      const jsonBody = JSON.stringify(Object.fromEntries(formData.entries()));
+
+      const response = await fetch('https://api.goodtools.ai/send-email', {
+        method: 'POST',
+        body: jsonBody,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.status === 200) {
+        toast.success('Email sent successfully!');
+        event.target.reset();
+      } else {
+        toast.error('Something went wrong!');
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <PageWraper>
+      <ToastContainer />
       <Head>
         <title>GoodTools.Ai - Contact Us</title>
         <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
@@ -48,15 +82,13 @@ const Contact = () => {
               Contact Us
             </h2>
             <p className="text-base font-normal mb-6">
-              alma.lawson@example.com
+              contact@goodtools.ai
             </p>
             <p className="text-base font-normal mb-7">
-              2118 Thornridge Cir. Syracuse, <br /> Connecticut 35624
+              Rupsha Tower, 07, Kemal Ataturk Avenue, Banani <br /> Dhaka, Bangladesh
             </p>
             <p className="mb-7 border-y-4 border-gray-100/60 py-6 text-[#4D5761]">
-              Lorem ipsum dolor sit amet consectetur. Congue nibh purus ac in
-              mattis enim mattis. In eros nibh quis fusce. At sed et purus at
-              metus aliquam rhoncus.
+              Got questions or feedback? We're here to help! Contact us for prompt assistance and personalized support. Your satisfaction is our priority, and we look forward to hearing from you soon.
             </p>
             <div>
               <svg
@@ -116,16 +148,19 @@ const Contact = () => {
               </svg>
             </div>
           </div>
-          <div className=" mt-5 md:p-5 w-[295] md:w-[500px] px-4 md:ml-16">
+          <form onSubmit={handleSubmit} className=" mt-5 md:p-5 w-[295] md:w-[500px] px-4 md:ml-16">
             <div>
               <label className="label">
                 <span className="label-text text-xl font-medium mb-1 mt-3">
-                  User Name
+                  Your Name
                 </span>
               </label>
               <input
                 type="text"
+                id="name"
+                name="name"
                 className="input input-bordered w-full focus:outline-none"
+                required
               />
             </div>
             <div>
@@ -135,20 +170,23 @@ const Contact = () => {
                 </span>
               </label>
               <input
-                type="text"
+                type="email"
+                id="email"
+                name="email"
                 className="input input-bordered w-full focus:outline-none"
+                required
               />
             </div>
             <div>
               <label className="label">
                 <span className=" text-xl font-medium mb-1 mt-3">Message</span>
               </label>
-              <textarea className="textarea input-bordered w-full focus:outline-none"></textarea>
+              <textarea id="message" name="message" className="textarea input-bordered w-full focus:outline-none" required></textarea>
             </div>
-            <button className="ai-btn text-white btn-active my-6">
-              Submit
+            <button type="submit" disabled={isLoading} className="ai-btn text-white btn-active my-6">
+              {isLoading ? 'Loading...' : 'Submit'}
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </PageWraper>
