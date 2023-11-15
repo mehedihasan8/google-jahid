@@ -49,7 +49,6 @@ const Navbar = () => {
           src={Logo}
           alt="logo"
           className="w-[150px] h-[35px] md:w-[175px] md:h-[45px] pl-[6px] md:pl-0"
-          scroll={true}
         />
       </Link>
       <ul className="md:flex justify-between w-[12rem] md:mt-2 hidden">
