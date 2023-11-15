@@ -44,7 +44,7 @@
   align-items: center;
   gap: 40px;
   border-radius: 20px;
-  background: var(--Primary, #2970ff);
+  background: var(--Primary, #6b29ff);
 }
 
 .vertical {
@@ -89,7 +89,7 @@
 }
 
 .explore-btn-text {
-  color: var(--Primary, #2970ff);
+  color: var(--Primary, #6b29ff);
 
   /* Body Text/Inter 16px/Medium */
   font-family: Inter;
@@ -131,7 +131,7 @@
   align-items: center;
   gap: 24px;
   border-radius: 20px;
-  background: var(--Primary, #2970ff);
+  background: var(--Primary, #6b29ff);
 }
 
 .single-image {
@@ -224,7 +224,7 @@
     align-items: center;
     gap: 24px;
     border-radius: 20px;
-    background: var(--Primary, #2970ff);
+    background: var(--Primary, #6b29ff);
   }
 
   .large-card {

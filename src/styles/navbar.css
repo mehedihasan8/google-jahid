@@ -5,7 +5,7 @@
   transform: translateX(-50%);
   width: 24px;
   height: 2px;
-  background-color: #2970ff;
+  background-color: #6b29ff;
   transition: opacity 0.5s ease;
 }
 
@@ -26,13 +26,13 @@
 }
 
 .active {
-  color: var(--Primary, #2970ff);
+  color: var(--Primary, #6b29ff);
   font-weight: 600;
 }
 
 .nav-item::after {
   content: "";
-  background-color: #2970ff;
+  background-color: #6b29ff;
   height: 2px;
   width: 0;
   position: absolute;
@@ -44,7 +44,7 @@
 
 .nav-item:hover::after {
   width: 100%;
-  color: var(--Primary, #2970ff);
+  color: var(--Primary, #6b29ff);
 }
 
 .ai-btn {
@@ -56,7 +56,7 @@
   gap: 12px;
   color: var(--neutral-white, #fff);
   border-radius: 8px;
-  background: var(--Primary, #2970ff);
+  background: var(--Primary, #6b29ff);
   transition: background 0.5s ease;
 }
 

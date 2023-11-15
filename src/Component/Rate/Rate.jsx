@@ -345,7 +345,7 @@ const Rate = ({ id, name }) => {
               {/* Prev button */}
               <button
                 onClick={handlePrev}
-                className="h-12 w-12 flex items-center justify-center border border-[#2970FF] rounded-full mr-5"
+                className="h-12 w-12 flex items-center justify-center border border-[#6b29ff] rounded-full mr-5"
               >
                 <svg
                   width="24"
@@ -356,7 +356,7 @@ const Rate = ({ id, name }) => {
                 >
                   <path
                     d="M15.0001 19.9201L8.48009 13.4001C7.71009 12.6301 7.71009 11.3701 8.48009 10.6001L15.0001 4.08008"
-                    stroke="#2970FF"
+                    stroke="#6b29ff"
                     strokeWidth="1.5"
                     stroke-miterlimit="10"
                     strokeLinecap="round"
@@ -368,7 +368,7 @@ const Rate = ({ id, name }) => {
               {/* Next button */}
               <button
                 onClick={handleNext}
-                className="h-12 w-12 flex items-center justify-center border border-[#2970FF] bg-[#2970FF] rounded-full"
+                className="h-12 w-12 flex items-center justify-center border border-[#6b29ff] bg-[#6b29ff] rounded-full"
               >
                 <svg
                   width="24"

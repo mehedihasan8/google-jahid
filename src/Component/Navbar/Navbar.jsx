@@ -55,7 +55,7 @@ const Navbar = () => {
       <ul className="md:flex justify-between w-[12rem] md:mt-2 hidden">
         <Link href="/" scroll={true}>
           <li
-            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/" ? "active" : ""
+            className={`nav-item hover:text-[2970ff#] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/" ? "active" : ""
               }`}
           >
             AI Tools Finder
@@ -67,7 +67,7 @@ const Navbar = () => {
 
         <Link href="/blog" scroll={true}>
           <li
-            className={`nav-item hover:text-[#2970ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/blog" ? "active" : ""
+            className={`nav-item hover:text-[#6b29ff] text-[#4D5761] hover:translate transition-all duration-300 ${router.pathname === "/blog" ? "active" : ""
               }`}
           >
             Blog
@@ -135,7 +135,7 @@ const Navbar = () => {
         <ul className="flex flex-col items-center gap-3 text-center">
           <Link href="/" onClick={closeMenu} scroll={true}>
             <li
-              className={`nav-item border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/" ? "active" : ""
+              className={`nav-item border-b border-gray-300 hover:text-[#6b29ff] ${router.pathname === "/" ? "active" : ""
                 }`}
             >
               AI Tools Finder
@@ -147,7 +147,7 @@ const Navbar = () => {
 
           <Link href="/blog" onClick={closeMenu} scroll={true}>
             <li
-              className={`nav-item px-4 border-b border-gray-300 hover:text-[#2970ff] ${router.pathname === "/blog" ? "active" : ""
+              className={`nav-item px-4 border-b border-gray-300 hover:text-[#6b29ff] ${router.pathname === "/blog" ? "active" : ""
                 }`}
             >
               Blog
