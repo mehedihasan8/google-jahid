@@ -10,7 +10,7 @@ const RelatedCards = ({ subs, id }) => {
 
   useEffect(() => {
     subs
-      ? fetch(`https://api.goodtools.ai/relatedtools/${subs}`)
+      ? fetch(`${process.env.API_URL}/relatedtools/${subs}`)
         .then((res) => res.json())
         .then((data) => {
           setRelatedTools(data);
@@ -64,10 +64,10 @@ const RelatedCards = ({ subs, id }) => {
           <Link key={tool.slug} href={`/tool/${tool.slug}`} target="_blank">
             <div className="relative w-full md:mb-6 mb-4 rounded-2xl">
               <Image
-                src={`https://api.goodtools.ai/uploads/${tool?.image}`}
+                src={`${process.env.API_URL}/uploads/${tool?.image}`}
                 alt={tool?.toolName}
                 className="h-[240px] rounded-[12px]"
-                loading="lazy"
+                //loading='lazy'"
                 placeholder="blur"
                 blurDataURL={tool?.imageBlur}
                 width={0}
@@ -75,8 +75,7 @@ const RelatedCards = ({ subs, id }) => {
                 sizes="100vw"
                 layout="responsive"
                 style={{ width: "100%" }}
-                decoding="async"
-                data-nimg="fill"
+                priority
               />
 
               <div

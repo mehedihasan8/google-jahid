@@ -81,10 +81,10 @@ const Rating = ({ card }) => {
             <div className="md:grid grid-cols-2  md:mt-10 mt-6 md:gap-[80px]">
               <div className="">
                 <Image
-                  src={`https://api.goodtools.ai/uploads/${card.image}`}
+                  src={`${process.env.API_URL}/uploads/${card.image}`}
                   alt={card.toolName}
                   className="bg-black text-white md:rounded-2xl rounded-lg md:h-[210px] h-[344px]"
-                  loading="lazy"
+                  //loading="lazy"
                   placeholder="blur"
                   blurDataURL={card.imageBlur}
                   width={0}
@@ -93,6 +93,7 @@ const Rating = ({ card }) => {
                   style={{ width: "100%", height: "100%" }}
                   decoding="async"
                   data-nimg="fill"
+                  priority
                 />
               </div>
               <div className="">

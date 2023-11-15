@@ -73,7 +73,7 @@ export default function News({ data, categories }) {
         />
         <meta
           property="og:image"
-          content={`https://api.goodtools.ai/uploads/${item.image}`}
+          content={`${process.env.API_URL}/uploads/${item.image}`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
@@ -99,17 +99,15 @@ export default function News({ data, categories }) {
               className="md:mb-10 mb-6 rounded-lg mx-auto w-full md:h-[394px] h-[210px]"
               alt={item.newsTitle}
               //src={`https://i.ibb.co/1fGrFQp/Image.png`}
-              src={`https://api.goodtools.ai/uploads/${item.image}`}
-              loading="lazy"
+              src={`${process.env.API_URL}/uploads/${item.image}`}
+              //loading='lazy'"
               placeholder="blur"
               blurDataURL={item.imageBlur}
               width={0}
               height={0}
               sizes="100vw"
               style={{ width: "100%" }}
-              scale="zoom"
-              decoding="async"
-              data-nimg="fill"
+              priority
             />
             <div className="md:grid md:grid-cols-2 ">
               {/* right-div */}
@@ -236,8 +234,8 @@ export async function getServerSideProps(context) {
   const { slug } = context.params;
 
   const [news, categories] = await Promise.all([
-    fetch(`https://api.goodtools.ai/news/${slug}`),
-    fetch(`https://api.goodtools.ai/category`),
+    fetch(`${process.env.API_URL}/news/${slug}`),
+    fetch(`${process.env.API_URL}/category`),
   ]);
 
   const [newsData, categoriesData] = await Promise.all([

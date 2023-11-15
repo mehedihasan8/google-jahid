@@ -153,7 +153,7 @@ const Review = ({ func, userRating, id, gmail, userName, product }) => {
       toolName,
     };
     if (comment && rating) {
-      fetch("https://api.goodtools.ai/review", {
+      fetch(`${process.env.API_URL}/review`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

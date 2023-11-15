@@ -148,9 +148,9 @@ const Hero = ({ allsubcategoriesData }) => {
                   }}
                 >
                   {data.map(item => (
-                    <SwiperSlide>
+                    <SwiperSlide
+                      key={item.slug}>
                       <button
-                        key={item.slug}
                         // name={item.SubCategory}
                         onClick={(e) => handleClick(e, item)}
                         className="font-normal item h-fit w-full mr-0 md:mr-3 text-[#4D5761] whitespace-nowrap border-2 cursor-pointer hover:scale-105 ease-in-out duration-30 p-text px-4 py-auto bg-transparent"

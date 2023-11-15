@@ -41,7 +41,7 @@ export default function Tool({ data }) {
         />
         <meta
           property="og:image"
-          content={`https://api.goodtools.ai/uploads/${data.image}`}
+          content={`${process.env.API_URL}/uploads/${data.image}`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
@@ -79,7 +79,7 @@ export default function Tool({ data }) {
 
 export async function getServerSideProps(context) {
   const { slug } = context.params;
-  const res = await fetch(`https://api.goodtools.ai/tools/${slug}`);
+  const res = await fetch(`${process.env.API_URL}/tools/${slug}`);
   const data = await res.json();
 
   return {

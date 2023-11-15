@@ -18,7 +18,7 @@ const Contact = () => {
       const formData = new FormData(event.currentTarget);
       const jsonBody = JSON.stringify(Object.fromEntries(formData.entries()));
 
-      const response = await fetch('https://api.goodtools.ai/send-email', {
+      const response = await fetch(`${process.env.API_URL}/send-email`, {
         method: 'POST',
         body: jsonBody,
         headers: {

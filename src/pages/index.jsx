@@ -4,7 +4,6 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/router";
-import { set } from "react-hook-form";
 
 const PageWraper = dynamic(() => import("../Layout/PageWraper"));
 const Card = dynamic(() => import("../Component/Card/Card"));
@@ -113,7 +112,7 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
   const loadToolsData = async () => {
     const nextPage = page + 1;
     const response = await fetch(
-      `https://api.goodtools.ai/tool?page=${nextPage}&limit=9&filter=${filter}`
+      `${process.env.API_URL}/tool?page=${nextPage}&limit=9&filter=${filter}`
     );
     const data = await response.json();
 
@@ -289,9 +288,9 @@ export async function getServerSideProps(context) {
   const filter = context.query.sort || "";
 
   const [tools, allsubcategories, filtersubcategories] = await Promise.all([
-    fetch(`https://api.goodtools.ai/tool?page=1&limit=9&filter=${filter}`),
-    fetch("http://api.goodtools.ai/allsubcategories"),
-    fetch("http://api.goodtools.ai/sublist"),
+    fetch(`${process.env.API_URL}/tool?page=1&limit=9&filter=${filter}`),
+    fetch(`${process.env.API_URL}/allsubcategories`),
+    fetch(`${process.env.API_URL}/sublist`),
   ]);
 
   const [preToolsData, allsubcategoriesData, filterData] = await Promise.all([

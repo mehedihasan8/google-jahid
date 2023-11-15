@@ -22,7 +22,7 @@ const Rate = ({ id, name }) => {
 
   useEffect(() => {
     if (user) {
-      fetch(`https://api.goodtools.ai/review/${id}/${user?.email}`)
+      fetch(`${process.env.API_URL}/review/${id}/${user?.email}`)
         .then((res) => res.json())
         .then((data) => setAvailable(data));
     }
@@ -95,7 +95,7 @@ const Rate = ({ id, name }) => {
   };
 
   useEffect(() => {
-    fetch(`https://api.goodtools.ai/reviews/${id}`)
+    fetch(`${process.env.API_URL}/reviews/${id}`)
       .then((data) => data.json())
       .then((info) => setReviews(info.reverse()));
   }, []);
@@ -192,7 +192,7 @@ const Rate = ({ id, name }) => {
 
   const customAvailable = () => {
     setAvailable(false);
-    fetch(`https://api.goodtools.ai/reviews/${id}`)
+    fetch(`${process.env.API_URL}/reviews/${id}`)
       .then((data) => data.json())
       .then((info) => setReviews(info.reverse()));
   };
@@ -310,9 +310,8 @@ const Rate = ({ id, name }) => {
 
         {/* Review section */}
         <div
-          className={`${
-            reviews.length != 0 ? "block" : "hidden"
-          } hide-scrollbar`}
+          className={`${reviews.length != 0 ? "block" : "hidden"
+            } hide-scrollbar`}
         >
           <div className="text-[32px] text-center md:text-left font-bold pb-7 mb-7 border-b border-[#E5E7EB]">
             Customers Review

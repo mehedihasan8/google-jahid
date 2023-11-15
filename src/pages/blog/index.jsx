@@ -93,10 +93,10 @@ export default function News({ data }) {
 
                     <Image
                       className="h-[210px] md:h-[286px] relative rounded-xl"
-                      src={`https://api.goodtools.ai/uploads/${item.image}`}
+                      src={`${process.env.API_URL}/uploads/${item.image}`}
                       //src={`https://i.ibb.co/8c144dc/Image.jpg`}
                       alt={item?.newsTitle}
-                      loading="lazy"
+                      //loading='lazy'"
                       placeholder="blur"
                       blurDataURL={item.imageBlur}
                       width={0}
@@ -104,8 +104,7 @@ export default function News({ data }) {
                       sizes="100vw"
                       layout="responsive"
                       style={{ width: "100%" }}
-                      decoding="async"
-                      data-nimg="fill"
+                      priority
                     />
 
                     <div className=" md:mt-6 pb-2 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">
@@ -148,7 +147,7 @@ export default function News({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://api.goodtools.ai/news`);
+  const res = await fetch(`${process.env.API_URL}/news`);
   const data = await res.json();
 
   return {

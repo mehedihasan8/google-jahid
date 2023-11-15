@@ -66,19 +66,18 @@ const Card = ({ toolsData, sortOption }) => {
           <Link key={tool.slug} href={`/tool/${tool.slug}`} target="_blank">
             <div className="relative w-full md:mb-6 mb-4 rounded-2xl">
               <Image
-                src={`https://api.goodtools.ai/uploads/${tool?.image}`}
+                src={`${process.env.API_URL}/uploads/${tool?.image}`}
                 alt={tool?.toolName}
                 className="h-[240px] rounded-[12px]"
-                loading="lazy"
+                //loading='lazy'"
                 placeholder="blur"
                 blurDataURL={tool?.imageBlur}
                 width={0}
                 height={0}
                 sizes="100vw"
                 layout="responsive"
-                style={{ width: "100%" }}
-                decoding="async"
-                data-nimg="fill"
+                style={{ width: "100%", height: "100%" }}
+                priority
               />
 
               <div
