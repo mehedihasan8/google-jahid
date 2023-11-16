@@ -30,6 +30,11 @@ const CategoryData = ({
   const { ref, inView } = useInView();
   const [isLoading, setIsLoading] = useState(true);
   const [isPopUp, setPopUp] = useState("hidden");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
   const decoration = (x) => {
     let str = x + "";
@@ -237,10 +242,12 @@ const CategoryData = ({
               Best Ai Tools
             </div>
           </div>
-          <div className=" flex items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6">
+
+          <div className={`${!isMobile ? 'flex' : ''} items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6`}>
             <span className="text-[#081120] font-semibold md:mr-6 font-paragraph  md:text-xl text-base">
               Sort by :{" "}
             </span>
+
             <div className="w-fit flex justify-between gap-2 md:gap-4 mt-1">
               <button
                 onClick={() => setSortOption("All")}
