@@ -16,6 +16,7 @@ const CookiePopup = dynamic(() => import("../../Component/Popup/CookiePopup"));
 
 const CategoryData = ({
   filter,
+  search,
   categoryData,
   preToolsData,
   allsubcategoriesData,
@@ -146,7 +147,7 @@ const CategoryData = ({
   const loadToolsData = async () => {
     const nextPage = page + 1;
     const response = await fetch(
-      `${process.env.API_URL}/category/${slug}/tools?page=${nextPage}&limit=9&filter=${filter}`
+      `${process.env.API_URL}/category/${slug}/tools?page=${nextPage}&limit=9&filter=${filter}&search=${search}`
     );
 
     const data = await response.json();
@@ -223,6 +224,7 @@ const CategoryData = ({
       <div className="max-w-screen-xl mx-auto md:mt-[60px] z-[5px] mt-[25px]">
         <div className=" md:mb-[100px] mb-[41.5px] ">
           <CategoryHero
+            slug={slug}
             categoryData={categoryData}
             allsubcategoriesData={allsubcategoriesData}
           />
@@ -366,11 +368,12 @@ const CategoryData = ({
 export async function getServerSideProps(context) {
   const { slug } = context.params;
   const filter = context.query.sort || "";
+  const search = context.query.search || "";
 
   const [category, tools, allsubcategories, filtersubcategories] =
     await Promise.all([
       fetch(`${process.env.API_URL}/category/${slug}`),
-      fetch(`${process.env.API_URL}/category/${slug}/tools?page=1&limit=9&filter=${filter}`),
+      fetch(`${process.env.API_URL}/category/${slug}/tools?page=1&limit=9&filter=${filter}&search=${search}`),
       fetch(`${process.env.API_URL}/allsubcategories`),
       fetch(`${process.env.API_URL}/sublist`),
     ]);
@@ -387,6 +390,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       filter,
+      search,
       categoryData,
       preToolsData,
       allsubcategoriesData,

@@ -43,13 +43,12 @@ const Hero = ({ allsubcategoriesData }) => {
   }, []);
 
   const handleKeyPress = (e) => {
-    if (e.key !== "Enter") {
+    if (e.key == "Enter") {
+      navigate.replace(`/?search=${e.target.value}`);
     }
   };
 
   const handleSearch = () => { };
-
-  const handleBlur = () => { };
 
   const handleClick = (event, item) => {
     navigate.push(`/category/${item.slug}`);
@@ -72,7 +71,6 @@ const Hero = ({ allsubcategoriesData }) => {
         {/* search var  */}
         <div className="input-container mx-auto md:w-[800px] h-[52px] w-full">
           <div
-            onBlur={handleBlur}
             className="h-full w-full flex justify-between"
           >
             <input
@@ -82,7 +80,6 @@ const Hero = ({ allsubcategoriesData }) => {
               className="border-0 w-full focus:ring-0 bg-[#F3F4F6] focus:outline-0 text-base font-paragraph my-[14px] ml-6"
             />
             <div className="">
-              {/* <Ripples color="#bcc3c5"> */}
               <button
                 onClick={handleSearch}
                 className=" py-auto h-full w-full pr-6 pl-4 bg-[#F3F4F6] rounded-2xl"

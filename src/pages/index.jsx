@@ -12,14 +12,13 @@ const Filter = dynamic(() => import("../Component/Filter/MainFilter"));
 const Footer = dynamic(() => import("../Component/Footer/Footer"));
 const CookiePopup = dynamic(() => import("../Component/Popup/CookiePopup"));
 
-const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
+const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }) => {
   const navigate = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [total, setTotal] = useState(0);
   const [toolsData, setToolsData] = useState([]);
   const [page, setPage] = useState(0);
   const { ref, inView } = useInView();
-  const [searchData, setSearchData] = useState("");
   const [sortOption, setSortOption] = useState("All");
 
   const decoration = (x) => {
@@ -103,16 +102,10 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
     } catch (e) { }
   };
 
-  const getSearchData = (data) => {
-    if (data !== searchData) {
-      setSearchData(data);
-    }
-  };
-
   const loadToolsData = async () => {
     const nextPage = page + 1;
     const response = await fetch(
-      `${process.env.API_URL}/tool?page=${nextPage}&limit=9&filter=${filter}`
+      `${process.env.API_URL}/tool?page=${nextPage}&limit=9&filter=${filter}&search=${search}`
     );
     const data = await response.json();
 
@@ -286,9 +279,10 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
 export async function getServerSideProps(context) {
 
   const filter = context.query.sort || "";
+  const search = context.query.search || "";
 
   const [tools, allsubcategories, filtersubcategories] = await Promise.all([
-    fetch(`${process.env.API_URL}/tool?page=1&limit=9&filter=${filter}`),
+    fetch(`${process.env.API_URL}/tool?page=1&limit=9&filter=${filter}&search=${search}`),
     fetch(`${process.env.API_URL}/allsubcategories`),
     fetch(`${process.env.API_URL}/sublist`),
   ]);
@@ -299,7 +293,7 @@ export async function getServerSideProps(context) {
     filtersubcategories.json(),
   ]);
 
-  return { props: { filter, preToolsData, allsubcategoriesData, filterData } };
+  return { props: { filter, search, preToolsData, allsubcategoriesData, filterData } };
 }
 
 export default Home;

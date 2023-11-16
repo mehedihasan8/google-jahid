@@ -7,7 +7,7 @@ import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 // Import Swiper styles
 import "swiper/css";
 
-const CategoryHero = ({ categoryData, allsubcategoriesData }) => {
+const CategoryHero = ({ slug, categoryData, allsubcategoriesData }) => {
   const navigate = useRouter();
   const [data, setData] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
@@ -43,6 +43,7 @@ const CategoryHero = ({ categoryData, allsubcategoriesData }) => {
 
   const handleKeyPress = (e) => {
     if (e.key !== "Enter") {
+      navigate.replace(`/category/${slug}/?search=${e.target.value}`);
     }
   };
 
