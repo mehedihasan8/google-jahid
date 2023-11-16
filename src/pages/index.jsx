@@ -257,7 +257,7 @@ const Home = ({ filter, preToolsData, allsubcategoriesData, filterData }) => {
         </div>
 
         <div className="px-2 md:px-0 max-w-screen-xl mx-auto mb-20">
-          <Card toolsData={toolsData} sortOption={sortOption} />
+          <Card toolsData={toolsData} />
         </div>
         <div
           className="flex justify-center items-center"

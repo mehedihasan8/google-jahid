@@ -46,9 +46,9 @@ const CategoryHero = ({ categoryData, allsubcategoriesData }) => {
     }
   };
 
-  const handleSearch = () => {};
+  const handleSearch = () => { };
 
-  const handleBlur = () => {};
+  const handleBlur = () => { };
 
   const handleClick = (event, item) => {
     navigate.push(`/category/${item.slug}`);
@@ -147,9 +147,9 @@ const CategoryHero = ({ categoryData, allsubcategoriesData }) => {
                     }}
                   >
                     {data.map((item, index) => (
-                      <SwiperSlide>
+                      <SwiperSlide
+                        key={index}>
                         <button
-                          key={index}
                           // name={item.SubCategory}
                           onClick={(e) => handleClick(e, item)}
                           className="font-normal item h-fit w-full mr-0 md:mr-3 text-[#4D5761] whitespace-nowrap border-2 cursor-pointer hover:scale-105 ease-in-out duration-30 p-text px-4 py-auto bg-transparent"

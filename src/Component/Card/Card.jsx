@@ -3,7 +3,7 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 
-const Card = ({ toolsData, sortOption }) => {
+const Card = ({ toolsData }) => {
   const [tools, setTools] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isBookmarkClicked, setIsBookmarkClicked] = useState(false);
@@ -209,21 +209,7 @@ const Card = ({ toolsData, sortOption }) => {
         <span className="loading loading-ring md:w-40 md:h-40 w-20 h-20 md:ml-[140%] ml-[40%] md:my-40 my-20"></span>
       ) : (
         tools.map((tool, indx) => {
-          if (sortOption !== "All") {
-            if (tool?.priceType && tool?.priceType.includes(sortOption)) {
-              return component(tool, indx);
-            } else return component(null, indx);
-          } else if (sortOption === "All") {
-            if (tool?.SubCategory) {
-              return component(tool, indx);
-            } else return component(null, indx);
-          } else if (sortOption !== "All") {
-            if (tool?.priceType && tool?.priceType.includes(sortOption)) {
-              return component(tool, indx);
-            } else return component(null, indx);
-          } else {
-            return component(tool, indx);
-          }
+          return component(tool, indx);
         })
       )}
     </div>

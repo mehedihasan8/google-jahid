@@ -153,6 +153,10 @@ const CategoryData = ({
   };
 
   useEffect(() => {
+    console.log(toolsData);
+  }, [toolsData]);
+
+  useEffect(() => {
     setTotal(preToolsData.total);
     setToolsData(preToolsData.tools);
     setPage(1);
@@ -326,7 +330,7 @@ const CategoryData = ({
         </div>
 
         <div className="mb-10 px-2 md:px-0">
-          <Card toolsData={toolsData} sortOption={sortOption} />
+          <Card toolsData={toolsData} />
         </div>
 
         <div
@@ -364,6 +368,7 @@ export async function getServerSideProps(context) {
       fetch(`${process.env.API_URL}/sublist`),
     ]);
 
+
   const [categoryData, preToolsData, allsubcategoriesData, filterData] =
     await Promise.all([
       category.json(),
@@ -371,7 +376,6 @@ export async function getServerSideProps(context) {
       allsubcategories.json(),
       filtersubcategories.json(),
     ]);
-
 
   return {
     props: {
