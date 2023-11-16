@@ -96,15 +96,15 @@ export default function News({ data }) {
                       src={`${process.env.API_URL}/uploads/${item.image}`}
                       //src={`https://i.ibb.co/8c144dc/Image.jpg`}
                       alt={item?.newsTitle}
-                      //loading='lazy'"
-                      placeholder="blur"
-                      blurDataURL={item.imageBlur}
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                      layout="responsive"
-                      style={{ width: "100%" }}
-                      priority
+                      loading='lazy'"
+                    placeholder="blur"
+                    blurDataURL={item.imageBlur}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    layout="responsive"
+                    style={{ width: "100%" }}
+
                     />
 
                     <div className=" md:mt-6 pb-2 w-full flex md:justify-normal justify-between items-center md:w-full mx-auto">

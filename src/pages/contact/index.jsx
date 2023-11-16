@@ -88,7 +88,7 @@ const Contact = () => {
               Rupsha Tower, 07, Kemal Ataturk Avenue, Banani <br /> Dhaka, Bangladesh
             </p>
             <p className="mb-7 border-y-4 border-gray-100/60 py-6 text-[#4D5761]">
-              Got questions or feedback? We're here to help! Contact us for prompt assistance and personalized support. Your satisfaction is our priority, and we look forward to hearing from you soon.
+              Got questions or feedback? We're here to help! Contact us for prompt assistance and personalized support. Your satisfaction is our  , and we look forward to hearing from you soon.
             </p>
             <div>
               <svg

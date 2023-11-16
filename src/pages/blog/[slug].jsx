@@ -100,14 +100,14 @@ export default function News({ data, categories }) {
               alt={item.newsTitle}
               src={`https://i.ibb.co/1fGrFQp/Image.png`}
               //src={`${process.env.API_URL}/uploads/${item.image}`}
-              //loading='lazy'"
-              placeholder="blur"
-              blurDataURL={item.imageBlur}
-              width={0}
-              height={0}
-              sizes="100vw"
-              style={{ width: "100%" }}
-              priority
+              loading='lazy'"
+            placeholder="blur"
+            blurDataURL={item.imageBlur}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%" }}
+
             />
             <div className="md:grid md:grid-cols-2 ">
               {/* right-div */}

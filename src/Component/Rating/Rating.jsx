@@ -93,7 +93,7 @@ const Rating = ({ card }) => {
                   style={{ width: "100%", height: "100%" }}
                   decoding="async"
                   data-nimg="fill"
-                  priority
+
                 />
               </div>
               <div className="">
