@@ -252,7 +252,7 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
         <div className="px-2 md:px-0 max-w-screen-xl mx-auto mb-20">
           <Card toolsData={toolsData} />
         </div>
-        <div
+        {/* <div
           className="flex justify-center items-center"
           ref={ref}
         >
@@ -266,10 +266,11 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
               </span>
             </div>
           )}
-        </div>
+        </div> */}
 
-        {isLoading || <Footer />}
+        {/* {isLoading || <Footer />} */}
 
+        <Footer />
         <CookiePopup isPopUp={isPopUp} setPopUp={setPopUp} />
       </div>
     </PageWraper>

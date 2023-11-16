@@ -98,8 +98,8 @@ export default function News({ data, categories }) {
             <Image
               className="md:mb-10 mb-6 rounded-lg mx-auto w-full md:h-[394px] h-[210px]"
               alt={item.newsTitle}
-              //src={`https://i.ibb.co/1fGrFQp/Image.png`}
-              src={`${process.env.API_URL}/uploads/${item.image}`}
+              src={`https://i.ibb.co/1fGrFQp/Image.png`}
+              //src={`${process.env.API_URL}/uploads/${item.image}`}
               //loading='lazy'"
               placeholder="blur"
               blurDataURL={item.imageBlur}
