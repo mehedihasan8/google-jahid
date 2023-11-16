@@ -96,14 +96,14 @@ export default function News({ data }) {
                       src={`${process.env.API_URL}/uploads/${item.image}`}
                       //src={`https://i.ibb.co/8c144dc/Image.jpg`}
                       alt={item?.newsTitle}
-                      loading='lazy'"
-                    placeholder="blur"
-                    blurDataURL={item.imageBlur}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    layout="responsive"
-                    style={{ width: "100%" }}
+                      loading='lazy'
+                      placeholder="blur"
+                      blurDataURL={item.imageBlur}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      layout="responsive"
+                      style={{ width: "100%" }}
 
                     />
 
