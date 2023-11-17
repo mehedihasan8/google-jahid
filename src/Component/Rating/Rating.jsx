@@ -18,17 +18,9 @@ const Rating = ({ card }) => {
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
+
   useEffect(() => localStorage.setItem(storageKey, isClicked), [isClicked]);
 
-  const styles = {
-    button: {
-      padding: "10px 20px",
-      borderRadius: "4px",
-      cursor: "pointer",
-      backgroundColor: "#f5f5f5",
-      border: "1px solid #ccc",
-    },
-  };
   return (
     <div className="font-paragraph md:p-10">
       <div className="">
@@ -138,7 +130,7 @@ const Rating = ({ card }) => {
                       </div>
                       <div>
                         <h1 className="md:text-xl  md:font-medium font-semibold text-base">
-                          284231 Users
+                          {card.visitor} Users
                         </h1>
                       </div>
                     </div>

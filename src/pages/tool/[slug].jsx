@@ -8,6 +8,7 @@ const Rate = dynamic(() => import("../../Component/Rate/Rate"));
 const Rattingg = dynamic(() => import("../../Component/Rating/Rating"));
 const RelatedCards = dynamic(() => import("../../Component/Card/RelatedCard"));
 
+
 export default function Tool({ data }) {
   const [cards, setCards] = useState(null);
   const [isLoading, setIsloading] = useState(true);

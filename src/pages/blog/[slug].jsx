@@ -18,27 +18,6 @@ export default function News({ data, categories }) {
     setCata(categories);
   }, []);
 
-  const formateDte = (date) => {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    const dateSplit = date.split("/");
-    const day = parseInt(dateSplit[0]);
-    const month = months[parseInt(dateSplit[1]) - 1];
-    const year = parseInt(dateSplit[2]);
-    return `${month} ${day}, ${year}`;
-  };
 
   if (!item) {
     return (

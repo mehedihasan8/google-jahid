@@ -14,6 +14,7 @@ const CategoryHero = dynamic(() => import("../../Component/Hero/CategoryHero"));
 const Footer = dynamic(() => import("../../Component/Footer/Footer"));
 const CookiePopup = dynamic(() => import("../../Component/Popup/CookiePopup"));
 
+
 const CategoryData = ({
   filter,
   search,
