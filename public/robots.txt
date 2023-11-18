@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+
+sitemap: https://goodtools.ai/sitemap.xml
