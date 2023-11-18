@@ -17,7 +17,6 @@ import "../styles/single-review.css";
 import "../styles/terms.css";
 import "../styles/footer.css";
 import "../styles/popup.css";
-import "../styles/main.css";
 import "../styles/navbar.css";
 
 import Layout from "../Layout/Layout";

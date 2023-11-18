@@ -201,8 +201,8 @@ const Rate = ({ id, name }) => {
     <div>
       <div className="md:px-10 w-full md:mt-[20px] mt-6">
         {/* Rating section */}
-        <div className="md:grid grid-cols-2 mb-20 md:h-[375px] gap-x-20 hide-scrollbar">
-          <div className="hide-scrollbar ">
+        <div className="md:grid grid-cols-2 mb-20 md:h-[375px] gap-x-20  ">
+          <div className="  ">
             {/* Average rating */}
             <div className="md:flex text-center items-center pb-6 md:pb-[30px] border-b border-[#E5E7EB]">
               <span className="font-bold text-[32px]">
@@ -311,7 +311,7 @@ const Rate = ({ id, name }) => {
         {/* Review section */}
         <div
           className={`${reviews.length != 0 ? "block" : "hidden"
-            } hide-scrollbar`}
+            }  `}
         >
           <div className="text-[32px] text-center md:text-left font-bold pb-7 mb-7 border-b border-[#E5E7EB]">
             Customers Review

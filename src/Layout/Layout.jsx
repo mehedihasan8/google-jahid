@@ -14,17 +14,15 @@ export default function Layout({ children }) {
 
   return (
     <div>
-      <div className="h-screen overflow-y-scroll hide-scrollbar">
+      <div className="h-screen overflow-y-scroll  ">
         <AuthProvider>
           <div
-            className={`${isHomePage ? "" : "max-w-screen-xl"} mx-auto ${
-              isHomePage || "px-2 md:px-0"
-            }`}
+            className={`${isHomePage ? "" : "max-w-screen-xl"} mx-auto ${isHomePage || "px-2 md:px-0"
+              }`}
           >
             <div
-              className={`max-w-screen-xl mx-auto ${
-                isHomePage && "px-2 md:px-0"
-              }`}
+              className={`max-w-screen-xl mx-auto ${isHomePage && "px-2 md:px-0"
+                }`}
             >
               <Navbar />
             </div>

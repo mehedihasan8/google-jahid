@@ -43,7 +43,7 @@ const SingleReview = ({
         </div>
       </div>
       <div className="text-[#4D5761] text-sm font-bold mb-6">{date}</div>
-      <div className="text-[#4D5761] text-sm mb-6 h-[84px] overflow-y-scroll hide-scrollbar">
+      <div className="text-[#4D5761] text-sm mb-6 h-[84px] overflow-y-scroll  ">
         <div dangerouslySetInnerHTML={{ __html: comment }}></div>
       </div>
 
