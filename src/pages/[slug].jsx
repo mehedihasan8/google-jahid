@@ -3,10 +3,10 @@ import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-const PageWraper = dynamic(() => import("../../Layout/PageWraper"));
-const Rate = dynamic(() => import("../../Component/Rate/Rate"));
-const Rattingg = dynamic(() => import("../../Component/Rating/Rating"));
-const RelatedCards = dynamic(() => import("../../Component/Card/RelatedCard"));
+const PageWraper = dynamic(() => import("../Layout/PageWraper"));
+const Rate = dynamic(() => import("../Component/Rate/Rate"));
+const Rattingg = dynamic(() => import("../Component/Rating/Rating"));
+const RelatedCards = dynamic(() => import("../Component/Card/RelatedCard"));
 
 
 export default function Tool({ data }) {

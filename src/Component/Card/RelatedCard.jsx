@@ -61,7 +61,7 @@ const RelatedCards = ({ subs, id }) => {
             display: "inline-flex",
           }}
         >
-          <Link key={tool.slug} href={`/tool/${tool.slug}`} target="_blank">
+          <Link key={tool.slug} href={`/${tool.slug}`} target="_blank">
             <div className="relative w-full md:mb-6 mb-4 rounded-2xl">
               <Image
                 src={`${process.env.API_URL}/uploads/${tool?.image}`}

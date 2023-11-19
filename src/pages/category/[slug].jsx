@@ -340,7 +340,7 @@ const CategoryData = ({
         </div>
 
         <div className="mb-10 px-2 md:px-0">
-          <Card toolsData={toolsData} />
+          <Card categorySlug={slug} toolsData={toolsData} />
         </div>
 
         {/* <div
