@@ -100,8 +100,7 @@ export default function News({ data, categories }) {
                 <div className="single-title mb-6">{item.newsTitle}</div>
                 <div className="flex justify-center mt-8 mb-10">
                   <audio controls className="md:w-4/5">
-                    <source
-                      src="/path_to_your_audio_file.mp3"
+                    <sourc src={`${process.env.API_URL}/audio/${item.newsBodyAudio}`}
                       type="audio/mp3"
                     />
                     Your browser does not support the audio element.

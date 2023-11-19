@@ -509,8 +509,7 @@ const Rating = ({ card }) => {
           </div>
           <div className="flex justify-center mt-8">
             <audio controls className="md:w-2/4">
-              <source src="/path_to_your_audio_file.mp3" type="audio/mp3" />
-              Your browser does not support the audio element.
+              <source src={`${process.env.API_URL}/audio/${isToggled ? card.worksAudio : card.descriptionAudio}`} type="audio/mp3" />
             </audio>
           </div>
           {isToggled ? (
