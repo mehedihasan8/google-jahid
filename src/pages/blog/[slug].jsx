@@ -34,10 +34,10 @@ export default function News({ data, categories }) {
       <Head>
         <title>{`GoodTools.Ai - ${item.newsTitle}`}</title>
         <meta name="title" content={`GoodTools.Ai - ${item.newsTitle}`} />
-        <meta name="description" content={data.description} />
+        <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
-          content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${item.newsTitle}`}
+          content={item.metaKeywords}
         />
         <meta name="robots" content="max-image-preview:large" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
@@ -80,8 +80,8 @@ export default function News({ data, categories }) {
               src={`https://i.ibb.co/1fGrFQp/Image.png`}
               //src={`${process.env.API_URL}/uploads/${item.image}`}
               loading='lazy'
-              placeholder="blur"
-              blurDataURL={item.imageBlur}
+              // placeholder="blur"
+              // blurDataURL={item.imageBlur}
               width={0}
               height={0}
               sizes="100vw"

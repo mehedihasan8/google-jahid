@@ -27,10 +27,10 @@ export default function Tool({ data }) {
       <Head>
         <title>{`GoodTools.Ai - ${data.toolName}`}</title>
         <meta name="title" content={`GoodTools.Ai - ${data.toolName}`} />
-        <meta name="description" content={data.description} />
+        <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
-          content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${data.toolName}`}
+          content={data.metaKeywords}
         />
         <meta name="robots" content="max-image-preview:large" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />

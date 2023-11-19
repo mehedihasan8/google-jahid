@@ -97,8 +97,8 @@ export default function News({ data }) {
                       //src={`https://i.ibb.co/8c144dc/Image.jpg`}
                       alt={item?.newsTitle}
                       loading='lazy'
-                      placeholder="blur"
-                      blurDataURL={item.imageBlur}
+                      // placeholder="blur"
+                      // blurDataURL={item.imageBlur}
                       width={0}
                       height={0}
                       sizes="100vw"

@@ -76,9 +76,9 @@ const Rating = ({ card }) => {
                   src={`${process.env.API_URL}/uploads/${card.image}`}
                   alt={card.toolName}
                   className="bg-black text-white md:rounded-2xl rounded-lg md:h-[210px] h-[344px]"
-                  //loading="lazy"
-                  placeholder="blur"
-                  blurDataURL={card.imageBlur}
+                  loading="lazy"
+                  // placeholder="blur"
+                  // blurDataURL={card.imageBlur}
                   width={0}
                   height={0}
                   sizes="100vw"

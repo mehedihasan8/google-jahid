@@ -68,8 +68,8 @@ const RelatedCards = ({ subs, id }) => {
                 alt={tool?.toolName}
                 className="h-[240px] rounded-[12px]"
                 loading='lazy'
-                placeholder="blur"
-                blurDataURL={tool?.imageBlur}
+                // placeholder="blur"
+                // blurDataURL={tool?.imageBlur}
                 width={0}
                 height={0}
                 sizes="100vw"
