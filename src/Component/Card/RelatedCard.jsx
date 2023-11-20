@@ -68,14 +68,10 @@ const RelatedCards = ({ subs, id }) => {
                 alt={tool?.toolName}
                 className="h-[240px] rounded-[12px]"
                 priority
-                // placeholder="blur"
-                // blurDataURL={tool?.imageBlur}
                 width={0}
                 height={0}
                 sizes="100vw"
-                layout="responsive"
-                style={{ width: "100%" }}
-
+                style={{ width: "100%", height: "100%" }}
               />
 
               <div
