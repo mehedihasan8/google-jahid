@@ -67,7 +67,7 @@ const RelatedCards = ({ subs, id }) => {
                 src={`${process.env.API_URL}/uploads/${tool?.image}`}
                 alt={tool?.toolName}
                 className="h-[240px] rounded-[12px]"
-                loading='lazy'
+                priority
                 // placeholder="blur"
                 // blurDataURL={tool?.imageBlur}
                 width={0}

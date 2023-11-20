@@ -69,7 +69,7 @@ const Card = ({ toolsData }) => {
                 src={`${process.env.API_URL}/uploads/${tool?.image}`}
                 alt={tool?.toolName}
                 className="h-[240px] rounded-[12px]"
-                loading='lazy'
+                priority
                 // placeholder="blur"
                 // blurDataURL={tool?.imageBlur}
                 width={0}
@@ -77,7 +77,6 @@ const Card = ({ toolsData }) => {
                 sizes="100vw"
                 layout="responsive"
                 style={{ width: "100%", height: "100%" }}
-
               />
 
               <div

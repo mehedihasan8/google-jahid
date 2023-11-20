@@ -96,7 +96,7 @@ export default function News({ data }) {
                       src={`${process.env.API_URL}/uploads/${item.image}`}
                       //src={`https://i.ibb.co/8c144dc/Image.jpg`}
                       alt={item?.newsTitle}
-                      loading='lazy'
+                      priority
                       // placeholder="blur"
                       // blurDataURL={item.imageBlur}
                       width={0}
