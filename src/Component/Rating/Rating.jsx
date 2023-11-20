@@ -24,7 +24,7 @@ const Rating = ({ card }) => {
   return (
     <div className="font-paragraph md:p-10">
       <div className="">
-        <div className="w-full mx-auto ">
+        <div className="w-full mx-auto">
           {/* Product heading */}
           <div className="flex justify-between gap-2 items-center ">
             {/* Product Info */}
@@ -91,11 +91,14 @@ const Rating = ({ card }) => {
               <div className="">
                 {/* Price per period */}
                 <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">
-                  ${card.price}
+                  {card.priceType == "Free" ? "Free" : "$" + card.price}
                   <span className="text-base ms-2 font-normal text-[#4D5761] ">
-                    /{card.pricePeriod}
+                    {card.priceType == "Free" ? "" : "/" + card.pricePeriod}
                   </span>
                 </h2>
+                {card.priceType == "Free" ? "" : (<p className="text-base font-normal text-[#4D5761] mt-2">
+                  Basic services are free, advanced features require payment.
+                </p>)}
                 <div className="md:w-[100%]  mt-[26.5px]">
                   <hr />
                 </div>

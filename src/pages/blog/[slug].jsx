@@ -104,7 +104,7 @@ export default function News({ data, categories }) {
                   </audio>
                 </div>
                 {/* {saiful er kahini } */}
-                <div className="  leading-8 font-paragraph font-normal">
+                <div className="leading-8 font-paragraph font-normal">
                   <div
                     dangerouslySetInnerHTML={{ __html: item.newsBody }}
                   ></div>
