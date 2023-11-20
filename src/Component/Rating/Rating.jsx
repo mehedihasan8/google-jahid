@@ -96,9 +96,9 @@ const Rating = ({ card }) => {
                     {card.priceType == "Free" ? "" : "/" + card.pricePeriod}
                   </span>
                 </h2>
-                {card.priceType == "Free" ? "" : (<p className="text-base font-normal text-[#4D5761] mt-2">
+                {card.priceType == "Freemium" ? (<p className="text-base font-normal text-[#4D5761] mt-2">
                   Basic services are free, advanced features require payment.
-                </p>)}
+                </p>) : ""}
                 <div className="md:w-[100%]  mt-[26.5px]">
                   <hr />
                 </div>
