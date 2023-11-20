@@ -167,7 +167,7 @@ const CategoryData = ({
     setTotal(preToolsData.total);
     setToolsData(preToolsData.tools);
     setPage(1);
-  });
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -339,7 +339,7 @@ const CategoryData = ({
           </div>
         </div>
 
-        <div className="mb-10 px-2 md:px-0">
+        <div className="mb-10 px-2 md:px-0" ref={ref}>
           <Card categorySlug={slug} toolsData={toolsData} />
         </div>
 

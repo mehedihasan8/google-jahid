@@ -111,6 +111,7 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
 
     setTotal(data.total);
     setToolsData([...toolsData, ...data.tools]);
+    console.log(toolsData);
     setPage(nextPage);
     setIsLoading(false);
   };
@@ -119,7 +120,7 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
     setTotal(preToolsData.total);
     setToolsData(preToolsData.tools);
     setPage(1);
-  });
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -249,7 +250,7 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
           </div>
         </div>
 
-        <div className="px-2 md:px-0 max-w-screen-xl mx-auto mb-20">
+        <div className="px-2 md:px-0 max-w-screen-xl mx-auto mb-20" ref={ref}>
           <Card toolsData={toolsData} />
         </div>
         {/* <div
