@@ -47,9 +47,9 @@ const CategoryHero = ({ slug, categoryData, allsubcategoriesData }) => {
     }
   };
 
-  const handleSearch = () => { };
+  const handleSearch = () => {};
 
-  const handleBlur = () => { };
+  const handleBlur = () => {};
 
   const handleClick = (event, item) => {
     navigate.push(`/category/${item.slug}`);
@@ -70,7 +70,7 @@ const CategoryHero = ({ slug, categoryData, allsubcategoriesData }) => {
           </div>
           {/* search var  */}
           <div className="px-2 md:px-0">
-            <div className="input-container mx-auto md:w-[800px] h-[52px] w-full ">
+            <div className="input-container mx-auto md:w-[800px] h-[52px] w-full border-2 ">
               <div
                 onBlur={handleBlur}
                 className="h-full w-full flex justify-between"
@@ -79,13 +79,13 @@ const CategoryHero = ({ slug, categoryData, allsubcategoriesData }) => {
                   onKeyUp={handleKeyPress}
                   type="text"
                   placeholder="Search"
-                  className="border-0 w-full focus:ring-0 bg-[#F3F4F6] focus:outline-0 text-base font-paragraph my-[14px] ml-6"
+                  className="border-0 w-full focus:ring-0 focus:outline-0 text-base font-paragraph my-[14px] ml-6"
                 />
                 <div className="">
                   {/* <Ripples color="#bcc3c5"> */}
                   <button
                     onClick={handleSearch}
-                    className=" py-auto h-full w-full pr-6 pl-4 bg-[#F3F4F6] rounded-2xl"
+                    className=" py-auto h-full w-full pr-6 pl-4 rounded-2xl"
                   >
                     <svg
                       width="20"
@@ -148,8 +148,7 @@ const CategoryHero = ({ slug, categoryData, allsubcategoriesData }) => {
                     }}
                   >
                     {data.map((item, index) => (
-                      <SwiperSlide
-                        key={index}>
+                      <SwiperSlide key={index}>
                         <button
                           // name={item.SubCategory}
                           onClick={(e) => handleClick(e, item)}

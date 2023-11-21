@@ -26,13 +26,34 @@ const Rating = ({ card }) => {
       <div className="">
         <div className="w-full mx-auto">
           {/* Product heading */}
-          <div className="flex justify-between gap-2 items-center ">
+          <div className="md:flex justify-between gap-2 items-center ">
             {/* Product Info */}
             <div>
-              <p className="D font-normal text-base text-[#6C737F] pb-2">
-                Tool Information
-              </p>
-              <div className="flex items-center justify-center gap-1 md:gap-6">
+              <div className="flex justify-between items-center md:block ">
+                <p className="font-normal text-base text-[#6C737F] pb-2">
+                  Tool Information
+                </p>
+                <div className="flex gap-2 item-center justify-center md:hidden">
+                  <div className="svg-sizing p-4">
+                    {isClicked ? (
+                      <button
+                        className="rounded-full text-base"
+                        onClick={handleClick}
+                      >
+                        <BsBookmark className="md:text-[23px] text-[15px]" />
+                      </button>
+                    ) : (
+                      <button className="rounded-full" onClick={handleClick}>
+                        <BsBookmarkFill className="md:text-[23px] text-[15px]" />
+                      </button>
+                    )}
+                  </div>
+                  <div className="svg-sizing p-4">
+                    <FiShare2 className="md:text-[25px] text-[20px]" />
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 md:gap-6 mt-3 ">
                 <h1 className="md:text-5xl text-[28px] font-bold mt-2 font-title">
                   {card.toolName}
                 </h1>
@@ -42,12 +63,12 @@ const Rating = ({ card }) => {
                   rel="noopener noreferrer"
                   scroll={true}
                 >
-                  <BiLinkExternal className="md:text-[25px] text-[20px] mt-[10px] md:mt-4 text-[#6C737F]" />
+                  <BiLinkExternal className="md:text-[25px] text-[20px] mt-[13px] md:mt-4 text-[#6C737F]" />
                 </Link>
               </div>
             </div>
             {/* Heart and share button */}
-            <div className="flex gap-2 md:gap-4 item-center justify-center mb-10 md:mt-6">
+            <div className="md:flex gap-2 md:gap-4 item-center justify-center hidden">
               <div className="svg-sizing p-4">
                 {isClicked ? (
                   <button
@@ -85,7 +106,6 @@ const Rating = ({ card }) => {
                   style={{ width: "100%", height: "100%" }}
                   decoding="async"
                   data-nimg="fill"
-
                 />
               </div>
               <div className="">
@@ -96,9 +116,13 @@ const Rating = ({ card }) => {
                     {card.priceType == "Free" ? "" : "/" + card.pricePeriod}
                   </span>
                 </h2>
-                {card.priceType == "Freemium" ? (<p className="text-base font-normal text-[#4D5761] mt-2">
-                  Basic services are free, advanced features require payment.
-                </p>) : ""}
+                {card.priceType == "Freemium" ? (
+                  <p className="text-base font-normal text-[#4D5761] mt-2">
+                    Basic services are free, advanced features require payment.
+                  </p>
+                ) : (
+                  ""
+                )}
                 <div className="md:w-[100%]  mt-[26.5px]">
                   <hr />
                 </div>
@@ -321,9 +345,9 @@ const Rating = ({ card }) => {
                   <hr />
                 </div>
                 {card.facebook == "" &&
-                  card.linkedin == "" &&
-                  card.twitter == "" &&
-                  card.discord == "" ? (
+                card.linkedin == "" &&
+                card.twitter == "" &&
+                card.discord == "" ? (
                   <div></div>
                 ) : (
                   <div className="social-links mt-4 md:mt-[26px]">
@@ -512,7 +536,12 @@ const Rating = ({ card }) => {
           </div>
           <div className="flex justify-center mt-8">
             <audio controls className="md:w-2/4">
-              <source src={`${process.env.API_URL}/audio/${isToggled ? card.worksAudio : card.descriptionAudio}`} type="audio/mp3" />
+              <source
+                src={`${process.env.API_URL}/audio/${
+                  isToggled ? card.worksAudio : card.descriptionAudio
+                }`}
+                type="audio/mp3"
+              />
             </audio>
           </div>
           {isToggled ? (

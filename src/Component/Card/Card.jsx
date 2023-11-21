@@ -19,10 +19,10 @@ const Card = ({ toolsData }) => {
     });
   });
 
-
   const handleSubCategoryClick = (event, item) => {
     event.stopPropagation();
-  }
+    console.log();
+  };
 
   const component = (tool, indx) => {
     if (tool) {
@@ -44,6 +44,8 @@ const Card = ({ toolsData }) => {
 
         return truncatedText;
       }
+
+      // console.log(tool);
 
       return (
         <div
@@ -88,8 +90,9 @@ const Card = ({ toolsData }) => {
                 </div>
               </div>
             </div>
-
-            <div className="h-fit">
+          </Link>
+          <div className="h-fit">
+            <Link key={tool.slug} href={`/${tool.slug}`} target="_blank">
               <div className="flex justify-between items-center md:mb-6 mb-4">
                 <h2 className="font-title font-bold text-[20px] md:text-[24px] text-[#081120]">
                   {tool?.toolName}
@@ -127,14 +130,15 @@ const Card = ({ toolsData }) => {
               </div>
 
               <div className="md:mb-6 mb-4 min-h-[72px] font-paragraph text-[#4D5761] text-base">
-                <div
-                  className="h-[65px] font-normal text-base font-paragraph text-[#4D5761]"
+                <p
+                  className="h-[70px] font-normal text-base font-paragraph text-[#4D5761] line-clamp-3"
                   dangerouslySetInnerHTML={{
-                    __html: truncateHtml(tool?.description, 16),
+                    __html: truncateHtml(tool?.description),
                   }}
-                ></div>
+                ></p>
               </div>
-
+            </Link>
+            <Link key={tool.slug} href={`/blog`} target="_blank">
               <div className=" flex flex-wrap gap-3 items-center gap-y-[6px] mb-5">
                 {tool?.SubCategory.slice(0, 3).map((item, index) => (
                   <button
@@ -153,6 +157,8 @@ const Card = ({ toolsData }) => {
                   </div>
                 )}
               </div>
+            </Link>
+            <Link key={tool.slug} href={`/${tool.slug}`} target="_blank">
               <button className="w-full h-[40px] gap-[10px] flex justify-center items-center px-[34px] py-4 border border-[#E5E7EB] rounded-xl">
                 <svg
                   width="20"
@@ -167,8 +173,8 @@ const Card = ({ toolsData }) => {
                   />
                 </svg>
               </button>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
       );
     }

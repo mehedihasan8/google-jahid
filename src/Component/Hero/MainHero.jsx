@@ -48,7 +48,7 @@ const Hero = ({ allsubcategoriesData }) => {
     }
   };
 
-  const handleSearch = () => { };
+  const handleSearch = () => {};
 
   const handleClick = (event, item) => {
     navigate.push(`/category/${item.slug}`);
@@ -69,20 +69,18 @@ const Hero = ({ allsubcategoriesData }) => {
         </div>
 
         {/* search var  */}
-        <div className="input-container mx-auto md:w-[800px] h-[52px] w-full">
-          <div
-            className="h-full w-full flex justify-between"
-          >
+        <div className="input-container mx-auto md:w-[800px] h-[52px] w-full border-2">
+          <div className="h-full w-full flex justify-between">
             <input
               onKeyUp={handleKeyPress}
               type="text"
               placeholder="Search"
-              className="border-0 w-full focus:ring-0 bg-[#F3F4F6] focus:outline-0 text-base font-paragraph my-[14px] ml-6"
+              className="border-0 w-full focus:ring-0 focus:outline-0 text-base font-paragraph my-[14px] ml-6"
             />
             <div className="">
               <button
                 onClick={handleSearch}
-                className=" py-auto h-full w-full pr-6 pl-4 bg-[#F3F4F6] rounded-2xl"
+                className=" py-auto h-full w-full pr-6 pl-4 rounded-2xl"
               >
                 <svg
                   width="20"
@@ -144,9 +142,8 @@ const Hero = ({ allsubcategoriesData }) => {
                     },
                   }}
                 >
-                  {data.map(item => (
-                    <SwiperSlide
-                      key={item.slug}>
+                  {data.map((item) => (
+                    <SwiperSlide key={item.slug}>
                       <button
                         // name={item.SubCategory}
                         onClick={(e) => handleClick(e, item)}
