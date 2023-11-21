@@ -146,6 +146,11 @@ const CategoryData = ({
   };
 
   const loadToolsData = async () => {
+    if (page >= preToolsData.totalPages) {
+      return;
+    }
+    setIsLoading(true);
+
     const nextPage = page + 1;
     const response = await fetch(
       `${process.env.API_URL}/category/${slug}/tools?page=${nextPage}&limit=9&filter=${filter}&search=${search}`
@@ -160,17 +165,12 @@ const CategoryData = ({
   };
 
   useEffect(() => {
-    console.log(toolsData);
-  }, [toolsData]);
-
-  useEffect(() => {
     setTotal(preToolsData.total);
     setToolsData(preToolsData.tools);
     setPage(1);
-  }, []);
+  }, [search, filter]);
 
   useEffect(() => {
-    setIsLoading(true);
     if (inView) {
       loadToolsData();
     }
@@ -339,25 +339,25 @@ const CategoryData = ({
           </div>
         </div>
 
-        <div className="mb-10 px-2 md:px-0" ref={ref}>
+        <div className="mb-10 px-2 md:px-0">
           <Card categorySlug={slug} toolsData={toolsData} />
         </div>
 
-        {/* <div
+        <div
           className="flex justify-center items-center p-4 col-span-1 sm:col-span-2 md:col-span-3 "
           ref={ref}
         >
-          {isLoading && (
+          {/* {isLoading && (
             <div
-              className="inline-block h-10 w-10 animate-spin rounded-full border-4 text-[#6b29ff] border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              className="inline-block h-10 w-10 animate-spin rounded-full border-4 text-[#6b29ff] border-solid border-current border-r-transparent m-2 motion-reduce:animate-[spin_1.5s_linear_infinite]"
               role="status"
             >
               <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
                 Loading...
               </span>
             </div>
-          )}
-        </div> */}
+          )} */}
+        </div>
       </div>
       {/* {isLoading || <Footer />} */}
 

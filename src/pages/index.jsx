@@ -103,6 +103,13 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
   };
 
   const loadToolsData = async () => {
+
+    if (page >= preToolsData.totalPages) {
+      return;
+    }
+
+    setIsLoading(true);
+
     const nextPage = page + 1;
     const response = await fetch(
       `${process.env.API_URL}/tool?page=${nextPage}&limit=9&filter=${filter}&search=${search}`
@@ -111,7 +118,6 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
 
     setTotal(data.total);
     setToolsData([...toolsData, ...data.tools]);
-    console.log(toolsData);
     setPage(nextPage);
     setIsLoading(false);
   };
@@ -120,10 +126,9 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
     setTotal(preToolsData.total);
     setToolsData(preToolsData.tools);
     setPage(1);
-  }, []);
+  }, [search, filter]);
 
   useEffect(() => {
-    setIsLoading(true);
     if (inView) {
       loadToolsData();
     }
@@ -250,24 +255,24 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
           </div>
         </div>
 
-        <div className="px-2 md:px-0 max-w-screen-xl mx-auto mb-20" ref={ref}>
+        <div className="px-2 md:px-0 max-w-screen-xl mx-auto mb-20" >
           <Card toolsData={toolsData} />
         </div>
-        {/* <div
+        <div
           className="flex justify-center items-center"
           ref={ref}
         >
-          {isLoading && (
+          {/* {isLoading && (
             <div
-              className="inline-block h-10 w-10 animate-spin rounded-full border-4 text-[#6b29ff] border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              className="inline-block h-10 w-10 animate-spin rounded-full border-4 text-[#6b29ff] border-solid border-current border-r-transparent m-2 motion-reduce:animate-[spin_1.5s_linear_infinite]"
               role="status"
             >
               <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
                 Loading...
               </span>
             </div>
-          )}
-        </div> */}
+          )} */}
+        </div>
 
         {/* {isLoading || <Footer />} */}
 
