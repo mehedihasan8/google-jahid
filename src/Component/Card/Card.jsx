@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
+import slugify from "slugify";
 
 const Card = ({ toolsData }) => {
   const [tools, setTools] = useState([]);
@@ -19,10 +20,13 @@ const Card = ({ toolsData }) => {
     });
   });
 
-  const handleSubCategoryClick = (event, item) => {
-    event.stopPropagation();
-    console.log();
-  };
+  function getSlugFromtCategory(category) {
+    return slugify(category, {
+      replacement: "-",
+      remove: /[*+~.()'"!:@]/g,
+      lower: true,
+    });
+  }
 
   const component = (tool, indx) => {
     if (tool) {
@@ -138,18 +142,15 @@ const Card = ({ toolsData }) => {
                 ></p>
               </div>
             </Link>
-            <Link key={tool.slug} href={`/blog`} target="_blank">
               <div className=" flex flex-wrap gap-3 items-center gap-y-[6px] mb-5">
                 {tool?.SubCategory.slice(0, 3).map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={(event) => handleSubCategoryClick(event, item)}
+                  <Link key={tool.slug} href={`/category/${getSlugFromtCategory(item)}`} target="_blank"
                     className="flex w-fit h-fit cursor-pointer hover:scale-105 justify-between grid-cols-4 gap-1"
                   >
                     <p className="px-3 py-[10px] flex items-center justify-between border-[0.5px] border-[#E5E7EB] rounded-[100px] text-[10px] font-paragraph">
                       {item}
                     </p>
-                  </button>
+                  </Link>
                 ))}
                 {tool?.SubCategory.length > 3 && (
                   <div className="px-3 text-[10px] py-[10px] flex items-center justify-between rounded-[100px] bg-[#F3F4F6] font-paragraph">
@@ -157,7 +158,6 @@ const Card = ({ toolsData }) => {
                   </div>
                 )}
               </div>
-            </Link>
             <Link key={tool.slug} href={`/${tool.slug}`} target="_blank">
               <button className="w-full h-[40px] gap-[10px] flex justify-center items-center px-[34px] py-4 border border-[#E5E7EB] rounded-xl">
                 <svg
