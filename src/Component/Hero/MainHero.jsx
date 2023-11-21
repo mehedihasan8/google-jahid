@@ -124,7 +124,7 @@ const Hero = ({ allsubcategoriesData }) => {
               </button>
 
               {/* swiper  */}
-              <div className="w-[300px] md:w-[690px] mx-auto">
+              <div className="w-[320px] md:w-[690px] mx-auto">
                 <Swiper
                   slidesPerView={1}
                   // grid={{ rows: 2 }}

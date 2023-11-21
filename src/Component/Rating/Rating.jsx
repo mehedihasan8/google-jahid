@@ -40,11 +40,11 @@ const Rating = ({ card }) => {
                         className="rounded-full text-base"
                         onClick={handleClick}
                       >
-                        <BsBookmark className="md:text-[23px] text-[15px]" />
+                        <BsBookmark className="text-[15px]" />
                       </button>
                     ) : (
                       <button className="rounded-full" onClick={handleClick}>
-                        <BsBookmarkFill className="md:text-[23px] text-[15px]" />
+                        <BsBookmarkFill className="text-[15px]" />
                       </button>
                     )}
                   </div>
@@ -53,8 +53,8 @@ const Rating = ({ card }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 md:gap-6 mt-3 ">
-                <h1 className="md:text-5xl text-[28px] font-bold mt-2 font-title">
+              <div className="flex items-center gap-2 md:gap-6 mt-2 ">
+                <h1 className="md:text-5xl text-[24px] font-semibold md:font-bold mt-2 font-title">
                   {card.toolName}
                 </h1>
                 <Link
