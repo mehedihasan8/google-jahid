@@ -192,7 +192,7 @@ const CategoryData = ({
         <title>{`GoodTools.Ai - ${categoryData.Title}`}</title>
         <meta
           name="title"
-          content={`Browse ${categoryData.count}+ Best AI ${categoryData.Title} Tools`}
+          content={`${categoryData.count} Best AI ${categoryData.Title} Tools`}
         />
         <meta name="description" content={categoryData.message} />
         <meta
