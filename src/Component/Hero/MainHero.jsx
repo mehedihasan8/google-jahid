@@ -62,10 +62,10 @@ const Hero = ({ allsubcategoriesData }) => {
             We are listing the best AI
             <br /> tools Everyday.
           </h1>
-          <p className={`hero-subtitle font-paragraph md:mb-11 mb-6`}>
+          <h2 className={`hero-subtitle font-paragraph md:mb-11 mb-6`}>
             Find the best AI tools for your needs. Go to the filter <br /> and
             choose your Category.{" "}
-          </p>
+          </h2>
         </div>
 
         {/* search var  */}

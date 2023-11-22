@@ -236,14 +236,14 @@ const CategoryData = ({
             <div className="w-full md:w-fit mx-auto mb-4 md:mb-0 ">
               <CategoryFilter filterData={filterData} categoryData={categoryData} />
             </div>
-            <div className="text-[#6C737F] my-auto  w-fit text-base font-medium  md:ml-[32px] font-paragraph  md:mx-0 ">
+            <h2 className="text-[#6C737F] my-auto  w-fit text-base font-medium  md:ml-[32px] font-paragraph  md:mx-0 ">
               Showing{" "}
               <span className="text-[#081120] font-paragraph font-semibold">
                 {" "}
                 {decoration(total)}
               </span>{" "}
               Best Ai Tools
-            </div>
+            </h2>
           </div>
 
           <div className={`${!isMobile ? 'flex' : ''} items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6`}>

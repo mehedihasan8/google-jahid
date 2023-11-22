@@ -61,12 +61,12 @@ const CategoryHero = ({ slug, categoryData, allsubcategoriesData }) => {
         <div className="">
           <div className="max-w-3xl px-2 md:px-0">
             <h1 className="md:text-5xl md:w-[592px] text-4xl font-bold text-[#081120] text-center w-fit mx-auto md:mb-6 mb-4">
-              Browse {categoryData.count}+ Best AI {categoryData.Title} Tools
+              {categoryData.count} Best AI {categoryData.Title} Tools
             </h1>
             <div className="w-5/12 h-0 border-b border-[#E5E7EB] mx-auto md:mb-6 mb-4"></div>
-            <p className={`hero-subtitle md:mb-11 mb-6`}>
+            <h2 className={`hero-subtitle md:mb-11 mb-6`}>
               {categoryData.message}
-            </p>
+            </h2>
           </div>
           {/* search var  */}
           <div className="px-2 md:px-0">

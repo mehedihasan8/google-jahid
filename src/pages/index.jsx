@@ -180,14 +180,14 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
             <div className="w-full md:w-fit mx-auto mb-4 md:mb-0">
               <Filter filterData={filterData} />
             </div>
-            <div className="text-[#6C737F] my-auto  w-fit text-base font-medium  md:ml-[32px] font-paragraph mx-2 md:mx-0 ">
+            <h2 className="text-[#6C737F] my-auto  w-fit text-base font-medium  md:ml-[32px] font-paragraph mx-2 md:mx-0 ">
               Showing{" "}
               <span className="text-[#081120] font-paragraph font-semibold">
                 {" "}
                 {decoration(total)}
               </span>{" "}
               Best Ai Tools
-            </div>
+            </h2>
           </div>
           <div className=" flex items-center justify-between md:justify-normal md:w-fit w-full md:mt-0 mt-6 px-2 md:px-0">
             <span className="text-[#081120] font-semibold md:mr-6 font-paragraph  md:text-xl text-base">
