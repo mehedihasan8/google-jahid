@@ -42,7 +42,7 @@ function generateSiteMap(tools, categories) {
             return `
             <url>
             <loc>https://goodtools.ai/${tool.slug}</loc>
-            <lastmod>2023-11-18T07:11:19+00:00</lastmod>
+            <lastmod>${tool.updatedAt}</lastmod>
             <priority>0.80</priority>
             </url>
             `;
@@ -54,7 +54,7 @@ function generateSiteMap(tools, categories) {
                 return `
                     <url>
                     <loc>https://goodtools.ai/category/${category.slug}</loc>
-                    <lastmod>2023-11-18T07:11:19+00:00</lastmod>
+                    <lastmod>${category.updatedAt}</lastmod>
                     <priority>0.80</priority>
                     </url>
                     `;
