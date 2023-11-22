@@ -8,6 +8,12 @@ const RelatedCards = ({ subs, id }) => {
   const [isLoadingRelated, setIsLoadingRelated] = useState(true);
   const initialButtonStates = {};
 
+  function extractName(inputString) {
+    const parts = inputString.split('-');
+    const extractedName = parts[0].trim();
+    return extractedName;
+  }
+
   useEffect(() => {
     subs
       ? fetch(`${process.env.API_URL}/relatedtools/${subs}`)
@@ -91,7 +97,7 @@ const RelatedCards = ({ subs, id }) => {
             <div className="h-fit">
               <div className="flex justify-between items-center md:mb-6 mb-4">
                 <h2 className="font-title font-bold text-[24px] text-[#081120]">
-                  {tool?.toolName}
+                  {extractName(tool?.toolName)}
                 </h2>
 
                 <div className="inline-flex justify-between px-4 py-2 bg-[#F3F4F6] rounded-full gap-[10px] items-center">

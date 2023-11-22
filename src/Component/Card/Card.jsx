@@ -28,6 +28,12 @@ const Card = ({ toolsData }) => {
     });
   }
 
+  function extractName(inputString) {
+    const parts = inputString.split('-');
+    const extractedName = parts[0].trim();
+    return extractedName;
+  }
+
   const component = (tool, indx) => {
     if (tool) {
       const storageKey = `myHeartClicked-${tool._id}`;
@@ -99,7 +105,7 @@ const Card = ({ toolsData }) => {
             <Link key={tool.slug} href={`/${tool.slug}`} target="_blank">
               <div className="flex justify-between items-center md:mb-6 mb-4">
                 <h2 className="font-title font-bold text-[20px] md:text-[24px] text-[#081120]">
-                  {tool?.toolName}
+                  {extractName(tool?.toolName)}
                 </h2>
                 <div className="inline-flex justify-between px-4 py-2 bg-[#F3F4F6] rounded-full gap-[10px] items-center">
                   <div className="">
