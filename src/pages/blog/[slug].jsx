@@ -33,7 +33,7 @@ export default function News({ data, categories }) {
     <PageWraper>
       <Head>
         <title>{`GoodTools.Ai - ${item.newsTitle}`}</title>
-        <meta name="title" content={`GoodTools.Ai - ${item.newsTitle}`} />
+        
         <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"

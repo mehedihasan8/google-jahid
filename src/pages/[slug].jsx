@@ -26,16 +26,25 @@ export default function Tool({ data }) {
     <PageWraper>
       <Head>
         <title>{`GoodTools.Ai - ${data.toolName}`}</title>
-        <meta name="title" content={`GoodTools.Ai - ${data.toolName}`} />
+
         <meta name="description" content={data.metaDescription} />
         <meta name="keywords" content={data.metaKeywords} />
-        <meta name="robots" content="max-image-preview:large" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
+
         <meta property="og:title" content={`GoodTools.Ai - ${data.toolName}`} />
         <meta property="og:description" content={data.metaDescription} />
         <meta property="og:image" content={`${process.env.API_URL}/uploads/${data.image}`} />
+
+        <meta name="twitter:title" content={`GoodTools.Ai - ${data.toolName}`} />
+        <meta name="twitter:description" content={data.metaDescription} />
+        <meta name="twitter:image" content={`${process.env.API_URL}/uploads/${data.image}`} />
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
       </Head>
       <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24">
         <ul>

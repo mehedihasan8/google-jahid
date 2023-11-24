@@ -10,7 +10,7 @@ const Terms = () => {
     <PageWraper>
       <Head>
         <title>GoodTools.Ai - Terms & Conditions</title>
-        <meta name="title" content="GoodTools.Ai - Terms & Conditions" />
+        
         <meta
           name="description"
           content="Find the best AI tools for your needs. Go to the filterand choose your Category."

@@ -44,7 +44,7 @@ const Contact = () => {
       <ToastContainer />
       <Head>
         <title>GoodTools.Ai - Contact Us</title>
-        <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
+        
         <meta
           name="description"
           content="Find the best AI tools for your needs. Go to the filterand choose your Category."

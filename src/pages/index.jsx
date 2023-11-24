@@ -149,7 +149,7 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
     <PageWraper>
       <Head>
         <title>GoodTools.Ai - AI Tools Finder</title>
-        <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
+        
         <meta
           name="description"
           content="Find the best AI tools for your needs. Go to the filterand choose your Category."

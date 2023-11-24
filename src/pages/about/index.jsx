@@ -8,8 +8,8 @@ const About = () => {
   return (
     <PageWraper>
       <Head>
-        <title>GoodTools.Ai - About Us</title>
-        <meta name="title" content="GoodTools.Ai - AI Tools Finder" />
+        <title>GoodTools.Ai - About Us</title>=
+        
         <meta
           name="description"
           content="Find the best AI tools for your needs. Go to the filterand choose your Category."

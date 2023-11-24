@@ -10,7 +10,7 @@ const PrivacyPolicy = () => {
     <PageWraper>
       <Head>
         <title>GoodTools.Ai - Privacy & Policy</title>
-        <meta name="title" content="GoodTools.Ai - Privacy & Policy" />
+        
         <meta
           name="description"
           content="Find the best AI tools for your needs. Go to the filterand choose your Category."
