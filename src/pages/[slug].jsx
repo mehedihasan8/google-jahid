@@ -23,7 +23,7 @@ export default function Tool({ data }) {
     '@type': 'Product',
     name: data.toolName,
     image: `${process.env.API_URL}/uploads/${data.image}`,
-    description: product.metaDescription,
+    description: data.metaDescription,
   }
 
   return (
