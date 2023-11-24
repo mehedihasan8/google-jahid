@@ -41,20 +41,28 @@ export default function News({ data }) {
     <PageWraper>
       <Head>
         <title>GoodTools.Ai - Blog</title>
+
         <meta name="description" content="Latest Our AI Blog & Articles" />
         <meta
           name="keywords"
           content={`Ai Tools, Best Ai Tools, Ai Tools Finder, Ai Blog, Tech Blog`}
         />
-        <meta name="robots" content="max-image-preview:large" />
+
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
+
         <meta property="og:title" content="GoodTools.Ai - Blog" />
         <meta
           property="og:description"
           content="Latest Our AI News & Articles"
         />
         <meta property="og:image" content="https://goodtools.ai/logo.png" />
+
+        <meta name="twitter:title" content="GoodTools.Ai - Blog" />
+        <meta name="twitter:description" content="Latest Our AI News & Articles" />
+        <meta name="twitter:image" content="https://goodtools.ai/logo.png" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24">

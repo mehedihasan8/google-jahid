@@ -33,15 +33,17 @@ export default function News({ data, categories }) {
     <PageWraper>
       <Head>
         <title>{`GoodTools.Ai - ${item.newsTitle}`}</title>
-        
+
         <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
           content={item.metaKeywords}
         />
-        <meta name="robots" content="max-image-preview:large" />
+
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
+
         <meta
           property="og:title"
           content={`GoodTools.Ai - ${item.newsTitle}`}
@@ -54,6 +56,11 @@ export default function News({ data, categories }) {
           property="og:image"
           content={`${process.env.API_URL}/uploads/${item.image}`}
         />
+
+        <meta name="twitter:title" content={`GoodTools.Ai - ${item.newsTitle}`} />
+        <meta name="twitter:description" content={removeHtmlTags(item.newsBody)} />
+        <meta name="twitter:image" content={`${process.env.API_URL}/uploads/${item.image}`} />
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="breadcrumbs py-0 text-sm font-normal mx-4 md:mx-0 mt-16 md:mt-24">

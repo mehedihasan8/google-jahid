@@ -190,24 +190,28 @@ const CategoryData = ({
     <PageWraper>
       <Head>
         <title>{`GoodTools.Ai - ${categoryData.Title}`}</title>
-        <meta
-          name="title"
-          content={`${categoryData.count} Best AI ${categoryData.Title} Tools`}
-        />
+        
         <meta name="description" content={categoryData.message} />
         <meta
           name="keywords"
           content={`Ai Tools, Best Ai Tools, Ai Tools Finder, ${categoryData.Title}`}
         />
-        <meta name="robots" content="max-image-preview:large" />
+
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
+
         <meta
           property="og:title"
           content={`GoodTools.Ai - ${categoryData.Title}`}
         />
         <meta property="og:description" content={categoryData.message} />
         <meta property="og:image" content={`https://goodtools.ai/logo.png`} />
+
+        <meta name="twitter:title" content={`GoodTools.Ai - ${categoryData.Title}`} />
+        <meta name="twitter:description" content={categoryData.message} />
+        <meta name="twitter:image" content="https://goodtools.ai/logo.png" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 

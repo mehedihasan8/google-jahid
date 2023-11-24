@@ -149,7 +149,7 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
     <PageWraper>
       <Head>
         <title>GoodTools.Ai - AI Tools Finder</title>
-        
+
         <meta
           name="description"
           content="Find the best AI tools for your needs. Go to the filterand choose your Category."
@@ -158,15 +158,22 @@ const Home = ({ filter, search, preToolsData, allsubcategoriesData, filterData }
           name="keywords"
           content="Ai Tools, Best Ai Tools, Ai Tools Finder"
         />
-        <meta name="robots" content="max-image-preview:large" />
+
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
+
         <meta property="og:title" content="GoodTools.Ai - AI Tools Finder" />
         <meta
           property="og:description"
-          content="Find the best AI tools for your needs. Go to the filterand choose your Category."
+          content="Find the best AI tools for your needs. Go to the filter and choose your Category."
         />
         <meta property="og:image" content="https://goodtools.ai/logo.png" />
+
+        <meta name="twitter:title" content="GoodTools.Ai - AI Tools Finder" />
+        <meta name="twitter:description" content="Find the best AI tools for your needs. Go to the filter and choose your Category." />
+        <meta name="twitter:image" content="https://goodtools.ai/logo.png" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
