@@ -18,8 +18,12 @@ export default function Tool({ data }) {
     setIsloading(false);
   }, []);
 
-  function removeHtmlTags(input) {
-    return input.replace(/<\/?[^>]+(>|$)/g, "");
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: data.toolName,
+    image: `${process.env.API_URL}/uploads/${data.image}`,
+    description: product.metaDescription,
   }
 
   return (
@@ -44,6 +48,10 @@ export default function Tool({ data }) {
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
 
       </Head>
       <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24">
