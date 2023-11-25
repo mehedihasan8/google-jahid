@@ -346,9 +346,9 @@ const Rating = ({ card }) => {
                   <hr />
                 </div>
                 {card.facebook == "" &&
-                card.linkedin == "" &&
-                card.twitter == "" &&
-                card.discord == "" ? (
+                  card.linkedin == "" &&
+                  card.twitter == "" &&
+                  card.discord == "" ? (
                   <div></div>
                 ) : (
                   <div className="social-links mt-4 md:mt-[26px]">
@@ -538,9 +538,7 @@ const Rating = ({ card }) => {
           <div className="flex justify-center mt-8">
             <audio key={isToggled ? card.worksAudio : card.descriptionAudio} controls className="md:w-2/4">
               <source
-                src={`${process.env.API_URL}/audio/${
-                  isToggled ? card.worksAudio : card.descriptionAudio
-                }`}
+                src={`${process.env.API_URL}/audio/${isToggled ? card.worksAudio : card.descriptionAudio}`}
                 type="audio/mp3"
               />
             </audio>
