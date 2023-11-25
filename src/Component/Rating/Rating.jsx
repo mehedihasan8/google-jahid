@@ -4,6 +4,7 @@ import { BiLinkExternal } from "react-icons/bi";
 import { FiShare2 } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
+import { sanitize } from 'dompurify';
 
 const Rating = ({ card }) => {
   // consoleisClicked
@@ -535,7 +536,7 @@ const Rating = ({ card }) => {
             </button>
           </div>
           <div className="flex justify-center mt-8">
-            <audio controls className="md:w-2/4">
+            <audio key={isToggled ? card.worksAudio : card.descriptionAudio} controls className="md:w-2/4">
               <source
                 src={`${process.env.API_URL}/audio/${
                   isToggled ? card.worksAudio : card.descriptionAudio
@@ -547,16 +548,12 @@ const Rating = ({ card }) => {
           {isToggled ? (
             <div
               className="mt-8 leading-7"
-              dangerouslySetInnerHTML={{
-                __html: card?.works?.replace(/["\n]/g, "") || "",
-              }}
+              dangerouslySetInnerHTML={{ __html: sanitize(card?.works) }}
             ></div>
           ) : (
             <div
-              className="mt-8 leading-7 "
-              dangerouslySetInnerHTML={{
-                __html: card?.description?.replace(/["\n]/g, "") || "",
-              }}
+              className="mt-8 leading-7"
+              dangerouslySetInnerHTML={{ __html: sanitize(card?.description) }}
             ></div>
           )}
         </div>
