@@ -64,7 +64,7 @@ const Rating = ({ card }) => {
                 </div>
               </div>
               <div className="flex items-center gap-2 md:gap-6 mt-2 ">
-                <h1 className="md:text-5xl text-[24px] font-bold mt-2 font-title leading-relaxed">
+                <h1 className="md:text-5xl text-[24px] font-bold mt-2 font-title leading-tight">
                   {card.toolName}
                 </h1>
                 <Link
