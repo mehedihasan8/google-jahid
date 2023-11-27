@@ -5,6 +5,7 @@ import { FiShare2 } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 import { sanitize } from 'dompurify';
+import slugify from "slugify";
 
 const Rating = ({ card }) => {
   // consoleisClicked
@@ -19,6 +20,14 @@ const Rating = ({ card }) => {
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
+
+  function getSlugFromtCategory(category) {
+    return slugify(category, {
+      replacement: "-",
+      remove: /[*+~.()'"!:@]/g,
+      lower: true,
+    });
+  }
 
   useEffect(() => localStorage.setItem(storageKey, isClicked), [isClicked]);
 
@@ -55,7 +64,7 @@ const Rating = ({ card }) => {
                 </div>
               </div>
               <div className="flex items-center gap-2 md:gap-6 mt-2 ">
-                <h1 className="md:text-5xl text-[24px] font-semibold md:font-bold mt-2 font-title">
+                <h1 className="md:text-5xl text-[24px] font-bold mt-2 font-title leading-relaxed">
                   {card.toolName}
                 </h1>
                 <Link
@@ -236,12 +245,14 @@ const Rating = ({ card }) => {
                           <span className="mr-2 tt">Tool Type:</span>
                           {card.SubCategory.map((sub) => {
                             return (
-                              <button
+                              <Link
                                 key={sub}
+                                href={`/category/${getSlugFromtCategory(sub)}`}
+                                target="_blank"
                                 className="border text-xs text-[#4D5761] ml-3 px-3 py-[6px] rounded-full font-normal"
                               >
                                 {sub}
-                              </button>
+                              </Link>
                             );
                           })}
                         </h1>

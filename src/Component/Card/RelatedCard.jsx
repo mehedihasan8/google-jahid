@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
+import slugify from "slugify";
+
 
 const RelatedCards = ({ subs, id }) => {
   const [relatedTools, setRelatedTools] = useState([]);
@@ -12,6 +14,14 @@ const RelatedCards = ({ subs, id }) => {
     const parts = inputString.split('-');
     const extractedName = parts[0].trim();
     return extractedName;
+  }
+
+  function getSlugFromtCategory(category) {
+    return slugify(category, {
+      replacement: "-",
+      remove: /[*+~.()'"!:@]/g,
+      lower: true,
+    });
   }
 
   useEffect(() => {
@@ -143,14 +153,13 @@ const RelatedCards = ({ subs, id }) => {
 
               <div className=" flex flex-wrap gap-3 items-center gap-y-[6px] mb-5">
                 {tool?.SubCategory.slice(0, 3).map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex w-fit h-fit justify-between grid-cols-4 gap-1"
+                  <Link key={tool.slug} href={`/category/${getSlugFromtCategory(item)}`} target="_blank"
+                    className="flex w-fit h-fit cursor-pointer hover:scale-105 justify-between grid-cols-4 gap-1"
                   >
-                    <div className="px-3 py-[10px] flex items-center justify-between border-[0.5px] font-paragraph text-[10px] border-[#E5E7EB] rounded-[100px]">
+                    <p className="px-3 py-[10px] flex items-center justify-between border-[0.5px] border-[#E5E7EB] rounded-[100px] text-[10px] font-paragraph">
                       {item}
-                    </div>
-                  </div>
+                    </p>
+                  </Link>
                 ))}
                 {tool?.SubCategory.length > 3 && (
                   <div className="px-3 py-[10px] flex items-center justify-between rounded-[100px] text-[10px] font-paragraph bg-[#F3F4F6]">
