@@ -555,15 +555,15 @@ const Rating = ({ card }) => {
             </audio>
           </div>
           {isToggled ? (
-            <div
-              className="mt-8 leading-7"
+            <article
+              className="prose mt-8 leading-7 max-w-none"
               dangerouslySetInnerHTML={{ __html: sanitize(card?.works) }}
-            ></div>
+            ></article>
           ) : (
-            <div
-              className="mt-8 leading-7"
+            <article
+              className="prose mt-8 leading-7 max-w-none"
               dangerouslySetInnerHTML={{ __html: sanitize(card?.description) }}
-            ></div>
+            ></article>
           )}
         </div>
       </div>

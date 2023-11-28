@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,json}",
+    "./src/**/**/*.{js,ts,jsx,tsx,json}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx,json}",
     "./node_modules/tailwind-datepicker-react/dist/**/*.js",
   ],
   theme: {
@@ -26,5 +26,5 @@ export default {
       },
     ],
   },
-  plugins: [require("daisyui"), require("flowbite/plugin")],
+  plugins: [require("daisyui"), require("flowbite/plugin") , require('@tailwindcss/typography')],
 };
