@@ -31,6 +31,31 @@ const Rating = ({ card }) => {
 
   useEffect(() => localStorage.setItem(storageKey, isClicked), [isClicked]);
 
+  const priceArea = ({ card }) => {
+    if (card.priceType == "Free") {
+      return (
+        <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">
+          Free
+        </h2>
+      );
+    } else if (card.priceType == "Freemium" && (card.price == 0 || card.price == "")) {
+      return (
+        <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">
+          Freemium
+        </h2>
+      );
+    } else {
+      return (
+        <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">
+          {"$" + card.price}
+          <span className="text-base ms-2 font-normal text-[#4D5761] ">
+            {"/" + card.pricePeriod}
+          </span>
+        </h2>
+      );
+    }
+  }
+
   return (
     <div className="font-paragraph md:p-10">
       <div className="">
@@ -120,12 +145,7 @@ const Rating = ({ card }) => {
               </div>
               <div className="">
                 {/* Price per period */}
-                <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">
-                  {card.priceType == "Free" ? "Free" : "$" + card.price}
-                  <span className="text-base ms-2 font-normal text-[#4D5761] ">
-                    {card.priceType == "Free" ? "" : "/" + card.pricePeriod}
-                  </span>
-                </h2>
+                {priceArea({ card })}
                 {card.priceType == "Freemium" ? (
                   <p className="text-base font-normal text-[#4D5761] mt-2">
                     Basic services are free, advanced features require payment.

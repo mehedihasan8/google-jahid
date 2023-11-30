@@ -42,7 +42,7 @@ export default function Tool({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       </Head>
-      <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24">
+      <div className="max-w-screen-xl mx-auto px-2 md:px-0 breadcrumbs py-0 text-sm font-normal mt-16 md:mt-24 overflow-x-hidden">
         <ul>
           <li className="text-[#081120] font-paragraph text-sm">
             <Link href="/" scroll={true}>Home</Link>
