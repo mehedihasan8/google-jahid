@@ -34,19 +34,19 @@ const Rating = ({ card }) => {
   const priceArea = ({ card }) => {
     if (card.priceType == "Free") {
       return (
-        <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">
+        <h2 className="md:text-4xl text-[#081120] text-[22px] font-bold font-title mt-8 md:mt-0">
           Free
         </h2>
       );
     } else if (card.priceType == "Freemium" && (card.price == 0 || card.price == "")) {
       return (
-        <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">
+        <h2 className="md:text-4xl text-[#081120] text-[22px] font-bold font-title mt-8 md:mt-0">
           Freemium
         </h2>
       );
     } else {
       return (
-        <h2 className="md:text-5xl text-[#081120] text-[32px] font-bold font-title mt-8 md:mt-0">
+        <h2 className="md:text-4xl text-[#081120] text-[22px] font-bold font-title mt-8 md:mt-0">
           {"$" + card.price}
           <span className="text-base ms-2 font-normal text-[#4D5761] ">
             {"/" + card.pricePeriod}
